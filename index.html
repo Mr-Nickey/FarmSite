@@ -17,7 +17,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐔</text></svg>">
 
     <style>
-        /* Custom styles to apply our fonts */
+        /* Custom styles to apply our fonts and hide scrollbars */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #FDF8E1; /* A warm, creamy background */
@@ -27,6 +27,14 @@
         }
         .bg-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        /* For hiding the scrollbar on the galleries */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
     </style>
 </head>
@@ -39,34 +47,42 @@
 
     <!-- Header Section -->
     <header class="bg-green-700 text-white shadow-lg">
-        <div class="container mx-auto px-6 py-4 text-center">
-            <h1 class="font-handwritten text-4xl md:text-5xl font-bold text-yellow-300">The Flocking Reed's Farm</h1>
+        <div class="container mx-auto px-4 sm:px-6 py-4 text-center">
+            <h1 class="font-handwritten text-4xl sm:text-5xl md:text-6xl font-bold text-yellow-300">The Flocking Reed's Farm</h1>
             <p class="mt-2 text-lg">Built with Love, Raised with Joy</p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-4 sm:px-6 py-8 md:py-12">
 
         <!-- Welcome Section -->
         <section class="text-center">
-            <h2 class="font-handwritten text-3xl font-bold text-green-800">Welcome to Our Little Homestead!</h2>
+            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800">Welcome to Our Little Homestead!</h2>
             <p class="mt-4 max-w-3xl mx-auto text-lg">
                 We're a family of five with a passion for building things from nothing and giving new life to old materials. Our farm is a happy, bustling place where our free-range chickens and pet geese roam, and we love sharing the goodness with you!
             </p>
         </section>
 
         <!-- Farm Stand Section -->
-        <section id="farmstand" class="mt-12 bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-green-200">
-            <h2 class="font-handwritten text-3xl font-bold text-center text-green-800 mb-2">The Farm Stand 🥚</h2>
-            <p class="text-center text-lg text-gray-700 mb-8">Your 24/7 stop for fresh, organic eggs!</p>
+        <section id="farmstand" class="mt-12 md:mt-16 bg-white/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-lg border border-green-200">
+            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-2">The Farm Stand 🥚</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">Your 24/7 stop for farm-fresh goodies!</p>
             
             <div class="flex flex-col md:flex-row gap-8 items-center">
                 <div class="md:w-1/2">
                     <img src="https://placehold.co/600x400/86A339/FFFFFF?text=Our+cute+farm+stand!" alt="A placeholder image of the farm stand" class="rounded-lg shadow-xl w-full">
                 </div>
-                <div class="md:w-1/2">
-                    <p class="text-lg mb-4">Our little self-serve stand is always open, all year round, and it's well-lit at night for your convenience. Right now, we're exclusively selling our chicken's delicious eggs!</p>
+                <div class="md:w-1/2 space-y-4">
+                    <p class="text-lg">Our little self-serve stand is always open, all year round, and it's well-lit at night. We've always got something fresh for you!</p>
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-900 p-4 rounded-r-lg">
+                        <h4 class="font-bold">What's Available:</h4>
+                        <ul class="list-disc list-inside mt-2 space-y-1">
+                            <li>Fresh Chicken Eggs: <strong>$5/dozen</strong> or <strong>$3/half-dozen</strong></li>
+                            <li>Live starter plants (like tomatoes!)</li>
+                            <li>Handmade crafts & other local products</li>
+                        </ul>
+                    </div>
                     <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg">
                         <h4 class="font-bold">Easy Payment Options:</h4>
                         <p>We accept Cash, Venmo, PayPal, and Cash App. Just scan the code at the stand!</p>
@@ -76,8 +92,8 @@
         </section>
 
         <!-- More From the Flock Section -->
-        <section id="more-from-the-flock" class="mt-16">
-            <h2 class="font-handwritten text-3xl font-bold text-center text-green-800 mb-8">More From the Flock</h2>
+        <section id="more-from-the-flock" class="mt-12 md:mt-16">
+            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">More From the Flock</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Spring Chicks -->
                 <div class="bg-yellow-100 p-6 rounded-lg shadow-md">
@@ -93,27 +109,55 @@
         </section>
 
         <!-- Our Story Section -->
-        <section id="about" class="mt-16 text-center">
-             <h2 class="font-handwritten text-3xl font-bold text-green-800 mb-8">Our Story: Built with Recycled Hands</h2>
+        <section id="about" class="mt-12 md:mt-16 text-center">
+             <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800 mb-8">Our Story: Built with Recycled Hands</h2>
              <div class="flex flex-col md:flex-row-reverse items-center gap-8">
                 <div class="md:w-1/2">
-                    <img src="https://placehold.co/600x400/C28B42/FFFFFF?text=Our+happy+chickens+and+geese!" alt="Placeholder image of chickens and geese" class="rounded-lg shadow-xl w-full">
+                    <!-- Builds Photo Gallery -->
+                    <div id="builds-gallery-container" class="relative w-full max-w-lg mx-auto">
+                        <div id="builds-gallery" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide rounded-lg shadow-xl">
+                            <!-- JS will populate this -->
+                        </div>
+                        <button id="builds-prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button id="builds-next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                    </div>
                 </div>
                 <div class="md:w-1/2 text-left">
                     <p class="text-lg mb-4">
                         We believe in making beautiful things from what others leave behind. Our chicken coops, and even our farm stand, are proudly built using all reclaimed and recycled materials. We repurpose and reuse everything we can!
                     </p>
                     <p class="text-lg">
-                        This philosophy extends to how we care for our animals. Our chickens and two pet geese live a happy life, free-ranging and enjoying the fresh New Hampshire air. They're the heart of our homestead! (Please note: we don't sell geese eggs, they're part of the family!)
+                        This philosophy extends to how we care for our animals. Our chickens and two pet geese live a happy life, free-ranging and enjoying the fresh New Hampshire air. They're the heart of our homestead! (Please note: we don't sell geese eggs at this time.)
                     </p>
                 </div>
              </div>
         </section>
+        
+        <!-- Meet the Flock Gallery -->
+        <section id="meet-the-flock" class="mt-12 md:mt-16">
+            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">Meet the Flock!</h2>
+            <div id="flock-gallery-container" class="relative w-full mx-auto">
+                <div id="flock-gallery" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth scrollbar-hide">
+                    <!-- JS will populate this -->
+                </div>
+                <button id="flock-prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button id="flock-next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
 
         <!-- Visit Us & Contact Section -->
-        <section id="contact" class="mt-16 bg-pattern">
-            <div class="bg-amber-600/90 text-white p-8 rounded-2xl shadow-lg text-center">
-                <h2 class="font-handwritten text-3xl font-bold mb-4">Come Say Hello!</h2>
+        <section id="contact" class="mt-12 md:mt-16 bg-pattern">
+            <div class="bg-amber-600/90 text-white p-6 md:p-8 rounded-2xl shadow-lg text-center">
+                <h2 class="font-handwritten text-3xl sm:text-4xl font-bold mb-4">Come Say Hello!</h2>
                 <p class="text-lg">Our farm stand is waiting for you. We'd love for you to stop by!</p>
                 <p class="font-bold text-xl mt-4">441 Millbrook Rd, Grafton, NH 03240</p>
                 
@@ -146,11 +190,88 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 mt-12 py-6">
+    <footer class="bg-gray-800 text-gray-400 mt-12 md:mt-16 py-6">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2024 The Flocking Reed's Farm. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- JavaScript for Galleries -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Data for the Galleries ---
+            // To add more photos, just add a new line inside the brackets [ ... ]
+            // Example: { src: 'your-image-link.jpg', caption: 'My new coop' },
+            const buildPhotos = [
+                { src: 'https://placehold.co/400x300/8B4513/FFFFFF?text=The+Main+Coop', caption: 'The Main Coop' },
+                { src: 'https://placehold.co/400x300/CD853F/FFFFFF?text=Our+Farm+Stand', caption: 'Our Farm Stand' },
+                { src: 'https://placehold.co/400x300/A0522D/FFFFFF?text=Chick+Brooder', caption: 'Chick Brooder' },
+                { src: 'https://placehold.co/400x300/D2691E/FFFFFF?text=Goose+House', caption: 'Goose House' },
+            ];
+
+            const flockMembers = [
+                { src: 'https://placehold.co/300x400/D2B48C/000000?text=Gertrude+the+Goose', name: 'Gertrude' },
+                { src: 'https://placehold.co/300x400/800000/FFFFFF?text=Ruby+the+Rhode+Island+Red', name: 'Ruby' },
+                { src: 'https://placehold.co/300x400/000000/FFFFFF?text=Oreo+the+Barred+Rock', name: 'Oreo' },
+                { src: 'https://placehold.co/300x400/FAFAD2/000000?text=Blondie+the+Buff+Orpington', name: 'Blondie' },
+                { src: 'https://placehold.co/300x400/A9A9A9/FFFFFF?text=Smokey+the+Ameraucana', name: 'Smokey' },
+                { src: 'https://placehold.co/300x400/DEB887/000000?text=Gus+the+Goose', name: 'Gus' },
+            ];
+
+            // --- Function to create and populate a gallery ---
+            function createGallery(galleryId, photos, isBuildsGallery) {
+                const gallery = document.getElementById(galleryId);
+                if (!gallery) return;
+
+                photos.forEach(photo => {
+                    const item = document.createElement('div');
+                    if (isBuildsGallery) {
+                        // Builds gallery styling
+                        item.className = 'flex-shrink-0 w-full snap-center';
+                        item.innerHTML = `
+                            <img src="${photo.src}" alt="${photo.caption}" class="w-full h-64 object-cover">
+                            <p class="text-center font-semibold p-2 bg-black/30 text-white">${photo.caption}</p>
+                        `;
+                    } else {
+                        // Flock gallery styling
+                        item.className = 'flex-shrink-0 w-48 sm:w-56 snap-center text-center';
+                        item.innerHTML = `
+                            <img src="${photo.src}" alt="${photo.name}" class="w-full h-56 sm:h-64 object-cover rounded-lg shadow-md">
+                            <p class="font-handwritten text-xl font-bold mt-2 text-green-900">${photo.name}</p>
+                        `;
+                    }
+                    gallery.appendChild(item);
+                });
+            }
+
+            // --- Function to set up the scroller buttons ---
+            function setupScroller(galleryId, prevBtnId, nextBtnId) {
+                const gallery = document.getElementById(galleryId);
+                const prevBtn = document.getElementById(prevBtnId);
+                const nextBtn = document.getElementById(nextBtnId);
+
+                if (!gallery || !prevBtn || !nextBtn) return;
+
+                nextBtn.addEventListener('click', () => {
+                    const scrollAmount = gallery.clientWidth * 0.8;
+                    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+
+                prevBtn.addEventListener('click', () => {
+                    const scrollAmount = gallery.clientWidth * 0.8;
+                    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // --- Initialize the galleries ---
+            createGallery('builds-gallery', buildPhotos, true);
+            createGallery('flock-gallery', flockMembers, false);
+            
+            setupScroller('builds-gallery', 'builds-prev', 'builds-next');
+            setupScroller('flock-gallery', 'flock-prev', 'flock-next');
+        });
+    </script>
 
 </body>
 </html>
