@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Flocking Reed's Farm - Fresh Eggs & Local Goods</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for a friendly, handwritten feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to apply our fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDF8E1; /* A warm, creamy background */
+        }
+        .font-handwritten {
+            font-family: 'Kalam', cursive;
+        }
+        .bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-green-700 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 text-center">
+            <h1 class="font-handwritten text-4xl md:text-5xl font-bold text-yellow-300">The Flocking Reed's Farm</h1>
+            <p class="mt-2 text-lg">Organic Goodness, Raised with Love</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Welcome Section -->
+        <section class="text-center">
+            <h2 class="font-handwritten text-3xl font-bold text-green-800">Welcome to Our Little Corner of the World!</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg">
+                We're a family farm dedicated to bringing you the freshest, all-organic goodies. Our happy, free-range chickens (and their goose friends!) give us the most delicious eggs you'll ever taste. Come on by and see what we've got growing!
+            </p>
+        </section>
+
+        <!-- Image Banner -->
+        <div class="my-12 rounded-lg overflow-hidden shadow-2xl">
+             <img src="https://placehold.co/1200x400/86A339/FFFFFF?text=A+sunny+day+on+the+farm!" alt="A placeholder image of a sunny farm scene" class="w-full h-auto">
+        </div>
+
+        <!-- Our Products Section -->
+        <section id="products" class="bg-white/70 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-green-200">
+            <h2 class="font-handwritten text-3xl font-bold text-center text-green-800 mb-8">What's Fresh at the Farm Stand</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Product Card: Chicken Eggs -->
+                <div class="bg-yellow-100 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="font-handwritten text-2xl font-bold text-amber-800">Organic Chicken Eggs</h3>
+                    <p class="mt-2">From our flock of free-ranging hens. You can taste the sunshine in every yolk!</p>
+                </div>
+                
+                <!-- Product Card: Fresh Produce -->
+                <div class="bg-green-100 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="font-handwritten text-2xl font-bold text-green-800">Seasonal Produce</h3>
+                    <p class="mt-2">Freshly picked from our gardens. The selection changes with the seasons, so there's always something new.</p>
+                </div>
+                
+                <!-- Product Card: Local Crafts -->
+                <div class="bg-blue-100 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <h3 class="font-handwritten text-2xl font-bold text-blue-800">Handmade Local Crafts</h3>
+                    <p class="mt-2">Beautiful items made with love from locally sourced materials. Perfect for gifts!</p>
+                </div>
+
+                <!-- Product Card: Quail Eggs (Coming Soon) -->
+                <div class="bg-purple-100 p-6 rounded-lg shadow-md md:col-span-2 lg:col-span-1">
+                    <h3 class="font-handwritten text-2xl font-bold text-purple-800">Quail Eggs (Coming Soon!)</h3>
+                    <p class="mt-2">We're excited to be adding quail to our farm soon! Get ready for these tiny, tasty treasures.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us / Meet the Flock Section -->
+        <section id="about" class="mt-16 text-center">
+             <h2 class="font-handwritten text-3xl font-bold text-green-800 mb-8">Meet the Flock</h2>
+             <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/C28B42/FFFFFF?text=Our+happy+chickens+and+geese!" alt="Placeholder image of chickens and geese" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2 text-left">
+                    <p class="text-lg mb-4">
+                        Our farm wouldn't be the same without our feathered family. The chickens roam freely, foraging and enjoying the fresh air, which is our secret to amazing eggs.
+                    </p>
+                    <p class="text-lg">
+                        And you can't miss our two resident geese! They're our beloved pets and the official farm greeters, keeping a watchful eye on their chicken companions. They're all part of what makes our farm so special.
+                    </p>
+                </div>
+             </div>
+        </section>
+
+        <!-- Visit Us & Contact Section -->
+        <section id="contact" class="mt-16 bg-pattern">
+            <div class="bg-amber-600/90 text-white p-8 rounded-2xl shadow-lg text-center">
+                <h2 class="font-handwritten text-3xl font-bold mb-4">Come Say Hello!</h2>
+                <p class="text-lg">Our farm stand is set up right at our address. We'd love to see you!</p>
+                <p class="font-bold text-xl mt-4">[Your Farm's Address Here], [Your Town, State]</p>
+                <p class="mt-6 text-lg">For questions, special orders, or just to chat, feel free to reach out!</p>
+                <a href="mailto:your-email@example.com" class="mt-4 inline-block bg-green-700 hover:bg-green-800 text-yellow-200 font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">
+                    Contact Us
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 mt-12 py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 The Flocking Reed's Farm. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
