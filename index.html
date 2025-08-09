@@ -66,7 +66,7 @@
             
             <div class="flex flex-col md:flex-row gap-8 items-center">
                 <div class="md:w-1/2">
-                    <img src="/images/GP011736.JPG" alt="Farm Stand" class="rounded-lg shadow-xl w-full">
+                    <img src="/images/GP011736.JPG" alt="Farm Stand with a sign and cooler" class="rounded-lg shadow-xl w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FDF8E1/333?text=Farm+Stand';">
                 </div>
                 <div class="md:w-1/2 space-y-4">
                     <p class="text-lg">Our little self-serve stand is always open, all year round, and it's well-lit at night. We've always got something fresh for you!</p>
@@ -148,38 +148,103 @@
             </div>
         </section>
 
-
-        <!-- Visit Us & Contact Section -->
-        <section id="contact" class="mt-12 md:mt-16 bg-pattern">
-            <div class="bg-amber-600/90 text-white p-6 md:p-8 rounded-2xl shadow-lg text-center">
-                <h2 class="font-handwritten text-3xl sm:text-4xl font-bold mb-4">Come Say Hello!</h2>
-                <p class="text-lg">Our farm stand is waiting for you. We'd love for you to stop by!</p>
-                <p class="font-bold text-xl mt-4">441 Millbrook Rd, Grafton, NH 03240</p>
-                
-                <div class="my-6 flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="mailto:admin@flockingreeds.farm" class="flex items-center justify-center bg-green-700 hover:bg-green-800 text-yellow-200 font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md w-full sm:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>
-                        Email Us
-                    </a>
-                    <a href="https://www.google.com/maps/dir//441+Millbrook+Rd,Grafton,NH+03240" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md w-full sm:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" /></svg>
-                        Get Directions
-                    </a>
+        <!-- Contact & Order Forms Section -->
+        <section id="contact" class="mt-12 md:mt-16">
+            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">Get in Touch</h2>
+            <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-green-200">
+                <!-- Tab buttons -->
+                <div class="flex border-b border-green-200">
+                    <button id="order-tab" class="flex-1 py-3 px-4 font-handwritten text-2xl text-green-800 font-bold bg-yellow-100 rounded-tl-2xl border-b-4 border-amber-500">
+                        🥚 Orders & Inquiries
+                    </button>
+                    <button id="contact-tab" class="flex-1 py-3 px-4 font-handwritten text-2xl text-gray-500 font-bold">
+                        ⚙️ General Contact
+                    </button>
                 </div>
-                 <p class="mt-4 text-sm text-yellow-100">For questions about chicks or special orders, please email us!</p>
+
+                <!-- Order Form -->
+                <div id="order-form-content" class="p-6 md:p-8">
+                    <p class="mb-6 text-gray-700 text-lg">Looking for a large egg order, inquiring about spring chicks, or have a custom request? Fill out the form below and we'll get back to you shortly!</p>
+                    <!-- This form will be handled by Cloudflare Pages. The "data-static-form-name" is important! -->
+                    <form method="POST" data-static-form-name="orderForm">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="order-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
+                                <input type="text" id="order-name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                            <div>
+                                <label for="order-email" class="block mb-2 font-bold text-gray-700">Your Email</label>
+                                <input type="email" id="order-email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label for="order-subject" class="block mb-2 font-bold text-gray-700">Subject of Inquiry</label>
+                            <select id="order-subject" name="subject" required class="w-full px-3 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <option>Egg Order Inquiry</option>
+                                <option>Spring Chick Inquiry</option>
+                                <option>Handmade Craft Request</option>
+                                <option>Other Custom Request</option>
+                            </select>
+                        </div>
+                        <div class="mt-6">
+                            <label for="order-message" class="block mb-2 font-bold text-gray-700">Your Message</label>
+                            <textarea id="order-message" name="message" rows="5" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Please provide as much detail as possible, including desired quantities, dates, or specific requests."></textarea>
+                        </div>
+                        <div class="mt-8 text-right">
+                            <button type="submit" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">Send Inquiry to Sam</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Form (Initially Hidden) -->
+                <div id="contact-form-content" class="hidden p-6 md:p-8">
+                    <p class="mb-6 text-gray-700 text-lg">For general questions about the farm, our story, or if you're having trouble with the website, drop us a line here.</p>
+                    <!-- This form will also be handled by Cloudflare Pages. -->
+                    <form method="POST" data-static-form-name="contactForm">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contact-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
+                                <input type="text" id="contact-name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="block mb-2 font-bold text-gray-700">Your Email</label>
+                                <input type="email" id="contact-email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label for="contact-message" class="block mb-2 font-bold text-gray-700">Your Message</label>
+                            <textarea id="contact-message" name="message" rows="5" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Let us know what's on your mind!"></textarea>
+                        </div>
+                        <div class="mt-8 text-right">
+                            <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">Send Message to Admin</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <!-- Google Maps Embed -->
-            <div class="mt-8 rounded-lg overflow-hidden shadow-2xl border-4 border-white">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.58880928964!2d-71.9566386845009!3d43.59544097912318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb4b0a7e6e5d8c7%3A0x5a8a4e3b8a1e8a0!2s441%20Millbrook%20Rd%2C%20Grafton%2C%20NH%2003240!5e0!3m2!1sen!2sus!4v1662581111631!5m2!1sen!2sus" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+        </section>
+
+        <!-- Visit Us Section (Map) -->
+        <section id="visit" class="mt-12 md:mt-16">
+             <div class="text-center mb-8">
+                <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800">Come Say Hello!</h2>
+                <p class="text-lg mt-2">Our 24/7 self-serve farm stand is waiting for you.</p>
+                <p class="font-bold text-xl mt-2">441 Millbrook Rd, Grafton, NH 03240</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=441+Millbrook+Rd,Grafton,NH+03240" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">
+                    Get Directions
+                </a>
+             </div>
+             <!-- Google Maps Embed -->
+             <div class="rounded-lg overflow-hidden shadow-2xl border-4 border-white">
+                 <iframe 
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.58880928964!2d-71.9566386845009!3d43.59544097912318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb4b0a7e6e5d8c7%3A0x5a8a4e3b8a1e8a0!2s441%20Millbrook%20Rd%2C%20Grafton%2C%20NH%2003240!5e0!3m2!1sen!2sus!4v1662581111631!5m2!1sen!2sus" 
+                     width="100%" 
+                     height="450" 
+                     style="border:0;" 
+                     allowfullscreen="" 
+                     loading="lazy" 
+                     referrerpolicy="no-referrer-when-downgrade">
+                 </iframe>
+             </div>
         </section>
 
     </main>
@@ -191,9 +256,32 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Galleries -->
+    <!-- JavaScript for Galleries & Tabs -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Tabbed Forms Logic ---
+            const orderTab = document.getElementById('order-tab');
+            const contactTab = document.getElementById('contact-tab');
+            const orderFormContent = document.getElementById('order-form-content');
+            const contactFormContent = document.getElementById('contact-form-content');
+
+            orderTab.addEventListener('click', () => {
+                orderFormContent.classList.remove('hidden');
+                contactFormContent.classList.add('hidden');
+                orderTab.classList.add('bg-yellow-100', 'border-amber-500');
+                orderTab.classList.remove('text-gray-500');
+                contactTab.classList.remove('bg-yellow-100', 'border-amber-500');
+                contactTab.classList.add('text-gray-500');
+            });
+
+            contactTab.addEventListener('click', () => {
+                contactFormContent.classList.remove('hidden');
+                orderFormContent.classList.add('hidden');
+                contactTab.classList.add('bg-yellow-100', 'border-amber-500');
+                contactTab.classList.remove('text-gray-500');
+                orderTab.classList.remove('bg-yellow-100', 'border-amber-500');
+                orderTab.classList.add('text-gray-500');
+            });
             
             // --- Data for the Galleries ---
             const buildPhotos = [
@@ -210,7 +298,7 @@
                 { src: '/images/goose1.jpg', name: 'Persephone' },
                 { src: '/images/hecate.jpg', name: 'Hecate' },
                 { src: '/images/littles.jpg', name: 'Buffy, Swanzy, and Others' },
-                { src: 'images/flock1.jpg', name: 'Odin, Loki, and their girls' },
+                { src: '/images/flock1.jpg', name: 'Odin, Loki, and their girls' },
                 { src: '/images/desteny.jpg', name: 'Momma Desteny' },
             ];
 
@@ -221,18 +309,28 @@
 
                 photos.forEach(photo => {
                     const item = document.createElement('div');
+                    const img = document.createElement('img');
+                    img.src = photo.src;
+                    img.onerror = function() {
+                        const placeholderText = isBuildsGallery ? photo.caption : photo.name;
+                        this.onerror=null;
+                        this.src=`https://placehold.co/400x400/FDF8E1/333?text=${encodeURIComponent(placeholderText)}`;
+                    };
+
                     if (isBuildsGallery) {
-                        // Builds gallery styling
                         item.className = 'flex-shrink-0 w-full snap-center';
+                        img.alt = photo.caption;
+                        img.className = 'w-full h-64 object-cover';
                         item.innerHTML = `
-                            <img src="${photo.src}" alt="${photo.caption}" class="w-full h-64 object-cover">
+                            ${img.outerHTML}
                             <p class="text-center font-semibold p-2 bg-black/30 text-white">${photo.caption}</p>
                         `;
                     } else {
-                        // Flock gallery styling
                         item.className = 'flex-shrink-0 w-48 sm:w-56 snap-center text-center';
+                        img.alt = photo.name;
+                        img.className = 'w-full h-56 sm:h-64 object-cover rounded-lg shadow-md';
                         item.innerHTML = `
-                            <img src="${photo.src}" alt="${photo.name}" class="w-full h-56 sm:h-64 object-cover rounded-lg shadow-md">
+                            ${img.outerHTML}
                             <p class="font-handwritten text-xl font-bold mt-2 text-green-900">${photo.name}</p>
                         `;
                     }
