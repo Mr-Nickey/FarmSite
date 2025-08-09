@@ -162,16 +162,10 @@
                     </button>
                 </div>
 
-                <!-- Success Message -->
-                <div id="form-success-message" class="hidden p-6 md:p-8 text-center">
-                    <h3 class="font-handwritten text-3xl font-bold text-green-800">Thank You!</h3>
-                    <p class="mt-4 text-lg text-gray-700">Your message has been sent successfully. We'll get back to you as soon as we can!</p>
-                </div>
-
                 <!-- Order Form -->
                 <div id="order-form-content" class="p-6 md:p-8">
                     <p class="mb-6 text-gray-700 text-lg">Looking for a large egg order, inquiring about spring chicks, or have a custom request? Fill out the form below and we'll get back to you shortly!</p>
-                    <form method="POST" action="?form-success=true#contact" data-static-form-name="orderForm">
+                    <form method="POST" action="https://formspree.io/f/mdkdynek">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="order-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
@@ -204,7 +198,7 @@
                 <!-- Contact Form (Initially Hidden) -->
                 <div id="contact-form-content" class="hidden p-6 md:p-8">
                     <p class="mb-6 text-gray-700 text-lg">For general questions about the farm, our story, or if you're having trouble with the website, drop us a line here.</p>
-                    <form method="POST" action="?form-success=true#contact" data-static-form-name="contactForm">
+                    <form method="POST" action="https://formspree.io/f/manbaweq">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="contact-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
@@ -263,24 +257,13 @@
     <!-- JavaScript for Galleries & Tabs -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // --- Form Success Message Logic ---
-            const successMessage = document.getElementById('form-success-message');
-            const orderForm = document.getElementById('order-form-content');
-            const contactForm = document.getElementById('contact-form-content');
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('form-success')) {
-                successMessage.classList.remove('hidden');
-                orderForm.classList.add('hidden');
-                contactForm.classList.add('hidden');
-            }
-
             // --- Tabbed Forms Logic ---
             const orderTab = document.getElementById('order-tab');
             const contactTab = document.getElementById('contact-tab');
+            const orderForm = document.getElementById('order-form-content');
+            const contactForm = document.getElementById('contact-form-content');
 
             orderTab.addEventListener('click', () => {
-                // Hide success message and show the correct form
-                successMessage.classList.add('hidden');
                 contactForm.classList.add('hidden');
                 orderForm.classList.remove('hidden');
 
@@ -292,8 +275,6 @@
             });
 
             contactTab.addEventListener('click', () => {
-                // Hide success message and show the correct form
-                successMessage.classList.add('hidden');
                 orderForm.classList.add('hidden');
                 contactForm.classList.remove('hidden');
 
