@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vision - The Flocking Reed's</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = { darkMode: 'media' } </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
+
+    <nav class="bg-[#2E4A35] text-white sticky top-0 z-50 shadow-xl border-b-8 border-[#5D4037]">
+        <div class="container mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-4">
+            
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="The Flocking Reed's Farm Logo - Chicken and Goose" class="navbar-logo">
+                <span class="font-handwritten text-2xl text-yellow-100 group-hover:text-white transition">The Flocking Reed's</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm sm:text-base font-bold tracking-wide">
+                <a href="index.html" class="nav-tab-home transition py-2 border-b-2 border-transparent text-green-200">Home</a>
+                <a href="vision.html" class="nav-tab-vision transition py-2 border-b-2 border-[#60A5FA] text-[#60A5FA]">Vision</a>
+                
+                <a href="donate.html" class="bg-[#8D6E63] hover:bg-[#A1887F] text-yellow-100 border-2 border-[#5D4037] py-2 px-5 rounded-lg shadow-md transform hover:scale-105 transition flex items-center gap-2">
+                    <span>🎁</span> Donate
+                </a>
+                <button onclick="toggleDyslexiaMode()" class="bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition" title="Dyslexia Font">👁️</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 max-w-4xl">
+        
+        <header class="mb-10 text-center">
+            <h1 class="font-handwritten text-5xl font-bold text-[#2E4A35] mb-4 dark:text-green-400">Growing Where We Are Planted</h1>
+            <p class="text-xl text-[#5D4037] dark:text-gray-300">
+                Honoring the land. Respecting the roots. Building a future right here.
+            </p>
+        </header>
+
+        <section class="bg-white p-8 rounded-2xl shadow-md mb-8 border-l-8 border-[#2E4A35] dark:bg-gray-800 dark:border-green-500">
+            <h2 class="font-handwritten text-3xl font-bold text-gray-800 mb-4 dark:text-gray-100">1. A Partnership of Stewardship</h2>
+            <p class="text-gray-700 leading-relaxed mb-4 dark:text-gray-300">
+                We are incredibly lucky to rent from an amazing landlady who supports our dream. Most renters can't dig gardens or build barns, but she has graciously given us the freedom to farm this beautiful land.
+            </p>
+            <p class="text-gray-700 leading-relaxed dark:text-gray-300">
+                Our vision isn't about leaving; it's about treating this property with the love and care of a forever home. By investing in the soil and infrastructure here, we honor her trust in us and build a sustainable future for our family.
+            </p>
+        </section>
+
+        <section class="bg-blue-50 p-8 rounded-2xl shadow-md mb-8 dark:bg-gray-800 dark:bg-opacity-50">
+            <h2 class="font-handwritten text-3xl font-bold text-blue-800 mb-4 dark:text-blue-400">2. Current Goals</h2>
+            
+            <div class="space-y-8">
+                <div class="flex flex-col sm:flex-row gap-4 items-start">
+                    <div class="text-4xl bg-white p-2 rounded-full shadow-sm">🐐</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-200">The Dairy Goal (Goats)</h3>
+                        <p class="text-gray-700 mt-2 dark:text-gray-300">
+                            Thanks to our landlord's support, we finally have the green light to expand the farm. Our biggest dream is to bring <strong>two dairy goats</strong> to the hill.
+                        </p>
+                        <p class="text-gray-700 mt-2 dark:text-gray-300">
+                            We are currently fundraising to build the secure fencing and shelter required to do this responsibly. This step will allow us to produce fresh milk, cheese, and soap for our family and the community.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 items-start">
+                    <div class="text-4xl bg-white p-2 rounded-full shadow-sm">🪿</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-200">The Goose Fortress</h3>
+                        <p class="text-gray-700 mt-2 dark:text-gray-300">
+                            Our geese are the guardians of the flock. We are upgrading their current shelter to a reinforced, insulated "Goose Fortress" to keep them safe from predators and warm during the Grafton winters.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 items-start">
+                    <div class="text-4xl bg-white p-2 rounded-full shadow-sm">🥕</div>
+                    <div>
+                        <h3 class="font-bold text-xl text-gray-800 dark:text-gray-200">Community Food Security</h3>
+                        <p class="text-gray-700 mt-2 dark:text-gray-300">
+                            The ultimate goal is a farm that feeds the neighborhood. From fresh eggs at the stand to a summer garden full of veggies, we want locals to have access to real, healthy food right down the road.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="bg-white p-8 rounded-2xl shadow-md mb-8 dark:bg-gray-800">
+            <h2 class="font-handwritten text-3xl font-bold text-green-700 mb-6 dark:text-green-400">3. How Your Support Helps</h2>
+            <p class="text-gray-700 mb-6 dark:text-gray-300">
+                We operate on a "Content Loop." We film our journey for YouTube, and the support from viewers like you goes directly back into the infrastructure.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-4 border border-green-100 rounded-xl bg-green-50 dark:bg-green-900/20 dark:border-green-800">
+                    <h4 class="font-bold text-lg mb-2 text-green-800 dark:text-green-300">Small Donations 💙</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Cover feed, bedding, and vet bills. You keep the animals fed and happy.</p>
+                </div>
+                <div class="p-4 border border-yellow-100 rounded-xl bg-yellow-50 dark:bg-yellow-900/20 dark:border-yellow-800">
+                    <h4 class="font-bold text-lg mb-2 text-yellow-800 dark:text-yellow-300">Large Investments 🌟</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Build the goat fencing, the new coop, and the garden tunnels. You build the legacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center mt-12">
+            <p class="text-lg text-[#5D4037] mb-6 italic dark:text-gray-400">"We aren't just building a farm; we are building a home."</p>
+            <a href="donate.html" class="inline-block bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold text-xl py-4 px-10 rounded-full shadow-lg transform transition hover:scale-105 border-b-4 border-yellow-600">
+                Back The Project
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-8 text-[#A1887F] text-sm bg-[#3E2723] border-t-8 border-[#5D4037] mt-12 dark:bg-black dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <p class="mb-2 text-yellow-100/80">© 2026 The Flocking Reed's Farm. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
+        function toggleDyslexiaMode() {
+            document.body.classList.toggle('dyslexia-mode');
+            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+        }
+    </script>
+</body>
+</html>

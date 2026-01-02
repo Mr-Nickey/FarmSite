@@ -1,0 +1,79 @@
+/* THE FLOCKING REED'S FARM - HOMESTEAD THEME */
+
+/* 1. Base Settings */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Warm, earthy background (Parchment/Eggshell) */
+    background-color: #FEF9E7; 
+    color: #3E2723; /* Dark Wood text color */
+    
+    /* Subtle Pattern (Recycled Paper Look) */
+    background-image: radial-gradient(#8D6E63 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    
+    -webkit-text-size-adjust: 100%; 
+}
+
+/* 2. Custom Fonts */
+.font-handwritten {
+    font-family: 'Kalam', cursive;
+}
+
+/* 3. Colorful Nav Tabs (Hover Effects) */
+/* Home - Fresh Green */
+.nav-tab-home:hover {
+    color: #4ADE80; 
+    border-bottom: 3px solid #4ADE80;
+}
+/* Vision - Sky Blue */
+.nav-tab-vision:hover {
+    color: #60A5FA;
+    border-bottom: 3px solid #60A5FA;
+}
+/* Donate - Golden Egg */
+.nav-tab-donate:hover {
+    color: #FACC15;
+    border-bottom: 3px solid #FACC15;
+}
+
+/* 4. Utilities */
+.cute-frame {
+    border: 12px solid #FFF8E1; /* Cream border */
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(62, 39, 35, 0.2); 
+    display: block;
+    margin: 0 auto;
+}
+
+/* 5. Image Styling */
+.navbar-logo {
+    height: 3.5rem;
+    width: auto;
+    margin-right: 10px;
+}
+
+.hero-banner {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    max-height: 40vh;
+}
+
+/* 6. DYSLEXIA MODE */
+body.dyslexia-mode {
+    font-family: 'Comic Sans MS', 'Comic Sans', sans-serif !important;
+    line-height: 1.8 !important; 
+}
+
+/* 7. Dark Mode Overrides (Deep Farm Night) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1c20;
+        background-image: none;
+        color: #E5E7EB;
+    }
+    .cute-frame {
+        border-color: #374151;
+    }
+}

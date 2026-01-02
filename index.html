@@ -1,386 +1,144 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Flocking Reed's Farm - Fresh Eggs & Local Goods</title>
+    <meta name="description" content="The Flocking Reed's Farm in Grafton, NH. Fresh eggs, local goods, and recycled homesteading.">
     
-    <!-- Tailwind CSS for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts for a friendly, handwritten feel -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐔</text></svg>">
+    <meta property="og:title" content="The Flocking Reed's Farm">
+    <meta property="og:image" content="images/farmstand.jpg"> 
+    <meta property="og:type" content="website">
 
-    <style>
-        /* Custom styles to apply our fonts and hide scrollbars */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FDF8E1; /* A warm, creamy background */
-        }
-        .font-handwritten {
-            font-family: 'Kalam', cursive;
-        }
-        .bg-pattern {
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-        /* For hiding the scrollbar on the galleries */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-    </style>
-</head>
-<body class="text-gray-800">
+    <title>The Flocking Reed's Farm - Home</title>
     
-    <!-- Header Section -->
-    <header class="bg-green-700 text-white shadow-lg">
-        <div class="container mx-auto px-4 sm:px-6 py-4 text-center">
-            <h1 class="font-handwritten text-4xl sm:text-5xl md:text-6xl font-bold text-yellow-300">The Flocking Reed's Farm</h1>
-            <p class="mt-2 text-lg">Built with Love, Raised with Joy</p>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> tailwind.config = { darkMode: 'media' } </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
+
+    <nav class="bg-[#2E4A35] text-white sticky top-0 z-50 shadow-xl border-b-8 border-[#5D4037]">
+        <div class="container mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-4">
+            
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="The Flocking Reed's Farm Logo - Chicken and Goose" class="navbar-logo">
+                <span class="font-handwritten text-2xl text-yellow-100 group-hover:text-white transition">The Flocking Reed's</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm sm:text-base font-bold tracking-wide">
+                <a href="index.html" class="nav-tab-home transition py-2 border-b-2 border-transparent text-green-200">Home</a>
+                <a href="vision.html" class="nav-tab-vision transition py-2 border-b-2 border-transparent text-blue-200">Vision</a>
+                
+                <a href="donate.html" class="bg-[#8D6E63] hover:bg-[#A1887F] text-yellow-100 border-2 border-[#5D4037] py-2 px-5 rounded-lg shadow-md transform hover:scale-105 transition flex items-center gap-2">
+                    <span>🎁</span> Donate
+                </a>
+
+                <button onclick="toggleDyslexiaMode()" class="bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition" title="Dyslexia Font">
+                    👁️
+                </button>
+            </div>
         </div>
+    </nav>
+
+    <header class="text-center py-10 px-4 bg-white/40 dark:bg-gray-800/40">
+        <img src="images/banner.png" alt="A banner for The Flocking Reed's Farm featuring a chicken and a goose" class="hero-banner drop-shadow-md mb-4 hover:scale-105 transition duration-500">
+        
+        <p class="mt-2 text-xl max-w-2xl mx-auto text-[#5D4037] font-semibold dark:text-gray-300">
+            Built with recycled hands, raised with joy. We are a small homestead in Grafton, NH offering fresh eggs and local goods.
+        </p>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 sm:px-6 py-8 md:py-12">
+    <main id="main-content" class="container mx-auto px-4 pb-12 flex-grow">
 
-        <!-- Welcome Section -->
-        <section class="text-center">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800">Welcome to Our Little Homestead!</h2>
-            <p class="mt-4 max-w-3xl mx-auto text-lg">
-                We're a family of five with a passion for building things from nothing and giving new life to old materials. Our farm is a happy, bustling place where our free-range chickens and pet geese roam, and we love sharing the goodness with you!
-            </p>
-        </section>
-
-        <!-- Farm Stand Section -->
-        <section id="farmstand" class="mt-12 md:mt-16 bg-white/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-lg border border-green-200">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-2">The Farm Stand 🥚</h2>
-            <p class="text-center text-lg text-gray-700 mb-8">Your 24/7 stop for farm-fresh goodies!</p>
+        <section class="bg-[#FEF9E7] p-6 rounded-xl shadow-lg border-4 border-[#8D6E63] mb-12 relative overflow-hidden dark:bg-gray-800 dark:border-gray-600 max-w-4xl mx-auto">
+            <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-6 py-1 transform rotate-45 translate-x-4 translate-y-2 shadow-md">FRESH</div>
             
             <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="md:w-1/2">
-                    <img src="/images/GP011736.JPG" alt="Farm Stand with a sign and cooler" class="rounded-lg shadow-xl w-full h-auto object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FDF8E1/333?text=Farm+Stand';">
-                </div>
-                <div class="md:w-1/2 space-y-4">
-                    <p class="text-lg">Our little self-serve stand is always open, all year round, and it's well-lit at night. We've always got something fresh for you!</p>
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-900 p-4 rounded-r-lg">
-                        <h4 class="font-bold">What's Available:</h4>
-                        <ul class="list-disc list-inside mt-2 space-y-1">
-                            <li>Fresh Chicken Eggs: <strong>$5/dozen</strong> or <strong>$3/half-dozen</strong></li>
-                            <li>Live starter plants (like tomatoes!)</li>
-                            <li>Handmade crafts & other local products</li>
-                        </ul>
-                    </div>
-                    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg">
-                        <h4 class="font-bold">Easy Payment Options:</h4>
-                        <p>We accept Cash, Venmo, PayPal, and Cash App. Just scan the code at the stand!</p>
+                <div class="md:w-1/2 w-full flex justify-center items-center">
+                    <div class="relative inline-block cute-frame transform -rotate-1">
+                        <img src="images/farmstand.jpg" alt="The Farm Stand" class="max-w-sm object-contain">
+                        <div class="absolute bottom-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">OPEN 24/7</div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- More From the Flock Section -->
-        <section id="more-from-the-flock" class="mt-12 md:mt-16">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">More From the Flock</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Spring Chicks -->
-                <div class="bg-yellow-100 p-6 rounded-lg shadow-md">
-                    <h3 class="font-handwritten text-2xl font-bold text-amber-800">Spring Babies! 🐣</h3>
-                    <p class="mt-2">Come springtime, we have mixed backyard baby chicks looking for new homes! Feel free to reach out if you're interested in adding to your own flock.</p>
-                </div>
-                <!-- Quail Eggs -->
-                <div class="bg-purple-100 p-6 rounded-lg shadow-md">
-                    <h3 class="font-handwritten text-2xl font-bold text-purple-800">Quail Eggs (Coming Spring!)</h3>
-                    <p class="mt-2">Get ready for tiny, tasty treasures! We're so excited to be adding quail to our farm, with their eggs available starting next spring.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Our Story Section -->
-        <section id="about" class="mt-12 md:mt-16 text-center">
-             <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800 mb-8">Our Story: Built with Recycled Hands</h2>
-             <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-                <div class="md:w-1/2">
-                    <!-- Builds Photo Gallery -->
-                    <div id="builds-gallery-container" class="relative w-full max-w-lg mx-auto">
-                        <div id="builds-gallery" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide rounded-lg shadow-xl">
-                            <!-- JS will populate this -->
-                        </div>
-                        <button id="builds-prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-                        </button>
-                        <button id="builds-next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
-                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                        </button>
+                <div class="md:w-1/2 text-left w-full">
+                    <h2 class="font-handwritten text-4xl font-bold text-[#2E4A35] mb-2 dark:text-green-400">The Farm Stand</h2>
+                    <p class="text-lg mb-4 text-[#5D4037] dark:text-gray-300">Located at <a href="https://maps.app.goo.gl/yoWoFDjWZtRBRsJC6" target="_blank" class="text-blue-600 underline dark:text-blue-400">441 Millbrook Rd, Grafton, NH</a>.</p>
+                    
+                    <ul class="space-y-2 font-medium text-lg text-[#3E2723] dark:text-gray-200">
+                        <li>🥚 <strong>Fresh Eggs:</strong> $5/doz</li>
+                        <li>💵 <strong>Payment:</strong> Cash, Venmo, PayPal</li>
+                        <li>💡 <strong>Lighting:</strong> Lit all night for pickups</li>
+                    </ul>
+                    
+                    <div class="mt-6 flex flex-wrap gap-4">
+                        <a href="donate.html" class="inline-block bg-[#2E4A35] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#3E5C45] transition shadow-md border-b-4 border-[#1B2E21]">
+                            Support Us
+                        </a>
+                        <a href="https://g.page/r/CYa2i42KWruvEBM/review" target="_blank" class="inline-block bg-white text-[#2E4A35] border-2 border-[#2E4A35] font-bold py-3 px-6 rounded-lg hover:bg-green-50 transition shadow-md dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600">
+                            ⭐⭐⭐⭐⭐ Leave a Review
+                        </a>
                     </div>
                 </div>
-                <div class="md:w-1/2 text-left">
-                    <p class="text-lg mb-4">
-                        We believe in making beautiful things from what others leave behind. Our chicken coops, and even our farm stand, are proudly built using all reclaimed and recycled materials. We repurpose and reuse everything we can!
-                    </p>
-                    <p class="text-lg">
-                        This philosophy extends to how we care for our animals. Our chickens and two pet geese live a happy life, free-ranging and enjoying the fresh New Hampshire air. They're the heart of our homestead! (Please note: we don't sell geese eggs at this time.)
-                    </p>
-                </div>
-             </div>
-        </section>
-        
-        <!-- Meet the Flock Gallery -->
-        <section id="meet-the-flock" class="mt-12 md:mt-16">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">Meet the Flock!</h2>
-            <div id="flock-gallery-container" class="relative w-full mx-auto">
-                <div id="flock-gallery" class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scroll-smooth scrollbar-hide">
-                    <!-- JS will populate this -->
-                </div>
-                <button id="flock-prev" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
-                </button>
-                <button id="flock-next" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/50 hover:bg-white/80 rounded-full p-2 text-gray-800 z-10 hidden md:block">
-                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                </button>
             </div>
         </section>
 
-        <!-- Contact & Order Forms Section -->
-        <section id="contact" class="mt-12 md:mt-16">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-center text-green-800 mb-8">Get in Touch</h2>
-            <div class="max-w-4xl mx-auto bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-green-200">
-                <!-- Tab buttons -->
-                <div class="flex border-b border-green-200">
-                    <button id="order-tab" class="flex-1 py-3 px-4 font-handwritten text-2xl text-green-800 font-bold bg-yellow-100 rounded-tl-2xl border-b-4 border-amber-500">
-                        🥚 Orders & Inquiries
-                    </button>
-                    <button id="contact-tab" class="flex-1 py-3 px-4 font-handwritten text-2xl text-gray-500 font-bold">
-                        ⚙️ General Contact
-                    </button>
-                </div>
-
-                <!-- Order Form -->
-                <div id="order-form-content" class="p-6 md:p-8">
-                    <p class="mb-6 text-gray-700 text-lg">Looking for a large egg order, inquiring about spring chicks, or have a custom request? Fill out the form below and we'll get back to you shortly!</p>
-                    <form method="POST" action="https://formspree.io/f/mdkdynek">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="order-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
-                                <input type="text" id="order-name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                            <div>
-                                <label for="order-email" class="block mb-2 font-bold text-gray-700">Your Email</label>
-                                <input type="email" id="order-email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <label for="order-subject" class="block mb-2 font-bold text-gray-700">Subject of Inquiry</label>
-                            <select id="order-subject" name="subject" required class="w-full px-3 py-2 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-green-500">
-                                <option>Egg Order Inquiry</option>
-                                <option>Spring Chick Inquiry</option>
-                                <option>Handmade Craft Request</option>
-                                <option>Other Custom Request</option>
-                            </select>
-                        </div>
-                        <div class="mt-6">
-                            <label for="order-message" class="block mb-2 font-bold text-gray-700">Your Message</label>
-                            <textarea id="order-message" name="message" rows="5" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Please provide as much detail as possible, including desired quantities, dates, or specific requests."></textarea>
-                        </div>
-                        <div class="mt-8 text-right">
-                            <button type="submit" class="bg-green-700 hover:bg-green-800 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">Send Inquiry to Sam</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Contact Form (Initially Hidden) -->
-                <div id="contact-form-content" class="hidden p-6 md:p-8">
-                    <p class="mb-6 text-gray-700 text-lg">For general questions about the farm, our story, or if you're having trouble with the website, drop us a line here.</p>
-                    <form method="POST" action="https://formspree.io/f/manbaweq">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label for="contact-name" class="block mb-2 font-bold text-gray-700">Your Name</label>
-                                <input type="text" id="contact-name" name="name" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            </div>
-                            <div>
-                                <label for="contact-email" class="block mb-2 font-bold text-gray-700">Your Email</label>
-                                <input type="email" id="contact-email" name="email" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-                            </div>
-                        </div>
-                        <div class="mt-6">
-                            <label for="contact-message" class="block mb-2 font-bold text-gray-700">Your Message</label>
-                            <textarea id="contact-message" name="message" rows="5" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Let us know what's on your mind!"></textarea>
-                        </div>
-                        <div class="mt-8 text-right">
-                            <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">Send Message to Admin</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <section class="text-center mb-12 bg-white p-8 rounded-2xl border-2 border-red-200 shadow-md dark:bg-gray-800 dark:border-red-900 max-w-2xl mx-auto">
+            <h3 class="font-handwritten text-3xl font-bold text-red-700 dark:text-red-400">Life on the Farm</h3>
+            <p class="mt-2 mb-6 text-gray-600 max-w-lg mx-auto dark:text-gray-300">
+                Catch Sammie's latest adventures! New Shorts posted every:
+                <br>
+                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform -rotate-2 border border-red-200">Mon</span>
+                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform rotate-2 border border-red-200">Wed</span>
+                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform -rotate-1 border border-red-200">Fri</span>
+            </p>
+            
+            <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" class="inline-flex justify-center items-center gap-2 bg-red-600 text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition shadow-lg hover:scale-105 border-b-4 border-red-800">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                YouTube Shorts
+            </a>
         </section>
 
-        <!-- Visit Us Section (Map) -->
-        <section id="visit" class="mt-12 md:mt-16">
-             <div class="text-center mb-8">
-                <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800">Come Say Hello!</h2>
-                <p class="text-lg mt-2">Our 24/7 self-serve farm stand is waiting for you.</p>
-                <p class="font-bold text-xl mt-2">441 Millbrook Rd, Grafton, NH 03240</p>
-                <a href="https://www.google.com/maps/dir/?api=1&destination=441+Millbrook+Rd,Grafton,NH+03240" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md">
-                    Get Directions
-                </a>
-             </div>
-             <!-- Google Maps Embed -->
-             <div class="rounded-lg overflow-hidden shadow-2xl border-4 border-white">
-                 <iframe 
-                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.58880928964!2d-71.9566386845009!3d43.59544097912318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb4b0a7e6e5d8c7%3A0x5a8a4e3b8a1e8a0!2s441%20Millbrook%20Rd%2C%20Grafton%2C%20NH%2003240!5e0!3m2!1sen!2sus!4v1662581111631!5m2!1sen!2sus" 
-                     width="100%" 
-                     height="450" 
-                     style="border:0;" 
-                     allowfullscreen="" 
-                     loading="lazy" 
-                     referrerpolicy="no-referrer-when-downgrade">
-                 </iframe>
-             </div>
+        <section id="contact" class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
+            <h2 class="font-handwritten text-3xl font-bold text-center text-[#2E4A35] mb-6 dark:text-gray-100">Contact & Orders</h2>
+            <form action="https://formspree.io/f/mdkdynek" method="POST" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <select name="subject" class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <option>Egg Order</option>
+                    <option>General Question</option>
+                    <option>Just Saying Hello</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="How can we help?" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-4 rounded-lg transition shadow-md text-lg border-b-4 border-[#C7A008]">Send Message</button>
+            </form>
         </section>
 
     </main>
 
-    <!-- Review Section -->
-    <section id="reviews" class="mt-12 md:mt-16 bg-green-100 border-t-4 border-b-4 border-green-300">
-        <div class="container mx-auto px-4 sm:px-6 py-10 text-center">
-            <h2 class="font-handwritten text-3xl sm:text-4xl font-bold text-green-800">Enjoyed Our Tasty Eggs?</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-700">
-                Word-of-mouth helps our little farm grow! If you enjoyed our products, we'd be so grateful if you'd leave us a review on Google.
-            </p>
-            <!-- IMPORTANT: Replace the link below with your actual Google Business Review link -->
-            <a href="https://g.page/r/CYa2i42KWruvEBM/review" target="_blank" rel="noopener noreferrer" class="inline-block mt-6 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg text-lg">
-                Leave a Review ⭐
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 mt-12 md:mt-16 py-6">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2025 The Flocking Reed's Farm. All Rights Reserved.</p>
+    <footer class="text-center py-8 text-[#A1887F] text-sm bg-[#3E2723] border-t-8 border-[#5D4037] dark:bg-black dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <p class="mb-2 text-yellow-100/80">© 2026 The Flocking Reed's Farm. All Rights Reserved.</p>
+            <div class="flex justify-center gap-4 text-xs font-semibold text-yellow-200/60">
+                <a href="index.html" class="hover:text-white">Home</a> | 
+                <a href="privacy.html" class="hover:text-white">Privacy</a> | 
+                <a href="vision.html" class="hover:text-white">Vision</a>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Galleries & Tabs -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- Tabbed Forms Logic ---
-            const orderTab = document.getElementById('order-tab');
-            const contactTab = document.getElementById('contact-tab');
-            const orderForm = document.getElementById('order-form-content');
-            const contactForm = document.getElementById('contact-form-content');
-
-            orderTab.addEventListener('click', () => {
-                contactForm.classList.add('hidden');
-                orderForm.classList.remove('hidden');
-
-                // Style the tabs
-                orderTab.classList.add('bg-yellow-100', 'border-amber-500');
-                orderTab.classList.remove('text-gray-500');
-                contactTab.classList.remove('bg-yellow-100', 'border-amber-500');
-                contactTab.classList.add('text-gray-500');
-            });
-
-            contactTab.addEventListener('click', () => {
-                orderForm.classList.add('hidden');
-                contactForm.classList.remove('hidden');
-
-                // Style the tabs
-                contactTab.classList.add('bg-yellow-100', 'border-amber-500');
-                contactTab.classList.remove('text-gray-500');
-                orderTab.classList.remove('bg-yellow-100', 'border-amber-500');
-                orderTab.classList.add('text-gray-500');
-            });
-            
-            // --- Data for the Galleries ---
-            const buildPhotos = [
-                { src: '/images/Chicken-coop.jpg', caption: 'The Chicken Coop' },
-                { src: '/images/nesting-box.jpg', caption: 'Nesting Box' },
-                { src: '/images/farmstand2.jpg', caption: 'Our Farm Stand (Day)' },
-                { src: '/images/farmstand.jpg', caption: 'Our Farm Stand (Night)' },
-                { src: '/images/goosecoop1.jpg', caption: 'Goose House' },
-                { src: '/images/goosecoop3.jpg', caption: 'Inside Goose House' },
-            ];
-
-            const flockMembers = [
-                { src: '/images/red.jpg', name: 'Red' },
-                { src: '/images/goose1.jpg', name: 'Persephone' },
-                { src: '/images/hecate.jpg', name: 'Hecate' },
-                { src: '/images/littles.jpg', name: 'Buffy, Swanzy, and Others' },
-                { src: '/images/flock1.jpg', name: 'Odin, Loki, and their girls' },
-                { src: '/images/desteny.jpg', name: 'Momma Desteny' },
-            ];
-
-            // --- Function to create and populate a gallery ---
-            function createGallery(galleryId, photos, isBuildsGallery) {
-                const gallery = document.getElementById(galleryId);
-                if (!gallery) return;
-
-                photos.forEach(photo => {
-                    const item = document.createElement('div');
-                    const img = document.createElement('img');
-                    img.src = photo.src;
-                    img.onerror = function() {
-                        const placeholderText = isBuildsGallery ? photo.caption : photo.name;
-                        this.onerror=null;
-                        this.src=`https://placehold.co/400x400/FDF8E1/333?text=${encodeURIComponent(placeholderText)}`;
-                    };
-
-                    if (isBuildsGallery) {
-                        item.className = 'flex-shrink-0 w-full snap-center';
-                        img.alt = photo.caption;
-                        img.className = 'w-full h-64 object-cover';
-                        item.innerHTML = `
-                            ${img.outerHTML}
-                            <p class="text-center font-semibold p-2 bg-black/30 text-white">${photo.caption}</p>
-                        `;
-                    } else {
-                        item.className = 'flex-shrink-0 w-48 sm:w-56 snap-center text-center';
-                        img.alt = photo.name;
-                        img.className = 'w-full h-56 sm:h-64 object-cover rounded-lg shadow-md';
-                        item.innerHTML = `
-                            ${img.outerHTML}
-                            <p class="font-handwritten text-xl font-bold mt-2 text-green-900">${photo.name}</p>
-                        `;
-                    }
-                    gallery.appendChild(item);
-                });
-            }
-
-            // --- Function to set up the scroller buttons ---
-            function setupScroller(galleryId, prevBtnId, nextBtnId) {
-                const gallery = document.getElementById(galleryId);
-                const prevBtn = document.getElementById(prevBtnId);
-                const nextBtn = document.getElementById(nextBtnId);
-
-                if (!gallery || !prevBtn || !nextBtn) return;
-
-                nextBtn.addEventListener('click', () => {
-                    const scrollAmount = gallery.clientWidth * 0.8;
-                    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                });
-
-                prevBtn.addEventListener('click', () => {
-                    const scrollAmount = gallery.clientWidth * 0.8;
-                    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                });
-            }
-
-            // --- Initialize the galleries ---
-            createGallery('builds-gallery', buildPhotos, true);
-            createGallery('flock-gallery', flockMembers, false);
-            
-            setupScroller('builds-gallery', 'builds-prev', 'builds-next');
-            setupScroller('flock-gallery', 'flock-prev', 'flock-next');
-        });
+        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
+        function toggleDyslexiaMode() {
+            document.body.classList.toggle('dyslexia-mode');
+            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+        }
     </script>
-
 </body>
 </html>
