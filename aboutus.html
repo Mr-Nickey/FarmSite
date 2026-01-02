@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Flocking Reed's Farm in Grafton, NH. Fresh eggs, local goods, and recycled homesteading.">
+    
+    <meta property="og:title" content="The Flocking Reed's Farm">
+    <meta property="og:image" content="images/farmstand.jpg"> 
+    <meta property="og:type" content="website">
+
+    <title>About Us - The Flocking Reed's Farm</title>
+    
+    <link rel="icon" href="images/logo.png" type="image/png">
+    
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-body transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
+
+    <nav class="bg-[#2E4A35] text-white sticky top-0 z-50 shadow-xl border-b-8 border-[#5D4037]">
+        <div class="container mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-4">
+            
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="The Flocking Reed's Farm Logo - Chicken and Goose" class="navbar-logo">
+                <span class="font-handwritten text-2xl text-yellow-100 group-hover:text-white transition">The Flocking Reed's</span>
+            </a>
+
+            <div class="flex items-center gap-6 text-sm sm:text-base font-bold tracking-wide flex-wrap justify-center">
+                <a href="index.html" class="nav-tab-home transition py-2 border-b-2 border-transparent">Home</a>
+                <a href="vision.html" class="nav-tab-vision transition py-2 border-b-2 border-transparent">Vision</a>
+                <a href="aboutus.html" class="nav-tab-about transition py-2 border-b-2 border-transparent active-nav-tab">About Us</a>
+                
+                <a href="donate.html" class="bg-[#8D6E63] hover:bg-[#A1887F] text-yellow-100 border-2 border-[#5D4037] py-2 px-5 rounded-lg shadow-md transform hover:scale-105 transition flex items-center gap-2 active:scale-95">
+                    <span>🎁</span> Donate
+                </a>
+
+                <button onclick="toggleDyslexiaMode()" class="bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition" title="Dyslexia Font">
+                    👁️
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 flex-grow">
+        <section class="bg-[#FEF9E7] p-8 rounded-xl shadow-lg border-4 border-[#8D6E63] max-w-4xl mx-auto dark:bg-gray-800 dark:border-gray-600">
+            <h1 class="font-handwritten text-5xl font-bold text-[#2E4A35] mb-4 text-center dark:text-green-400">About Us</h1>
+            <p class="text-lg text-[#5D4037] dark:text-gray-300 text-center">
+                This page is currently under construction. Please check back later for more information about us.
+            </p>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 text-[#A1887F] text-sm bg-[#3E2723] border-t-8 border-[#5D4037] dark:bg-black dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <p class="mb-2 text-yellow-100/80">© 2026 The Flocking Reed's Farm. All Rights Reserved.</p>
+            <div class="flex justify-center gap-4 text-xs font-semibold text-yellow-200/60">
+                <a href="index.html" class="hover:text-white">Home</a> | 
+                <a href="aboutus.html" class="hover:text-white">About Us</a> |
+                <a href="privacy.html" class="hover:text-white">Privacy</a> | 
+                <a href="vision.html" class="hover:text-white">Vision</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
+        function toggleDyslexiaMode() {
+            document.body.classList.toggle('dyslexia-mode');
+            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+        }
+    </script>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script>
+      kofiWidgetOverlay.draw('flockingreedsfarm', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Donate',
+        'floating-chat.donateButton.background-color': '#FACC15',
+        'floating-chat.donateButton.text-color': '#3E2723'
+      });
+    </script>
+</body>
+</html>

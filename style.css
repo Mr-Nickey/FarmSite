@@ -2,7 +2,6 @@
 
 /* 1. Base Settings */
 body {
-    font-family: 'Inter', sans-serif;
     /* Warm, earthy background (Parchment/Eggshell) */
     background-color: #FEF9E7; 
     color: #3E2723; /* Dark Wood text color */
@@ -19,6 +18,10 @@ body {
     font-family: 'Kalam', cursive;
 }
 
+.font-body {
+    font-family: 'Inter', sans-serif;
+}
+
 /* 3. Colorful Nav Tabs (Hover Effects) */
 /* Home - Fresh Green */
 .nav-tab-home:hover {
@@ -30,11 +33,17 @@ body {
     color: #60A5FA;
     border-bottom: 3px solid #60A5FA;
 }
-/* Donate - Golden Egg */
-.nav-tab-donate:hover {
+/* About - Purple */
+.nav-tab-about:hover {
+    color: #C4B5FD;
+    border-bottom: 3px solid #C4B5FD;
+}
+
+.active-nav-tab {
     color: #FACC15;
     border-bottom: 3px solid #FACC15;
 }
+
 
 /* 4. Utilities */
 .cute-frame {
@@ -75,5 +84,16 @@ body.dyslexia-mode {
     }
     .cute-frame {
         border-color: #374151;
+    }
+}
+
+/* 8. Ko-fi Mobile Resizer */
+@media (max-width: 640px) {
+    /* Target the Ko-fi Iframe Button */
+    iframe[id*="kofi-widget-overlay"] {
+        transform: scale(0.75) !important; /* Shrink to 75% size */
+        transform-origin: bottom right !important; /* Anchor it to the corner */
+        right: 12px !important; /* Adjust spacing from edge */
+        bottom: 12px !important;
     }
 }
