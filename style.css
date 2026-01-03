@@ -88,7 +88,7 @@ body.dyslexia-mode {
     }
 }
 
-/* 8. Ko-fi Mobile Resizer */
+    /* 8. Ko-fi Mobile Resizer */
 @media (max-width: 640px) {
     /* Target the Ko-fi Iframe Button */
     iframe[id*="kofi-widget-overlay"] {
@@ -97,4 +97,21 @@ body.dyslexia-mode {
         right: 12px !important; /* Adjust spacing from edge */
         bottom: 12px !important;
     }
+}
+
+.footer-button {
+    background-color: #8D6E63;
+    color: #FEF9E7;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid #5D4037;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+    background-color: #A1887F;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
