@@ -115,3 +115,7 @@ body.dyslexia-mode {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+.z-navbar {
+    z-index: 1000;
+}
