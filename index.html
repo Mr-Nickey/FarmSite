@@ -183,19 +183,28 @@
         </section>
 
         <section id="contact" class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
-            <h2 class="font-handwritten text-3xl font-bold text-center text-[#2E4A35] mb-6 dark:text-gray-100">Contact & Orders</h2>
+            <h2 class="font-handwritten text-3xl font-bold text-center text-[#2E4A35] mb-2 dark:text-gray-100">Get In Touch</h2>
+            <p class="text-center text-gray-600 mb-6 italic dark:text-gray-400">Questions about eggs, hoodies, or the goats? We'd love to hear from you.</p>
+            
             <form action="https://formspree.io/f/mdkdynek" method="POST" class="space-y-4">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 </div>
+                
                 <select name="subject" class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <option>Egg Order</option>
-                    <option>General Question</option>
-                    <option>Just Saying Hello</option>
+                    <option value="" disabled selected>What is this regarding?</option>
+                    <option value="Egg Order">🥚 Egg Order / Availability</option>
+                    <option value="Merch Question">👕 Merch / Store Support</option>
+                    <option value="Farm Question">🚜 General Farm Question</option>
+                    <option value="Hello">👋 Just Saying Hello</option>
                 </select>
-                <textarea name="message" rows="4" placeholder="How can we help?" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-4 rounded-lg transition shadow-md text-lg border-b-4 border-[#C7A008]">Send Message</button>
+                
+                <textarea name="message" rows="4" placeholder="How can we help? (e.g., 'Do you have eggs today?' or 'I love the new hoodie!')" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                
+                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-4 rounded-lg transition shadow-md text-lg border-b-4 border-[#C7A008] active:scale-95">
+                    Send Message
+                </button>
             </form>
         </section>
 
