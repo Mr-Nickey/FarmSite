@@ -11,6 +11,7 @@ body {
     background-size: 20px 20px;
     
     -webkit-text-size-adjust: 100%; 
+    margin-top: 100px; /* Adjust this value based on your navbar's height */
 }
 
 /* 2. Custom Fonts */
@@ -118,4 +119,11 @@ body.dyslexia-mode {
 
 .z-navbar {
     z-index: 1000;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top of other content */
 }
