@@ -31,9 +31,6 @@
                     <span>🎁</span> Donate
                 </a>
 
-                <button onclick="toggleDyslexiaMode()" class="bg-black/20 hover:bg-black/40 text-white p-2 rounded-full transition" title="Dyslexia Font">
-                    👁️
-                </button>
             </div>
         </div>
     </nav>
@@ -132,11 +129,13 @@
                 <a href="privacy.html" class="hover:text-white">Privacy</a> | 
                 <a href="vision.html" class="hover:text-white">Vision</a>
             </div>
+            <button onclick="toggleDyslexiaMode()" class="text-yellow-200/60 hover:text-white text-xs font-semibold mt-4" title="Toggle Dyslexia-friendly Font">
+                Toggle Dyslexia Font
+            </button>
         </div>
     </footer>
 
     <script>
-        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
         function toggleDyslexiaMode() {
             document.body.classList.toggle('dyslexia-mode');
             localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
