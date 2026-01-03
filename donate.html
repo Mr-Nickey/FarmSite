@@ -48,7 +48,7 @@
         </div>
 
         <p class="text-xl text-[#3E2723] mb-10 max-w-2xl mx-auto dark:text-gray-300">
-            We believe in 100% transparency. When you chip in, you aren't just sending money into the void—you are buying lumber for the coop, wire for the fencing, and grain for the flock. Tune in to our <a href="https://www.youtube.com/@sammiessimpleliving" target="_blank" rel="noopener noreferrer" class="text-red-600 font-bold underline decoration-2 underline-offset-2 hover:text-red-700">YouTube Channel</a> to see exactly how your support is building this farm, board by board.
+            We believe in 100% transparency. When you chip in, you aren't just sending money into the void—you are buying lumber for the coop, wire for the fencing, and grain for the flock. Tune in to our <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" rel="noopener noreferrer" class="text-red-600 font-bold underline decoration-2 underline-offset-2 hover:text-red-700">YouTube Channel</a> to see exactly how your support is building this farm, board by board.
         </p>
 
 <div class="mb-12 relative max-w-2xl mx-auto">
@@ -89,6 +89,12 @@
                         </span>
                  </div>
 
+                <div class="text-center mt-4">
+                    <button onclick="document.getElementById('budgetModal').classList.remove('hidden')" 
+                            class="text-sm font-bold text-[#5D4037] underline decoration-dotted hover:text-[#2E4A35] cursor-pointer">
+                        📊 See Exactly Where The Money Goes
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -97,7 +103,7 @@
             <p class="text-[#3E2723] mb-6 dark:text-gray-300">
                 Budgets are tight for everyone, but you can still help the flock! Watching, liking, and subscribing to our videos helps us earn revenue for the farm at no cost to you. Plus, we'd love to have you in the comments!
             </p>
-            <a href="https://www.youtube.com/@sammiessimpleliving" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-3 px-10 rounded-full shadow-md transition transform hover:scale-105 border-b-4 border-red-800">
+            <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-3 px-10 rounded-full shadow-md transition transform hover:scale-105 border-b-4 border-red-800">
                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
                 Subscribe & Watch
             </a>
@@ -133,5 +139,121 @@
             localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
         }
     </script>
+    <div id="budgetModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[2000] flex items-center justify-center p-4">
+    <div class="bg-[#FEF9E7] w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl border-4 border-[#5D4037] relative">
+        
+        <div class="bg-[#2E4A35] p-4 sticky top-0 flex justify-between items-center border-b-4 border-[#5D4037]">
+            <h2 class="font-handwritten text-2xl text-yellow-100 font-bold">The Farm Ledger 🧾</h2>
+            <button onclick="document.getElementById('budgetModal').classList.add('hidden')" class="text-yellow-100 hover:text-white text-3xl font-bold">&times;</button>
+        </div>
+
+        <div class="p-6 space-y-8">
+            
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded border border-blue-300">MONTHLY</span>
+                    <h3 class="font-bold text-xl text-[#3E2723]">Keeping Bellies Full</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 italic">Prices based on Canaan Hardware / Local Feed Stores.</p>
+                
+                <table class="w-full text-sm text-left text-[#3E2723] border-collapse">
+                    <thead class="text-xs uppercase bg-[#EFEBE9]">
+                        <tr>
+                            <th class="px-3 py-2 border border-[#D7CCC8]">Item</th>
+                            <th class="px-3 py-2 border border-[#D7CCC8]">Qty</th>
+                            <th class="px-3 py-2 border border-[#D7CCC8] text-right">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-blue-50 font-semibold text-blue-900">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Hay & Bedding (Winter Only)</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">8 Bales</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$80.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Layer Pellets (Chickens)</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">3 Bags</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$45.00</td>
+                        </tr>
+                        <tr class="bg-[#FFF8E1]">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Goose Feed (All Flock)</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">2 Bags</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$38.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Chick Starter (The 16 Babies)</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">2 Bags</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$30.00</td>
+                        </tr>
+                        <tr class="bg-[#FFF8E1]">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Scratch Grains</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">2 Bags</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$36.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Rabbit Pellets</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">1 Bag</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$22.00</td>
+                        </tr>
+                         <tr class="bg-[#FFF8E1]">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Supplements (Oyster/Grit)</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Est.</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$5.00</td>
+                        </tr>
+                        <tr class="font-bold bg-gray-200">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Total Feed Cost</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]"></td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right text-red-700">$256.00</td>
+                        </tr>
+                        <tr class="font-bold text-green-700 bg-green-50">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Less: Egg Sales Income</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]">~48 doz</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">-$80.00</td>
+                        </tr>
+                        <tr class="font-bold bg-[#3E2723] text-white">
+                            <td class="px-3 py-2 border border-[#D7CCC8]">Monthly Funding Goal</td>
+                            <td class="px-3 py-2 border border-[#D7CCC8]"></td>
+                            <td class="px-3 py-2 border border-[#D7CCC8] text-right">$176.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded border border-yellow-300">PROJECT</span>
+                    <h3 class="font-bold text-xl text-[#3E2723]">Phase 1: The Forever Farm ($1,500)</h3>
+                </div>
+                <p class="text-sm text-gray-600 mb-4 italic">Estimates for Home Depot / Tractor Supply (W. Lebanon)</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded border-l-4 border-green-600 shadow-sm">
+                        <h4 class="font-bold text-lg mb-2">🐐 Goat Infrastructure</h4>
+                        <ul class="text-sm space-y-2 list-disc pl-4 text-gray-700">
+                            <li><strong>Heavy Duty Fencing:</strong> ~$500 <br><span class="text-xs text-gray-500">(200ft Red Brand Woven Wire + T-Posts)</span></li>
+                            <li><strong>Shelter Build:</strong> ~$400 <br><span class="text-xs text-gray-500">(Lumber, Metal Roofing, Bedding)</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-4 rounded border-l-4 border-orange-500 shadow-sm">
+                        <h4 class="font-bold text-lg mb-2">🪿 Goose Fortress</h4>
+                        <ul class="text-sm space-y-2 list-disc pl-4 text-gray-700">
+                            <li><strong>Construction:</strong> ~$300 <br><span class="text-xs text-gray-500">(PT Lumber, Hardware Cloth, Insulation)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-4 bg-gray-100 p-3 rounded text-sm text-gray-600">
+                    <strong>+ General Farm Upgrades:</strong> ~$300 (Gates, Hardware, Contingency Fund for price spikes).
+                </div>
+            </div>
+
+            <div class="text-xs text-center text-gray-500 mt-6 border-t pt-4">
+                We update these numbers monthly. Last updated: Jan 2026.
+            </div>
+            
+        </div>
+    </div>
+</div>
 </body>
 </html>
