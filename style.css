@@ -91,6 +91,10 @@ body.dyslexia-mode {
 
     /* 8. Ko-fi Mobile Resizer */
 @media (max-width: 640px) {
+    body {
+        margin-top: 150px; /* Increased for taller mobile nav */
+    }
+    
     /* Target the Ko-fi Iframe Button */
     iframe[id*="kofi-widget-overlay"] {
         transform: scale(0.75) !important; /* Shrink to 75% size */
