@@ -60,19 +60,19 @@
 
                 <div class="text-center">
                     <button onclick="document.getElementById('budgetModal').classList.remove('hidden')" 
-                            class="inline-flex items-center gap-2 bg-[#2E4A35] hover:bg-[#3E5C45] text-white font-bold py-3 px-6 rounded-lg transition shadow-md border-b-4 border-[#1B2E21] active:scale-95 w-full justify-center">
+                            class="inline-flex items-center gap-2 bg-[#2E4A35] hover:bg-[#3E5C45] text-white font-bold py-3 px-6 rounded-lg transition shadow-md border-b-4 border-[#1B2E21] active:scale-95 w-full justify-center transform hover:-translate-y-1">
                         📊 See The Monthly Ledger (Transparency Report)
                     </button>
                     <p class="text-xs text-gray-500 mt-2 italic">Click to see exactly what feed & fencing costs.</p>
                 </div>
 
                 <div class="space-y-6 mt-8">
-                    <div class="relative transform -rotate-2 p-2 bg-white shadow-lg border border-gray-200 rounded-lg">
+                    <div class="relative transform -rotate-2 p-2 bg-white shadow-lg border border-gray-200 rounded-lg hover:rotate-0 transition duration-500">
                         <img src="images/painted-cartons.jpg" alt="Hand painted egg cartons ready for sale" class="rounded h-80 w-full object-cover">
                         <div class="text-center font-handwritten text-gray-500 mt-2 text-sm">Every dozen sold helps pay the bills!</div>
                     </div>
 
-                    <div class="relative transform rotate-2 p-2 bg-white shadow-lg border border-gray-200 rounded-lg translate-x-4 md:translate-x-8">
+                    <div class="relative transform rotate-2 p-2 bg-white shadow-lg border border-gray-200 rounded-lg translate-x-4 md:translate-x-8 hover:rotate-0 transition duration-500">
                         <img src="images/eggs-cooler.jpg" alt="Eggs stocked in the cooler" class="rounded h-52 w-full object-cover object-bottom">
                         <div class="text-center font-handwritten text-gray-500 mt-2 text-sm">Stocked fresh daily in the stand.</div>
                     </div>
@@ -83,7 +83,7 @@
                 
                 <div class="bg-[#FEF9E7] p-8 rounded-2xl shadow-xl border-4 border-[#8D6E63] text-center dark:bg-gray-800 dark:border-gray-600">
                     <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full mb-4 shadow-sm border border-red-200">
-                        CURRENT GOAL: GOAT FENCING 🐐
+                        CURRENT TARGETS
                     </span>
 
                     <h2 class="font-handwritten text-4xl font-bold text-[#2E4A35] mb-4 dark:text-green-400">Feed The Flock</h2>
@@ -91,14 +91,8 @@
                         Help us build the "Forever Coop" and bring home the goats this spring.
                     </p>
 
-                    <div class="w-full mb-8 overflow-hidden"> 
-                        <iframe id='kofiframe' 
-                            src='https://ko-fi.com/streamalerts/goaloverlay/sa_fcaa2ea5-af50-4e1a-8671-ef439474fe3e' 
-                            style='border:none; width:100%; padding:0px; background: transparent;' 
-                            height='100' 
-                            title='flockingreedsfarm'
-                            allowtransparency="true">
-                        </iframe>
+                    <div id="dynamicDonateGoals" class="space-y-6 mb-8 text-left transition-opacity duration-500 opacity-0">
+                        <p class="text-center italic text-gray-500 animate-pulse">Loading goals...</p>
                     </div>
 
                     <a href="https://ko-fi.com/flockingreedsfarm" target="_blank" rel="noopener noreferrer" 
@@ -122,7 +116,7 @@
                         
                         <h2 class="font-handwritten text-3xl font-bold text-yellow-100 mb-4">Wear Your Support</h2>
                         
-                        <div class="bg-white p-3 rounded-lg transform rotate-2 shadow-2xl mx-auto mb-6 w-48">
+                        <div class="bg-white p-3 rounded-lg transform rotate-2 shadow-2xl mx-auto mb-6 w-48 hover:rotate-0 transition duration-300">
                             <img src="images/merch-hoodie.jpg" alt="Caffeine & Chaos Hoodie" class="w-full h-auto object-contain rounded bg-gray-100">
                         </div>
 
@@ -178,16 +172,15 @@
                 <button onclick="document.getElementById('budgetModal').classList.add('hidden')" class="text-yellow-100 hover:text-white text-3xl font-bold px-2">×</button>
             </div>
 
-            <div class="p-6 space-y-8 text-[#3E2723] dark:text-gray-200">
+            <div class="p-6 space-y-6 text-[#3E2723] dark:text-gray-200">
                 
                 <div>
                     <div class="flex items-center gap-2 mb-3">
                         <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded border border-blue-300">MONTHLY</span>
-                        <h3 class="font-bold text-xl">Keeping Bellies Full</h3>
+                        <h3 class="font-bold text-xl" id="ledgerMonthTitle">Loading...</h3>
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 italic dark:text-gray-400">Prices based on Canaan Hardware / Local Feed Stores.</p>
                     
-                    <table class="w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 dark:border-gray-600">
+                    <table class="w-full text-sm text-left border-collapse bg-white dark:bg-gray-700 dark:border-gray-600 shadow-sm">
                         <thead class="text-xs uppercase bg-[#EFEBE9] dark:bg-gray-900 dark:text-gray-300">
                             <tr>
                                 <th class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Item</th>
@@ -195,105 +188,178 @@
                                 <th class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">Cost</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="bg-blue-50 font-semibold text-blue-900 dark:bg-blue-900/30 dark:text-blue-200">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Hay & Bedding (Winter)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">8 Bales</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$80.00</td>
-                            </tr>
-                            <tr>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Layer Pellets (Chickens)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">3 Bags</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$45.00</td>
-                            </tr>
-                            <tr class="bg-[#FFF8E1] dark:bg-gray-600">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Goose Feed (All Flock)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">2 Bags</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$38.00</td>
-                            </tr>
-                            <tr>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Chick Starter (The 16 Babies)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">2 Bags</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$30.00</td>
-                            </tr>
-                            <tr class="bg-[#FFF8E1] dark:bg-gray-600">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Scratch Grains</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">2 Bags</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$36.00</td>
-                            </tr>
-                            <tr>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Rabbit Pellets</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">1 Bag</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$22.00</td>
-                            </tr>
-                             <tr class="bg-[#FFF8E1] dark:bg-gray-600">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Supplements (Oyster/Grit)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Est.</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$5.00</td>
-                            </tr>
-                            <tr class="font-bold bg-gray-200 dark:bg-gray-800">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Total Feed Cost</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600"></td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right text-red-700 dark:text-red-400">$256.00</td>
-                            </tr>
-                            <tr class="font-bold text-green-700 bg-green-50 dark:bg-green-900/30 dark:text-green-300">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Less: Egg Sales Income</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">~48 doz</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">-$80.00</td>
-                            </tr>
-                            <tr class="font-bold bg-[#3E2723] text-white">
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600">Monthly Gap (Need)</td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600"></td>
-                                <td class="px-3 py-2 border border-[#D7CCC8] dark:border-gray-600 text-right">$176.00</td>
-                            </tr>
+                        <tbody id="ledgerTableBody">
+                            <tr><td colspan="3" class="p-4 text-center">Loading ledger...</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded border border-yellow-300">PROJECT</span>
-                        <h3 class="font-bold text-xl">Phase 1: The Forever Farm ($1,500)</h3>
+                <div class="text-xs text-center text-gray-500 mt-6 border-t pt-4 border-gray-300 dark:border-gray-600" id="ledgerFooter">
                     </div>
-                    <p class="text-sm text-gray-600 mb-4 italic dark:text-gray-400">Estimates for Home Depot / Tractor Supply (W. Lebanon)</p>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-white p-4 rounded border-l-4 border-green-600 shadow-sm dark:bg-gray-700 dark:border-green-500">
-                            <h4 class="font-bold text-lg mb-2 dark:text-gray-100">🐐 Goat Infrastructure</h4>
-                            <ul class="text-sm space-y-2 list-disc pl-4 text-gray-700 dark:text-gray-300">
-                                <li><strong>Heavy Duty Fencing:</strong> ~$500 <br><span class="text-xs text-gray-500 dark:text-gray-400">(200ft Red Brand Woven Wire + T-Posts)</span></li>
-                                <li><strong>Shelter Build:</strong> ~$400 <br><span class="text-xs text-gray-500 dark:text-gray-400">(Lumber, Metal Roofing, Bedding)</span></li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white p-4 rounded border-l-4 border-orange-500 shadow-sm dark:bg-gray-700 dark:border-yellow-500">
-                            <h4 class="font-bold text-lg mb-2 dark:text-gray-100">🪿 Goose Fortress</h4>
-                            <ul class="text-sm space-y-2 list-disc pl-4 text-gray-700 dark:text-gray-300">
-                                <li><strong>Construction:</strong> ~$300 <br><span class="text-xs text-gray-500 dark:text-gray-400">(PT Lumber, Hardware Cloth, Insulation)</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 bg-gray-100 p-3 rounded text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-300">
-                        <strong>+ General Farm Upgrades:</strong> ~$300 (Gates, Hardware, Contingency Fund for price spikes).
-                    </div>
-                </div>
-
-                <div class="text-xs text-center text-gray-500 mt-6 border-t pt-4 border-gray-300 dark:border-gray-600">
-                    We update these numbers monthly. Last updated: Jan 2026.
-                </div>
                 
             </div>
         </div>
     </div>
 
     <script>
-        // Dyslexia Toggle
-        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
-        function toggleDyslexiaMode() {
-            document.body.classList.toggle('dyslexia-mode');
-            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+    const API_URL = "https://farm-api.nreed8817.workers.dev/"; 
+
+    // Dyslexia Toggle Logic
+    if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
+    function toggleDyslexiaMode() {
+        document.body.classList.toggle('dyslexia-mode');
+        localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+    }
+
+    // Fetch Data on Load
+    window.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            
+            // A. Render Goals
+            renderGoals(data.goals);
+
+            // B. Render Ledger (Pass goals to calculate total donations)
+            renderLedger(data.ledger, data.goals);
+
+        } catch (e) {
+            console.error("API Error", e);
+            document.getElementById('dynamicDonateGoals').innerHTML = "<p class='text-red-500 text-center'>Could not load farm data.</p>";
         }
-    </script>
+    });
+
+    function renderGoals(goals) {
+        const container = document.getElementById('dynamicDonateGoals');
+        container.style.opacity = "1"; // Fade in
+
+        if(!goals || goals.length === 0) {
+            container.innerHTML = "<p class='text-center italic text-gray-600'>No active goals right now!</p>";
+            return;
+        }
+
+        container.innerHTML = goals.map(goal => {
+            const bd = goal.breakdown || { kofi: 0, cash: goal.current, merch: 0 };
+            
+            // Safety: Prevent division by zero
+            const target = goal.target > 0 ? goal.target : 1; 
+
+            const kofiPct = Math.min(100, (bd.kofi / target) * 100);
+            const cashPct = Math.min(100, (bd.cash / target) * 100);
+            const merchPct = Math.min(100, (bd.merch / target) * 100);
+            const totalPct = Math.min(100, Math.round((goal.current / target) * 100));
+
+            return `
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 dark:bg-gray-700 dark:border-gray-600 transition hover:shadow-md">
+                        <div class="flex justify-between items-end mb-2">
+                        <span class="font-bold text-[#3E2723] dark:text-gray-100 text-lg">${goal.name}</span>
+                        <span class="text-sm font-bold text-green-700 dark:text-green-400">$${goal.current} / $${goal.target}</span>
+                    </div>
+                    <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-5 border border-gray-300 dark:border-gray-500 overflow-hidden relative flex">
+                        <div style="width: ${kofiPct}%" class="bg-blue-400 h-full transition-all duration-1000 ease-out shadow-inner" title="Donations"></div>
+                        <div style="width: ${cashPct}%" class="bg-green-500 h-full transition-all duration-1000 ease-out shadow-inner" title="Farm Sales"></div>
+                        <div style="width: ${merchPct}%" class="bg-yellow-400 h-full transition-all duration-1000 ease-out shadow-inner" title="Merch"></div>
+                        ${totalPct > 10 ? `<span class="absolute right-2 top-0 text-xs text-black/50 font-bold">${totalPct}%</span>` : ''}
+                    </div>
+                        <div class="flex gap-3 mt-2 text-[10px] uppercase font-bold text-gray-400">
+                        <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-blue-400"></div> Donated</span>
+                        <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Farm Sales</span>
+                        <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-yellow-400"></div> Merch</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function renderLedger(ledger, goals) {
+        if(!ledger) return;
+        
+        document.getElementById('ledgerMonthTitle').innerText = ledger.month || "Current Month";
+        document.getElementById('ledgerFooter').innerText = ledger.notes || "Data Updated Regularly.";
+
+        const tbody = document.getElementById('ledgerTableBody');
+        tbody.innerHTML = "";
+
+        let totalExp = 0;
+        
+        // 1. Expenses
+        (ledger.items || []).forEach(item => {
+            totalExp += parseFloat(item.cost) || 0;
+            tbody.innerHTML += `
+                <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <td class="px-3 py-2 border-r dark:border-gray-600 font-medium">${item.name}</td>
+                    <td class="px-3 py-2 border-r dark:border-gray-600 text-gray-500 text-xs font-mono">${item.qty}</td>
+                    <td class="px-3 py-2 text-right text-red-600 dark:text-red-400">$${item.cost}</td>
+                </tr>
+            `;
+        });
+
+        // Total Cost Row
+        tbody.innerHTML += `
+            <tr class="bg-gray-100 dark:bg-gray-700 font-bold border-t-2 border-gray-300">
+                <td class="px-3 py-2" colspan="2">Total Expenses</td>
+                <td class="px-3 py-2 text-right text-red-700 dark:text-red-400">$${totalExp.toFixed(2)}</td>
+            </tr>
+        `;
+
+        // 2. Income (Manual from Ledger)
+        let totalInc = 0;
+        (ledger.income || []).forEach(item => {
+            totalInc += parseFloat(item.amount) || 0;
+            tbody.innerHTML += `
+                <tr class="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-300">
+                    <td class="px-3 py-2 border-r border-green-200 dark:border-green-800">${item.source}</td>
+                    <td class="px-3 py-2 border-r border-green-200 dark:border-green-800 text-xs italic">${item.detail}</td>
+                    <td class="px-3 py-2 text-right font-bold">-$${item.amount}</td>
+                </tr>
+            `;
+        });
+
+        // 3. Digital Income (Ko-fi + Merch from ALL Goals)
+        // We sum up Ko-fi and Merch from *every* active goal to show total farm support
+        let totalDigital = 0;
+        if (goals && goals.length > 0) {
+            goals.forEach(g => {
+                if (g.breakdown) {
+                    totalDigital += (parseFloat(g.breakdown.kofi) || 0);
+                    totalDigital += (parseFloat(g.breakdown.merch) || 0);
+                }
+            });
+        }
+
+        // Always show this row if there is ANY digital money, even if not assigned to Feed yet
+        if (totalDigital > 0) {
+            totalInc += totalDigital;
+            tbody.innerHTML += `
+                <tr class="bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border-t border-blue-100">
+                    <td class="px-3 py-2 border-r border-blue-200 dark:border-blue-800 font-bold">All Farm Donations</td>
+                    <td class="px-3 py-2 border-r border-blue-200 dark:border-blue-800 text-xs italic">Ko-fi & Merch</td>
+                    <td class="px-3 py-2 text-right font-bold">-$${totalDigital.toFixed(2)}</td>
+                </tr>
+            `;
+        }
+
+        // 4. Final Gap Calculation
+        const gap = totalExp - totalInc;
+        
+        let gapColor = "";
+        let gapLabel = "";
+        
+        if (gap > 0) {
+                gapColor = "bg-[#3E2723] text-white"; // Farm Brown
+                gapLabel = "Monthly Gap (Need)";
+        } else {
+                gapColor = "bg-green-600 text-white";
+                gapLabel = "Fully Funded! (Surplus)";
+        }
+        
+        tbody.innerHTML += `
+            <tr class="${gapColor} font-bold text-lg border-t-4 border-double border-white/20">
+                <td class="px-3 py-3" colspan="2">${gapLabel}</td>
+                <td class="px-3 py-3 text-right">$${Math.abs(gap).toFixed(2)}</td>
+            </tr>
+        `;
+    }
+</script>
 </body>
 </html>

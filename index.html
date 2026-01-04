@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+<div id="newsAlert" class="hidden bg-yellow-600 text-white text-center py-2 px-4 font-bold font-handwritten text-lg shadow-md animate-pulse"></div>
 <body class="font-body transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
 
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
@@ -106,6 +107,15 @@
                             OPEN 24/7
                         </div>
                     </div>
+                    <div class="mt-6 text-center">
+    <button onclick="toggleInventory()" class="group relative inline-flex items-center justify-center gap-2 bg-farm-green hover:bg-farm-brown text-white font-bold py-3 px-8 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden">
+        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span class="font-handwritten text-xl tracking-wide">See What's In Stock</span>
+    </button>
+</div>
                 </div>
 
                 <div class="md:w-1/2 text-left w-full flex flex-col justify-center space-y-3">
@@ -210,6 +220,26 @@
             </div>
         </section>
 
+        <div id="goalsContainer" class="max-w-xl mx-auto mt-8 mb-10 space-y-6 hidden">
+            <div class="cute-frame bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border-t-4 border-[#FACC15] dark:border-yellow-600 relative">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-red-800 shadow-sm border border-red-900"></div>
+                
+                <h3 class="text-2xl font-bold text-center text-[#2E4A35] dark:text-gray-100 font-handwritten mb-6">Current Farm Goals</h3>
+                
+                <div id="dynamicGoalsList" class="space-y-6"></div>
+                
+                <div class="pt-4 text-center">
+                    <a href="donate.html" class="inline-block bg-[#FACC15] hover:bg-yellow-400 text-[#2E4A35] font-bold py-3 px-6 rounded-lg shadow-lg transform transition hover:scale-105 border-b-4 border-yellow-600 text-sm sm:text-base">
+                        Help Our Farm Grow
+                    </a>
+                </div>
+                
+                <p class="text-center text-xs text-gray-600 dark:text-gray-400 mt-6 font-body italic">
+                    Thank you for helping our homestead grow!
+                </p>
+            </div>
+        </div>
+
         <section id="contact" class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
             <h2 class="font-handwritten text-2xl font-bold text-center text-[#2E4A35] mb-2 dark:text-gray-100">Get In Touch</h2>
             <p class="text-center text-xs text-gray-600 mb-4 italic dark:text-gray-400">Questions about eggs, hoodies, or the goats?</p>
@@ -224,6 +254,7 @@
                     <option value="" disabled selected>What is this regarding?</option>
                     <option value="Egg Order">🥚 Egg Order / Availability</option>
                     <option value="Merch Question">👕 Merch / Store Support</option>
+                    <option value="Donation Question">❤️ Donation Support</option>
                     <option value="Farm Question">🚜 General Farm Question</option>
                     <option value="Hello">👋 Just Saying Hello</option>
                 </select>
@@ -255,67 +286,215 @@
         </div>
     </footer>
 
-    <script>
-        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
-        function toggleDyslexiaMode() {
-            document.body.classList.toggle('dyslexia-mode');
-            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
-        }
-    </script>
+    <!-- Inventory Modal -->
+    <div id="inventoryModal" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4">
+        <div id="modalContent" class="bg-[#FEF9E7] w-full max-w-md rounded-2xl shadow-2xl p-6 border-4 border-[#2E4A35] transform transition-all opacity-0 scale-95">
+            
+            <div class="flex justify-between items-center border-b-2 border-dashed border-[#8D6E63] pb-3 mb-4">
+                <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35]">Current Stock</h2>
+                <button onclick="toggleInventory()" class="text-gray-400 hover:text-red-600 transition transform hover:rotate-90">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="max-h-64 overflow-y-auto pr-2">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="border-b border-[#2E4A35]">
+                            <th class="p-2 text-sm font-bold uppercase text-[#3E2723] tracking-wider">Item</th>
+                            <th class="p-2 text-sm font-bold uppercase text-[#3E2723] tracking-wider text-right">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="publicInventoryList">
+                        <!-- Items will be loaded here by JS -->
+                    </tbody>
+                </table>
+            </div>
 
-    <script>
+            <div class="text-center mt-5 text-xs text-gray-500 italic">
+                <p>Inventory updated daily from the farm stand. Open 24/7.</p>
+            </div>
+        </div>
+    </div>
+
+<script>
     const API_URL = "https://farm-api.nreed8817.workers.dev/"; 
 
-    async function checkFarmStatus() {
+    // 1. Fetch Data on Load
+    window.addEventListener('DOMContentLoaded', async () => {
         try {
             const res = await fetch(API_URL);
             const data = await res.json();
-            
-            // Get all the elements we want to change
-            const badge = document.getElementById('egg-badge');
-            const card = document.getElementById('farm-card');
-            const statusBox = document.getElementById('status-container');
-            const statusText = document.getElementById('status-text');
-            const statusIcon = document.getElementById('status-icon');
-            
-            if (data.eggs === "Sold Out") {
-                // RED MODE (STOP) - Text is normal size (text-sm/base)
-                
-                badge.innerText = "SOLD OUT";
-                badge.className = "absolute top-0 right-0 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
 
-                // Status Box
-                statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-900/20 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
-                statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
-                statusText.innerText = "SOLD OUT";
-                statusIcon.innerText = "❌";
-
-                card.classList.remove('border-green-400');
-                card.classList.add('border-red-400');
-
-            } else {
-                // GREEN MODE (GO) - Text is normal size (text-sm/base)
-                
-                badge.innerText = "FRESH EGGS";
-                badge.className = "absolute top-0 right-0 bg-green-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
-
-                // Status Box
-                statusBox.className = "py-1 px-3 rounded-full border border-green-500 bg-green-900/20 text-green-200 flex items-center justify-center gap-2 shadow-inner w-fit";
-                statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
-                statusText.innerText = "EGGS IN STOCK";
-                statusIcon.innerText = "🥚";
-
-                card.classList.remove('border-red-400');
-                card.classList.add('border-green-400');
+            // A. Render News
+            if (data.news && data.news.trim() !== "") {
+                const alertBox = document.getElementById('newsAlert');
+                alertBox.textContent = data.news;
+                alertBox.classList.remove('hidden');
             }
 
+            // B. Render Goals (UPDATED for Color Stacking)
+            const goalsList = document.getElementById('dynamicGoalsList');
+            const goalsContainer = document.getElementById('goalsContainer');
+            
+            if (data.goals && data.goals.length > 0) {
+                goalsContainer.classList.remove('hidden');
+                
+                goalsList.innerHTML = data.goals.map(goal => {
+                    // Safety check: ensure breakdown object exists
+                    const bd = goal.breakdown || { kofi: 0, cash: goal.current, merch: 0 };
+                    
+                    // Calculate percentages based on Target
+                    // (We use goal.target to size the bars relative to the finish line)
+                    const kofiPct = Math.min(100, (bd.kofi / goal.target) * 100);
+                    const cashPct = Math.min(100, (bd.cash / goal.target) * 100);
+                    const merchPct = Math.min(100, (bd.merch / goal.target) * 100);
+                    
+                    // Total percent for the text label
+                    const totalPct = Math.min(100, Math.round((goal.current / goal.target) * 100));
+
+                    return `
+                        <div>
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="font-bold text-[#3E2723] dark:text-gray-100">${goal.name}</span>
+                                <span class="text-sm font-medium text-green-700 dark:text-green-400">$${goal.current} / $${goal.target}</span>
+                            </div>
+                            
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 border border-gray-300 dark:border-gray-600 overflow-hidden relative">
+                                
+                                <div class="flex h-full w-full">
+                                    <div style="width: ${kofiPct}%" class="bg-blue-400 h-full shadow-inner" title="Ko-fi Donations"></div>
+                                    <div style="width: ${cashPct}%" class="bg-green-500 h-full shadow-inner" title="Cash/Farm Sales"></div>
+                                    <div style="width: ${merchPct}%" class="bg-yellow-400 h-full shadow-inner" title="Merch Store"></div>
+                                </div>
+
+                                ${totalPct > 10 ? `<span class="absolute right-2 top-[-1px] text-[10px] text-black/50 font-bold">${totalPct}%</span>` : ''}
+                            </div>
+                            
+                            <div class="flex gap-3 mt-1 text-[9px] uppercase font-bold text-gray-400">
+                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-blue-400"></div> Donated</span>
+                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-green-500"></div> Farm</span>
+                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-yellow-400"></div> Merch</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // C. Render Eggs Status Badge
+            checkFarmStatus(data);
+
         } catch (e) {
-            console.log("Farm API sleeping...", e);
+            console.error("Farm API Error:", e);
+        }
+    });
+
+    // Helper: Logic for the big Green/Red Egg Status
+    function checkFarmStatus(data) {
+        const badge = document.getElementById('egg-badge');
+        const card = document.getElementById('farm-card');
+        const statusBox = document.getElementById('status-container');
+        const statusText = document.getElementById('status-text');
+        const statusIcon = document.getElementById('status-icon');
+        
+        if (data.eggs === "Sold Out") {
+            // RED MODE
+            badge.innerText = "SOLD OUT";
+            badge.className = "absolute top-0 right-0 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
+
+            statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-900/20 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+            statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
+            statusText.innerText = "SOLD OUT";
+            statusIcon.innerText = "❌";
+
+            card.classList.remove('border-green-400');
+            card.classList.add('border-red-400');
+
+        } else {
+            // GREEN MODE
+            badge.innerText = "FRESH EGGS";
+            badge.className = "absolute top-0 right-0 bg-green-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
+
+            statusBox.className = "py-1 px-3 rounded-full border border-green-500 bg-green-900/20 text-green-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+            statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
+            statusText.innerText = "EGGS IN STOCK";
+            statusIcon.innerText = "🥚";
+
+            card.classList.remove('border-red-400');
+            card.classList.add('border-green-400');
         }
     }
 
-    checkFarmStatus();
-</script>
 
+    // 2. Inventory Modal Logic
+    async function toggleInventory() {
+        const modal = document.getElementById('inventoryModal');
+        const modalContent = document.getElementById('modalContent');
+        
+        const isHidden = modal.classList.contains('hidden');
+
+        if (isHidden) {
+            // Make it visible
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Animate it in
+            setTimeout(() => {
+                modalContent.classList.remove('opacity-0', 'scale-95');
+            }, 50); 
+
+            loadInventoryItems();
+        } else {
+            // Animate it out
+            modalContent.classList.add('opacity-0', 'scale-95');
+
+            // Hide it after animation
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+    }
+
+    async function loadInventoryItems() {
+        const tbody = document.getElementById('publicInventoryList');
+        tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center italic text-gray-500">Checking the stand...</td></tr>';
+        
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            const items = data.inventory || [];
+
+            // FILTER: Only show items where active is NOT false
+            const activeItems = items.filter(item => item.active !== false);
+
+            if (activeItems.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center italic text-gray-600">Stand is empty right now! Check back later.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = activeItems.map(item => `
+                <tr class="hover:bg-farm-green/10 transition border-b border-farm-green/20 last:border-0">
+                    <td class="px-4 py-3 font-semibold text-gray-800">
+                        ${item.name}
+                        ${item.qty ? `<span class="block text-xs font-normal text-gray-500 italic">(${item.qty} available)</span>` : ''}
+                    </td>
+                    <td class="px-4 py-3 text-right text-farm-brown font-bold">${item.price}</td>
+                </tr>
+            `).join('');
+        } catch (e) {
+            tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center text-red-500">Could not load items.</td></tr>';
+        }
+    }
+
+    // Admin Shortcut
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && (e.key === 'a' || e.key === 'A')) {
+            window.location.href = '/admin.html';
+        }
+    });
+</script>
 </body>
 </html>

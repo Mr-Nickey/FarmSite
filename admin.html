@@ -3,87 +3,470 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm Control Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Farm Admin & Tax Center</title>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-900 text-white min-h-screen p-6 flex flex-col items-center">
+<div id="newsAlert" class="hidden bg-yellow-600 text-white text-center py-2 px-4 font-bold font-handwritten text-lg shadow-md animate-pulse"></div>
+<body class="font-body transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
 
-    <div class="max-w-md w-full space-y-8">
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-green-400">🚜 Farm Command</h1>
-            <p class="text-gray-400">Control Center for Flocking Reeds</p>
-        </div>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
 
-        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h2 class="text-xl font-bold mb-4">🥚 Egg Status</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <button onclick="updateData({eggs: 'In Stock'})" class="bg-green-600 hover:bg-green-500 py-4 rounded-lg font-bold shadow-lg">
-                    ✅ In Stock
-                </button>
-                <button onclick="updateData({eggs: 'Sold Out'})" class="bg-red-600 hover:bg-red-500 py-4 rounded-lg font-bold shadow-lg">
-                    ❌ Sold Out
-                </button>
-            </div>
-            <p id="current-status" class="text-center mt-4 text-sm text-gray-400">Current: Loading...</p>
-        </div>
+    <nav class="bg-[#2E4A35] text-white shadow-xl border-b-8 border-[#5D4037] z-navbar">
+        <div class="container mx-auto px-4 py-2 flex flex-col sm:flex-row justify-between items-center gap-4">
+            
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="The Flocking Reed's Farm Logo" class="navbar-logo">
+                <span class="font-handwritten text-2xl text-yellow-100 group-hover:text-white transition">The Flocking Reed's</span>
+            </a>
 
-        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h2 class="text-xl font-bold mb-4">💰 Feed Budget</h2>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs text-gray-400">Total Feed Cost ($)</label>
-                    <input type="number" id="feedInput" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white">
-                </div>
-                <div>
-                    <label class="block text-xs text-gray-400">Total Donations ($)</label>
-                    <input type="number" id="donationsInput" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white">
-                </div>
-                <button onclick="saveBudget()" class="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-bold">
-                    Update Ledger
-                </button>
+            <div class="flex items-center gap-6 text-sm sm:text-base font-bold tracking-wide flex-wrap justify-center">
+                <a href="index.html" class="nav-tab-home transition py-2 border-b-2 border-transparent active-nav-tab">Home</a>
+                <a href="vision.html" class="nav-tab-vision transition py-2 border-b-2 border-transparent">Vision</a>
+                <a href="aboutus.html" class="nav-tab-about transition py-2 border-b-2 border-transparent">About Us</a>
+                
+                <a href="donate.html" class="bg-[#D97706] hover:bg-[#B45309] text-white border-2 border-[#92400E] py-2 px-5 rounded-lg shadow-xl transform hover:scale-105 transition flex items-center active:scale-95 text-xs gap-1 font-semibold">
+                    Feed The Flock
+                </a>            
             </div>
         </div>
-    </div>
+    </nav>
+
+    <main id="main-content" class="container mx-auto px-4 mt-8 max-w-4xl space-y-8 grow">
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-blue-600">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold flex items-center gap-2">📒 Monthly Farm Ledger</h2>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Updates here automatically sync to the "Monthly Feed" Goal.</p>
+                </div>
+                <button onclick="downloadCSV()" class="bg-gray-800 hover:bg-black text-white text-xs font-bold py-2 px-4 rounded flex items-center gap-2 transition hover:scale-105 shadow-md">
+                    📥 Download Spreadsheet
+                </button>
+            </div>
+            
+            <div class="flex gap-4 mb-6">
+                <div class="flex-1">
+                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Month Label</label>
+                    <input type="text" id="ledgerMonth" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. January 2026">
+                </div>
+                <div class="flex-[2]">
+                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Footer Note</label>
+                    <input type="text" id="ledgerNotes" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. Prices from Tractor Supply">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-8">
+                <div class="bg-red-50 dark:bg-red-900/50 dark:border-red-800 p-3 rounded border border-red-100 text-center">
+                    <div class="text-xs text-red-500 dark:text-red-400 font-bold uppercase">Total Spent</div>
+                    <div class="text-xl font-bold text-red-700 dark:text-red-300" id="dispExpense">$0.00</div>
+                </div>
+                <div class="bg-green-50 dark:bg-green-900/50 dark:border-green-800 p-3 rounded border border-green-100 text-center">
+                    <div class="text-xs text-green-500 dark:text-green-400 font-bold uppercase">Total Income</div>
+                    <div class="text-xl font-bold text-green-700 dark:text-green-300" id="dispIncome">$0.00</div>
+                </div>
+                <div class="bg-blue-50 dark:bg-blue-900/50 dark:border-blue-800 p-3 rounded border border-blue-200 text-center relative overflow-hidden">
+                    <div class="text-xs text-blue-500 dark:text-blue-400 font-bold uppercase">Tax Jar (30%)</div>
+                    <div class="text-xl font-bold text-blue-700 dark:text-blue-300" id="dispTax">$0.00</div>
+                    <div class="text-[9px] text-gray-400 dark:text-gray-500 italic mt-1">*Calc on Profit</div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="border-r border-gray-100 dark:border-gray-700 pr-0 md:pr-4">
+                    <h3 class="font-bold text-red-800 dark:text-red-300 mb-2 border-b dark:border-gray-700 pb-1">Expenses (Out)</h3>
+                    <div id="expenseList" class="space-y-2 mb-4 max-h-64 overflow-y-auto pr-2"></div>
+                    
+                    <div class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-700/50 p-2 rounded">
+                        <input type="text" id="expName" placeholder="Item (e.g. Feed, Vet)" class="border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                        <div class="flex gap-2">
+                            <input type="text" id="expQty" placeholder="Qty" class="flex-1 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                            <input type="number" id="expCost" placeholder="$0.00" class="w-20 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                            <button onclick="addExpense()" class="bg-red-600 text-white px-4 rounded font-bold hover:bg-red-700 active:scale-95 transition">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pl-0 md:pl-4">
+                    <h3 class="font-bold text-green-800 dark:text-green-300 mb-2 border-b dark:border-gray-700 pb-1">Income (In)</h3>
+                    <div id="incomeList" class="space-y-2 mb-4 max-h-64 overflow-y-auto pr-2"></div>
+                    
+                    <div class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-700/50 p-2 rounded">
+                        <input type="text" id="incSource" placeholder="Source (e.g. Egg Sales)" class="border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                        <div class="flex gap-2">
+                            <input type="text" id="incDetail" placeholder="Detail" class="flex-1 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                            <input type="number" id="incAmount" placeholder="$0.00" class="w-20 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
+                            <button onclick="addIncome()" class="bg-green-600 text-white px-4 rounded font-bold hover:bg-green-700 active:scale-95 transition">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="saveLedger()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold shadow-md flex justify-center items-center gap-3 transition transform active:scale-95">
+                <span>Save Ledger & Sync Goals</span>
+                <span class="text-[10px] bg-blue-800 text-blue-100 px-2 py-1 rounded uppercase tracking-wider">Auto-Sync On</span>
+            </button>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-t-4 border-green-600">
+            <h2 class="text-xl font-bold mb-4 dark:text-gray-200">🎯 Farm Goals (Bars)</h2>
+            
+            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-3 rounded mb-6 text-xs text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                <span class="text-lg">ℹ️</span>
+                <div>
+                    <strong>How this works:</strong><br>
+                    1. <strong>Goal #1 (Top)</strong> is your Primary Ko-fi Goal. It cannot be deleted.<br>
+                    2. <strong>Goal #2 (Feed)</strong> is synced to your Ledger. Add expenses above to increase the Target automatically.
+                </div>
+            </div>
+
+            <div id="goalsList" class="space-y-6 mb-6"></div>
+
+            <div class="bg-green-50 dark:bg-green-900/50 dark:border-green-800 p-4 rounded border border-green-200">
+                <h3 class="font-bold text-sm text-green-800 dark:text-green-300 mb-2">Add New Goal (Misc Projects)</h3>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="newGoalName" placeholder="Name" class="flex-1 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                    <input type="number" id="newGoalTarget" placeholder="Target $$" class="w-full sm:w-32 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                    <button onclick="addGoal()" class="bg-green-600 text-white px-4 py-2 rounded font-bold hover:bg-green-700 active:scale-95 transition">Add</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-l-8 border-gray-300" id="eggCard">
+                <h2 class="text-lg font-bold mb-4 dark:text-gray-200">🥚 Egg Status</h2>
+                <button id="eggBtn" onclick="toggleEggs()" class="w-full py-4 text-2xl font-bold rounded text-white transition shadow-md active:scale-95">Loading...</button>
+            </div>
+            <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg">
+                <h2 class="text-lg font-bold mb-2 dark:text-gray-200">📢 News / Alerts</h2>
+                <div class="flex gap-2">
+                    <input type="text" id="newsInput" class="flex-1 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200" placeholder="Alerts...">
+                    <button onclick="saveNews()" class="bg-blue-600 text-white px-6 rounded font-bold hover:bg-blue-700 active:scale-95 transition">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-t-4 border-farm-brown">
+            <h2 class="text-xl font-bold mb-4">🥕 Farmstand Inventory</h2>
+            <div class="flex flex-wrap gap-2 mb-6 bg-yellow-50 dark:bg-yellow-900/50 dark:border-yellow-800 p-3 rounded border border-yellow-200">
+                <input type="text" id="invName" placeholder="Item Name" class="flex-[2] min-w-[120px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <input type="text" id="invQty" placeholder="Qty" class="flex-1 min-w-[60px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <input type="text" id="invPrice" placeholder="Price" class="flex-1 min-w-[80px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                <button onclick="addInventory()" class="bg-farm-brown text-white px-4 py-2 rounded font-bold hover:bg-yellow-600 active:scale-95 transition">Add</button>
+            </div>
+            <table class="w-full text-left text-sm">
+                <thead class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 uppercase text-xs">
+                    <tr><th class="p-2">Item</th><th class="p-2">Qty</th><th class="p-2">Price</th><th class="p-2">Active</th><th class="p-2"></th></tr>
+                </thead>
+                <tbody id="inventoryList" class="divide-y"></tbody>
+            </table>
+            <button onclick="saveInventory()" class="mt-6 w-full bg-gray-800 text-white py-3 rounded font-bold hover:bg-black transition shadow-lg active:scale-95">Save Inventory</button>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-8 text-[#A1887F] text-sm bg-[#3E2723] border-t-8 border-[#5D4037] mt-auto dark:bg-black dark:border-gray-800">
+        <div class="container mx-auto px-4">
+            <p class="mb-2 text-yellow-100/80">© 2026 The Flocking Reed's Farm. All Rights Reserved.</p>
+            <div class="flex justify-center gap-4 text-xs font-semibold text-yellow-200/60">
+                <a href="index.html" class="hover:text-white">Home</a> | 
+                <a href="aboutus.html" class="hover:text-white">About Us</a> |
+                <a href="privacy.html" class="hover:text-white">Privacy</a> | 
+                <a href="vision.html" class="hover:text-white">Vision</a>
+            </div>
+            <div class="flex justify-center gap-4 text-xs font-semibold mt-4">
+                <button onclick="toggleDyslexiaMode()" class="footer-button" title="Toggle Dyslexia-friendly Font">
+                    Toggle Dyslexia Font
+                </button>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // REPLACE THIS WITH YOUR WORKER URL
-        const API_URL = "https://farm-api.nreed8817.workers.dev/"; 
+        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
+        function toggleDyslexiaMode() {
+            document.body.classList.toggle('dyslexia-mode');
+            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
+        }
 
-        // Load data on start
-        async function loadData() {
-            try {
-                const res = await fetch(API_URL);
-                const data = await res.json();
-                document.getElementById('current-status').innerText = `Current: ${data.eggs}`;
-                document.getElementById('feedInput').value = data.feedCost;
-                document.getElementById('donationsInput').value = data.donations;
-            } catch (e) {
-                console.error("Error loading:", e);
+        const API_URL = "https://farm-api.nreed8817.workers.dev/";
+
+        let dataStore = { 
+            eggs: "In Stock", 
+            goals: [], 
+            inventory: [], 
+            news: "",
+            ledger: { month: "", items: [], income: [], notes: "" }
+        };
+
+        window.onload = async () => {
+            const res = await fetch(API_URL);
+            dataStore = await res.json();
+            if (!dataStore.ledger) dataStore.ledger = { month: "", items: [], income: [], notes: "" };
+            renderAll();
+        };
+
+        function renderAll() {
+            renderEggs();
+            renderGoals();
+            renderInventory();
+            renderLedger();
+            document.getElementById('newsInput').value = dataStore.news || "";
+        }
+
+        // --- TAX & LEDGER LOGIC ---
+        function renderLedger() {
+            document.getElementById('ledgerMonth').value = dataStore.ledger.month || "";
+            document.getElementById('ledgerNotes').value = dataStore.ledger.notes || "";
+
+            let totalExp = 0;
+            let totalInc = 0;
+
+            const expList = document.getElementById('expenseList');
+            expList.innerHTML = dataStore.ledger.items.map((item, index) => {
+                totalExp += parseFloat(item.cost) || 0;
+                return `
+                <div class="flex justify-between items-center bg-white dark:bg-gray-700 dark:border-gray-600 p-2 rounded border text-sm hover:bg-red-50 dark:hover:bg-red-900/50 transition">
+                    <div>
+                        <div class="font-bold text-gray-700 dark:text-gray-200">${item.name}</div>
+                        <div class="text-xs text-gray-400 dark:text-gray-500">${item.qty}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-red-600 dark:text-red-400">$${item.cost}</span>
+                        <button onclick="removeExpense(${index})" class="text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 font-bold px-1 transition">×</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            const incList = document.getElementById('incomeList');
+            incList.innerHTML = dataStore.ledger.income.map((item, index) => {
+                totalInc += parseFloat(item.amount) || 0;
+                return `
+                <div class="flex justify-between items-center bg-white dark:bg-gray-700 dark:border-gray-600 p-2 rounded border text-sm hover:bg-green-50 dark:hover:bg-green-900/50 transition">
+                    <div>
+                        <div class="font-bold text-gray-700 dark:text-gray-200">${item.source}</div>
+                        <div class="text-xs text-gray-400 dark:text-gray-500">${item.detail}</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-green-600 dark:text-green-400">$${item.amount}</span>
+                        <button onclick="removeIncome(${index})" class="text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 font-bold px-1 transition">×</button>
+                    </div>
+                </div>`;
+            }).join('');
+
+            document.getElementById('dispExpense').innerText = `$${totalExp.toFixed(2)}`;
+            document.getElementById('dispIncome').innerText = `$${totalInc.toFixed(2)}`;
+
+            const profit = totalInc - totalExp;
+            let tax = 0;
+            if (profit > 0) {
+                tax = profit * 0.30;
+                document.getElementById('dispTax').className = "text-xl font-bold text-red-600";
+            } else {
+                document.getElementById('dispTax').className = "text-xl font-bold text-green-600"; 
+            }
+            document.getElementById('dispTax').innerText = `$${tax.toFixed(2)}`;
+        }
+
+        function downloadCSV() {
+            const month = dataStore.ledger.month || "Unknown_Month";
+            let csv = "Date/Month,Type,Category/Item,Details/Qty,Amount\n";
+            dataStore.ledger.items.forEach(item => { csv += `${month},EXPENSE,${item.name},${item.qty},-${item.cost}\n`; });
+            dataStore.ledger.income.forEach(item => { csv += `${month},INCOME,${item.source},${item.detail},${item.amount}\n`; });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.setAttribute('hidden', '');
+            a.setAttribute('href', url);
+            a.setAttribute('download', `farm_ledger_${month.replace(' ', '_')}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        function addExpense() {
+            const name = document.getElementById('expName').value;
+            const qty = document.getElementById('expQty').value;
+            const cost = parseFloat(document.getElementById('expCost').value);
+            if(name && cost) {
+                dataStore.ledger.items.push({ name, qty, cost });
+                document.getElementById('expName').value = "";
+                document.getElementById('expCost').value = "";
+                document.getElementById('expQty').value = "";
+                renderLedger();
             }
         }
 
-        // Update function
-        async function updateData(payload) {
-            try {
-                await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                alert("Updated!");
-                loadData(); // Refresh UI
-            } catch (e) {
-                alert("Error updating");
+        function addIncome() {
+            const source = document.getElementById('incSource').value;
+            const detail = document.getElementById('incDetail').value;
+            const amount = parseFloat(document.getElementById('incAmount').value);
+            if(source && amount) {
+                dataStore.ledger.income.push({ source, detail, amount });
+                document.getElementById('incSource').value = "";
+                document.getElementById('incAmount').value = "";
+                document.getElementById('incDetail').value = "";
+                renderLedger();
             }
         }
 
-        function saveBudget() {
-            const feedCost = document.getElementById('feedInput').value;
-            const donations = document.getElementById('donationsInput').value;
-            updateData({ feedCost, donations });
+        function removeExpense(i) { dataStore.ledger.items.splice(i, 1); renderLedger(); }
+        function removeIncome(i) { dataStore.ledger.income.splice(i, 1); renderLedger(); }
+
+        // --- LEDGER SAVE & SYNC ---
+        async function saveLedger() {
+            dataStore.ledger.month = document.getElementById('ledgerMonth').value;
+            dataStore.ledger.notes = document.getElementById('ledgerNotes').value;
+
+            // SYNC LOGIC
+            let totalExp = 0; dataStore.ledger.items.forEach(i => totalExp += parseFloat(i.cost) || 0);
+            let totalInc = 0; dataStore.ledger.income.forEach(i => totalInc += parseFloat(i.amount) || 0);
+
+            // FORCE INDEX 1 (Feed Goal) TO UPDATE
+            if (dataStore.goals.length > 1) {
+                const feedGoal = dataStore.goals[1];
+                feedGoal.target = totalExp;
+                if(!feedGoal.breakdown) feedGoal.breakdown = { kofi: 0, cash: 0, merch: 0 };
+                feedGoal.breakdown.cash = totalInc;
+                feedGoal.current = (feedGoal.breakdown.kofi||0) + (feedGoal.breakdown.cash||0) + (feedGoal.breakdown.merch||0);
+            }
+
+            await fetch(API_URL, { method: 'POST', body: JSON.stringify(dataStore) });
+            renderGoals();
+            alert("Ledger Saved & Monthly Feed Goal Synced!");
         }
 
-        loadData();
+        // --- GOALS WITH PROTECTED LOGIC ---
+        function renderGoals() {
+            const list = document.getElementById('goalsList');
+            list.innerHTML = "";
+            if (!Array.isArray(dataStore.goals)) dataStore.goals = [];
+            
+            dataStore.goals.forEach((goal, index) => {
+                if (!goal.breakdown) goal.breakdown = { kofi: 0, cash: goal.current || 0, merch: 0 };
+                const current = goal.current || 0;
+                
+                // --- SPECIAL LOGIC FOR GOAL 0 AND 1 ---
+                let deleteBtn = `<button onclick="deleteGoal(${index})" class="text-red-400 text-xs font-bold hover:text-red-600 dark:hover:text-red-300 transition">DELETE GOAL</button>`;
+                let badge = "";
+
+                if (index === 0) {
+                    badge = `<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded border border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700">🏆 PRIMARY / KO-FI GOAL (Protected)</span>`;
+                    deleteBtn = ""; // Cannot delete top goal
+                } else if (index === 1) {
+                    badge = `<span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded border border-green-200 dark:bg-green-900 dark:text-green-200 dark:border-green-700">🚜 MONTHLY FEED (Synced to Ledger)</span>`;
+                    deleteBtn = ""; // Cannot delete feed goal
+                }
+                // ----------------------------------------
+
+                // For Goal 0, we allow editing Name/Target. 
+                // For Goal 1, Target is synced, so we make it readonly visually (bg-gray-100)
+                const isFeedGoal = (index === 1);
+
+                list.innerHTML += `
+                    <div class="border dark:border-gray-700 p-4 rounded bg-gray-50 dark:bg-gray-700/50 relative transition hover:shadow-md">
+                        <div class="mb-2">${badge}</div>
+                        <div class="flex justify-between items-center mb-3">
+                            <input type="text" value="${goal.name}" onchange="updateGoalProp(${index}, 'name', this.value)" class="font-bold text-lg text-gray-800 dark:text-gray-200 bg-transparent border-b border-transparent hover:border-gray-300 focus:border-blue-500 outline-none w-1/2">
+                            
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400 uppercase">Target: $</span>
+                                <input type="number" value="${goal.target}" 
+                                    onchange="updateGoalProp(${index}, 'target', this.value)" 
+                                    class="font-bold text-green-700 dark:text-green-300 text-lg bg-transparent border-b border-transparent hover:border-gray-300 focus:border-green-500 outline-none w-20 text-right ${isFeedGoal ? 'opacity-50 cursor-not-allowed' : ''}" 
+                                    ${isFeedGoal ? 'readonly title="Update Ledger to change this"' : ''}>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 mb-3">
+                            <div><label class="text-[10px] uppercase font-bold text-blue-500 dark:text-blue-400">Ko-fi</label><input type="number" value="${goal.breakdown.kofi}" onchange="updateBreakdown(${index}, 'kofi', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm"></div>
+                            <div><label class="text-[10px] uppercase font-bold text-green-600 dark:text-green-400">Cash</label><input type="number" value="${goal.breakdown.cash}" onchange="updateBreakdown(${index}, 'cash', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm ${isFeedGoal ? 'opacity-50' : ''}" ${isFeedGoal ? 'readonly' : ''}></div>
+                            <div><label class="text-[10px] uppercase font-bold text-yellow-600 dark:text-yellow-400">Merch</label><input type="number" value="${goal.breakdown.merch}" onchange="updateBreakdown(${index}, 'merch', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm"></div>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 mb-2 overflow-hidden flex shadow-inner">
+                            <div class="bg-blue-400 h-full" style="width: ${(goal.breakdown.kofi/goal.target)*100}%"></div>
+                            <div class="bg-green-500 h-full" style="width: ${(goal.breakdown.cash/goal.target)*100}%"></div>
+                            <div class="bg-yellow-400 h-full" style="width: ${(goal.breakdown.merch/goal.target)*100}%"></div>
+                        </div>
+                        ${deleteBtn}
+                    </div>`;
+            });
+        }
+
+        async function addGoal() {
+            const name = document.getElementById('newGoalName').value;
+            const target = document.getElementById('newGoalTarget').value;
+            if(name && target) {
+                dataStore.goals.push({ name, current: 0, target: parseInt(target), breakdown: { kofi: 0, cash: 0, merch: 0 } });
+                renderGoals();
+                document.getElementById('newGoalName').value = "";
+                document.getElementById('newGoalTarget').value = "";
+                await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+            }
+        }
+        async function updateBreakdown(i, t, v) {
+            dataStore.goals[i].breakdown[t] = parseFloat(v) || 0;
+            dataStore.goals[i].current = (dataStore.goals[i].breakdown.kofi || 0) + (dataStore.goals[i].breakdown.cash || 0) + (dataStore.goals[i].breakdown.merch || 0);
+            renderGoals();
+            await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+        }
+        async function updateGoalProp(i, prop, val) {
+            if (prop === 'target') dataStore.goals[i].target = parseFloat(val) || 0;
+            if (prop === 'name') dataStore.goals[i].name = val;
+            await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+        }
+        async function deleteGoal(i) {
+            if(confirm("Delete?")) { dataStore.goals.splice(i, 1); renderGoals(); await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) }); }
+        }
+
+        // --- EGGS & INVENTORY (Standard) ---
+        function renderEggs() {
+            const btn = document.getElementById('eggBtn');
+            const card = document.getElementById('eggCard');
+            if (dataStore.eggs === "In Stock") {
+                btn.textContent = "✅ EGGS IN STOCK";
+                btn.className = "w-full py-4 text-2xl font-bold rounded text-white shadow-md bg-green-600 hover:bg-green-700 transition active:scale-95";
+                card.classList.replace('border-red-500', 'border-green-500') || card.classList.add('border-green-500');
+            } else {
+                btn.textContent = "❌ SOLD OUT";
+                btn.className = "w-full py-4 text-2xl font-bold rounded text-white shadow-md bg-red-600 hover:bg-red-700 transition active:scale-95";
+                card.classList.replace('border-green-500', 'border-red-500') || card.classList.add('border-red-500');
+            }
+        }
+        async function toggleEggs() {
+            dataStore.eggs = (dataStore.eggs === "In Stock") ? "Sold Out" : "In Stock";
+            renderEggs();
+            await fetch(API_URL, { method: 'POST', body: JSON.stringify({ eggs: dataStore.eggs }) });
+        }
+        async function saveNews() {
+            dataStore.news = document.getElementById('newsInput').value;
+            await fetch(API_URL, { method: 'POST', body: JSON.stringify({ news: dataStore.news }) });
+            alert("News updated!");
+        }
+        function renderInventory() {
+            const tbody = document.getElementById('inventoryList');
+            tbody.innerHTML = "";
+            if (!Array.isArray(dataStore.inventory)) dataStore.inventory = [];
+            dataStore.inventory.forEach((item, index) => {
+                const rowClass = item.active === false ? "opacity-50 bg-gray-100 dark:bg-gray-700" : "bg-white dark:bg-gray-800";
+                tbody.innerHTML += `
+                    <tr class="${rowClass} border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <td class="p-2 font-medium dark:text-gray-200">${item.name}</td>
+                        <td class="p-2"><input type="text" value="${item.qty||''}" onchange="updateInv(${index},'qty',this.value)" class="w-full border rounded p-1 text-center font-bold text-blue-600 dark:bg-gray-600 dark:border-gray-500 dark:text-blue-300"></td>
+                        <td class="p-2"><input type="text" value="${item.price}" onchange="updateInv(${index},'price',this.value)" class="w-full border rounded p-1 text-right dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200"></td>
+                        <td class="p-2 text-center"><input type="checkbox" ${item.active!==false?'checked':''} onchange="updateInv(${index},'active',this.checked)" class="w-5 h-5 accent-green-600"></td>
+                        <td class="p-2 text-right"><button onclick="removeInv(${index})" class="text-red-400 hover:text-red-500 font-bold px-2 transition">X</button></td>
+                    </tr>`;
+            });
+        }
+        function addInventory() {
+            const name=document.getElementById('invName').value, price=document.getElementById('invPrice').value, qty=document.getElementById('invQty').value;
+            if(name && price) { dataStore.inventory.push({ name, price, qty, active: true }); renderInventory(); document.getElementById('invName').value=""; }
+        }
+        function updateInv(i, f, v) { dataStore.inventory[i][f] = v; renderInventory(); }
+        function removeInv(i) { dataStore.inventory.splice(i, 1); renderInventory(); }
+        async function saveInventory() { await fetch(API_URL, { method: 'POST', body: JSON.stringify({ inventory: dataStore.inventory }) }); alert("Inventory Saved!"); }
     </script>
 </body>
 </html>
