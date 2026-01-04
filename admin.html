@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Control Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-6 flex flex-col items-center">
+
+    <div class="max-w-md w-full space-y-8">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold text-green-400">🚜 Farm Command</h1>
+            <p class="text-gray-400">Control Center for Flocking Reeds</p>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <h2 class="text-xl font-bold mb-4">🥚 Egg Status</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="updateData({eggs: 'In Stock'})" class="bg-green-600 hover:bg-green-500 py-4 rounded-lg font-bold shadow-lg">
+                    ✅ In Stock
+                </button>
+                <button onclick="updateData({eggs: 'Sold Out'})" class="bg-red-600 hover:bg-red-500 py-4 rounded-lg font-bold shadow-lg">
+                    ❌ Sold Out
+                </button>
+            </div>
+            <p id="current-status" class="text-center mt-4 text-sm text-gray-400">Current: Loading...</p>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <h2 class="text-xl font-bold mb-4">💰 Feed Budget</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs text-gray-400">Total Feed Cost ($)</label>
+                    <input type="number" id="feedInput" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-400">Total Donations ($)</label>
+                    <input type="number" id="donationsInput" class="w-full bg-gray-900 border border-gray-600 rounded p-2 text-white">
+                </div>
+                <button onclick="saveBudget()" class="w-full bg-blue-600 hover:bg-blue-500 py-3 rounded-lg font-bold">
+                    Update Ledger
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // REPLACE THIS WITH YOUR WORKER URL
+        const API_URL = "https://farm-api.nreed8817.workers.dev/"; 
+
+        // Load data on start
+        async function loadData() {
+            try {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                document.getElementById('current-status').innerText = `Current: ${data.eggs}`;
+                document.getElementById('feedInput').value = data.feedCost;
+                document.getElementById('donationsInput').value = data.donations;
+            } catch (e) {
+                console.error("Error loading:", e);
+            }
+        }
+
+        // Update function
+        async function updateData(payload) {
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                alert("Updated!");
+                loadData(); // Refresh UI
+            } catch (e) {
+                alert("Error updating");
+            }
+        }
+
+        function saveBudget() {
+            const feedCost = document.getElementById('feedInput').value;
+            const donations = document.getElementById('donationsInput').value;
+            updateData({ feedCost, donations });
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

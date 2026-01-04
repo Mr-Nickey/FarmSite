@@ -78,50 +78,59 @@
         </div>
     </nav>
 
-    <header class="text-center py-10 px-4">
-        <img src="images/banner.png" alt="The Flocking Reed's Farm Banner" class="hero-banner drop-shadow-md mb-6 hover:scale-105 transition duration-500">
+    <header class="text-center py-6 px-4">
+        <img src="images/banner.png" alt="The Flocking Reed's Farm Banner" class="w-48 sm:w-64 mx-auto drop-shadow-md mb-4 hover:scale-105 transition duration-500">
         
-        <h1 class="font-handwritten text-4xl sm:text-5xl font-bold text-[#2E4A35] mb-2 dark:text-green-400">
+        <h1 class="font-handwritten text-3xl sm:text-4xl font-bold text-[#2E4A35] mb-2 dark:text-green-400">
             Fueled by Caffeine & Chaos.
         </h1>
-        <p class="mt-2 text-xl max-w-2xl mx-auto text-[#5D4037] font-semibold dark:text-gray-300">
+        <p class="mt-1 text-base sm:text-lg max-w-xl mx-auto text-[#5D4037] font-semibold dark:text-gray-300">
             Fresh Eggs from Happy Hens in Grafton, NH.
         </p>
     </header>
 
-    <main id="main-content" class="container mx-auto px-4 pb-12 flex-grow">
+    <main id="main-content" class="container mx-auto px-4 pb-12 flex-grow max-w-4xl">
 
-        <section class="bg-[#FEF9E7] p-6 rounded-xl shadow-lg border-4 border-[#8D6E63] mb-12 relative overflow-hidden dark:bg-gray-800 dark:border-gray-600 max-w-4xl mx-auto mt-8">
-            <div class="absolute top-0 right-0 bg-green-600 text-white text-xs font-bold px-6 py-1 transform rotate-45 translate-x-4 translate-y-2 shadow-md z-50">FRESH</div>
+        <section id="farm-card" class="bg-[#FEF9E7] p-5 rounded-xl shadow-xl border-2 sm:border-4 border-gray-300 mb-10 relative overflow-hidden dark:bg-gray-800 dark:border-gray-600 transition-colors duration-500">
             
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="md:w-1/2 w-full flex justify-center items-center">
-                    <div class="relative inline-block cute-frame transform -rotate-1">
-                        <img src="images/farmstand.jpg" alt="The Farm Stand" class="max-w-sm object-contain rounded">
-                        <div class="absolute bottom-2 right-2 bg-green-600 text-white text-xs font-bold px-2 py-1 rounded">OPEN 24/7</div>
+            <div id="egg-badge" class="absolute top-0 right-0 bg-gray-500 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider">
+                LOADING...
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                
+                <div class="md:w-1/2 w-full">
+                    <div class="relative w-full h-full">
+                        <img src="images/farmstand.jpg" alt="The Farm Stand" class="w-full h-48 md:h-56 object-cover rounded-xl shadow-lg border-2 border-white/10">
+                        <div class="absolute bottom-2 right-2 bg-green-700/90 text-white text-[10px] font-bold px-2 py-1 rounded shadow backdrop-blur-sm border border-white/20">
+                            OPEN 24/7
+                        </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 text-left w-full space-y-4">
-                    
+
+                <div class="md:w-1/2 text-left w-full flex flex-col justify-center space-y-3">
                     <div>
-                        <h2 class="font-handwritten text-4xl font-bold text-[#2E4A35] mb-1 dark:text-green-400">The Farm Stand</h2>
-                        <a href="https://maps.app.goo.gl/yoWoFDjWZtRBRsJC6" target="_blank" rel="noopener noreferrer" class="text-lg text-blue-600 underline dark:text-blue-400 hover:text-blue-800">
-                            📍 441 Millbrook Rd, Grafton, NH
+                        <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] leading-tight dark:text-green-400">The Farm Stand</h2>
+                        <a href="https://maps.app.goo.gl/yoWoFDjWZtRBRsJC6" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base text-blue-600 dark:text-blue-300 hover:underline flex items-center gap-1">
+                            <span>📍</span> 441 Millbrook Rd, Grafton, NH
                         </a>
                     </div>
                     
-                    <div class="bg-white/50 p-3 rounded-lg border border-[#8D6E63]/30 dark:bg-black/20">
-                        <p class="font-bold text-[#3E2723] dark:text-gray-200">📞 (603) 729-3568</p>
-                        <p class="text-xs text-gray-600 italic dark:text-gray-400">Text Preferred (We are usually in the coop!)</p>
+                    <div class="pl-3 border-l-2 border-[#8D6E63] dark:border-gray-500">
+                        <p class="font-bold text-lg text-[#3E2723] dark:text-gray-100 tracking-wide">📞 (603) 729-3568</p>
                     </div>
 
-                    <ul class="space-y-2 font-medium text-lg text-[#3E2723] dark:text-gray-200">
-                        <li>🥚 <strong>Chicken Eggs:</strong> $5.00 / doz</li>
-                        <li>💵 <strong>Payment:</strong> Cash, Venmo, PayPal</li>
-                        <li>💡 <strong>Always Open:</strong> Lit all night for pickups</li>
+                    <div id="status-container" class="py-1 px-3 rounded-full border border-dashed flex items-center justify-center gap-2 bg-gray-100/50 dark:bg-black/20 transition-all duration-300 w-fit">
+                        <span id="status-icon" class="text-base">⏳</span>
+                        <span id="status-text" class="text-sm sm:text-base font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">CHECKING...</span>
+                    </div>
+
+                    <ul class="space-y-1 font-medium text-base text-[#3E2723] dark:text-gray-200">
+                        <li class="flex items-center gap-2"><span class="text-lg">🥚</span> <strong>Eggs:</strong> $5 doz - $3 1/2 doz</li>
+                        <li class="flex items-center gap-4"><span class="flex items-center gap-2"><span class="text-lg">💵</span>Cash</span><span class="flex items-center gap-2"><img src="images/cashapp.svg" alt="Cash App" class="h-5 w-5">Cash App</span><span class="flex items-center gap-2"><img src="images/venmo.svg" alt="Venmo" class="h-5 w-5">Venmo</span></li>
                     </ul>
                     
-                    <div class="flex flex-wrap gap-4 pt-2">
+                     <div class="flex flex-wrap gap-4 pt-2">
                         <a href="donate.html" class="inline-block bg-[#2E4A35] text-white font-bold py-3 px-6 rounded-lg hover:bg-[#3E5C45] transition shadow-md border-b-4 border-[#1B2E21] active:scale-95">
                             Support Us
                         </a>
@@ -133,66 +142,85 @@
             </div>
         </section>
 
-        <section class="text-center mb-12 bg-white p-8 rounded-2xl border-2 border-red-200 shadow-md dark:bg-gray-800 dark:border-red-900 max-w-2xl mx-auto">
-            <h3 class="font-handwritten text-3xl font-bold text-red-700 dark:text-red-400">Life on the Farm</h3>
-            <p class="mt-2 mb-6 text-gray-600 max-w-lg mx-auto dark:text-gray-300">
-                From coop chaos to garden wins, catch the daily life of the farm. New episodes drop every:
-                <br>
-                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform -rotate-2 border border-red-200">Mon</span>
-                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform rotate-2 border border-red-200">Wed</span>
-                <span class="inline-block bg-red-100 text-red-800 font-bold px-3 py-1 rounded shadow-sm mt-3 mx-1 transform -rotate-1 border border-red-200">Fri</span>
-            </p>
+        <section class="bg-white p-5 rounded-xl shadow-xl border-2 sm:border-4 border-red-200 mb-10 relative overflow-hidden dark:bg-gray-800 dark:border-red-900 transition-colors duration-500">
             
-            <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-red-600 text-white font-bold py-3 px-8 rounded-full hover:bg-red-700 transition shadow-lg hover:scale-105 border-b-4 border-red-800">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                Watch The Chaos
-            </a>
+            <div class="flex flex-col md:flex-row-reverse gap-6 items-center">
+                
+                <div class="md:w-1/2 w-full h-48 md:h-56">
+                    <iframe 
+                        src="https://www.youtube.com/embed/EHc_tCA3_JM?autoplay=1&mute=1&loop=1&playlist=EHc_tCA3_JM&controls=0&showinfo=0&rel=0&playsinline=1" 
+                        title="Sammies Simple Living Shorts"
+                        class="w-full h-full rounded-xl shadow-lg border-2 border-red-100 object-cover" 
+                        allow="autoplay; encrypted-media; loop" 
+                        frameborder="0">
+                    </iframe>
+                </div>
+
+                <div class="md:w-1/2 text-left w-full flex flex-col justify-center space-y-4">
+                    <div>
+                        <h3 class="font-handwritten text-3xl font-bold text-red-700 dark:text-red-400 leading-tight">Life on the Farm</h3>
+                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
+                            From coop chaos to garden wins, catch the daily life of the farm on YouTube.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 p-3 rounded-lg border border-red-100 dark:bg-black/20 dark:border-red-900/50">
+                        <p class="text-xs font-bold text-red-800 dark:text-red-300 uppercase mb-2 text-center md:text-left">New Episodes Drop:</p>
+                        <div class="flex justify-center md:justify-start gap-2">
+                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">MON</span>
+                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">WED</span>
+                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">FRI</span>
+                        </div>
+                    </div>
+
+                    <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-red-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition shadow-lg border-b-4 border-red-800 active:scale-95 flex items-center justify-center gap-2">
+                        Watch The Chaos
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <section class="bg-[#2E4A35] text-white p-8 rounded-2xl shadow-xl border-4 border-[#1B2E21] mb-12 max-w-4xl mx-auto relative overflow-hidden">
+        <section class="bg-[#2E4A35] text-white p-5 rounded-xl shadow-xl border-4 border-[#1B2E21] mb-10 relative overflow-hidden">
             <div class="absolute inset-0 opacity-10 bg-[url('images/logo.png')] bg-repeat space-y-4"></div>
             
-            <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+            <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
                 <div class="md:w-1/2 flex justify-center">
-                    <div class="bg-white p-4 rounded-lg transform -rotate-2 shadow-2xl">
-                        <img src="images/merch-hoodie.jpg" alt="Caffeine and Chaos Hoodie" class="w-64 h-64 object-contain rounded bg-gray-100">
+                    <div class="bg-white p-2 rounded-lg transform -rotate-2 shadow-xl hover:rotate-0 transition duration-300">
+                        <img src="images/merch-hoodie.jpg" alt="Caffeine and Chaos Hoodie" class="w-48 h-48 object-contain rounded bg-gray-100">
                     </div>
                 </div>
                 
-                <div class="md:w-1/2 text-center md:text-left space-y-4">
-                    <span class="bg-[#FACC15] text-[#3E2723] text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wide">
-                        Fresh From The Press
+                <div class="md:w-1/2 text-center md:text-left space-y-3">
+                    <span class="bg-[#FACC15] text-[#3E2723] text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wide">
+                        Fresh Gear
                     </span>
-                    <h2 class="font-handwritten text-4xl font-bold text-yellow-100">
+                    <h2 class="font-handwritten text-3xl font-bold text-yellow-100 leading-tight">
                         "Caffeine & Chaos"
                     </h2>
-                    <p class="text-gray-200 text-lg">
-                        The official uniform of The Flocking Reed's Farm. Warm enough for the coop, soft enough for the couch.
+                    <p class="text-gray-200 text-sm sm:text-base">
+                        The official uniform. Profits help with feed!
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 items-center md:items-start pt-2">
-                        <a href="https://store.flockingreeds.farm" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap inline-block bg-[#FACC15] hover:bg-yellow-400 text-[#2E4A35] font-bold py-3 px-6 rounded-lg shadow-lg transform transition hover:scale-105 border-b-4 border-yellow-600">
-                            Visit The Farm Store
+                    <div class="pt-2">
+                        <a href="https://store.flockingreeds.farm" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#FACC15] hover:bg-yellow-400 text-[#2E4A35] font-bold py-3 px-6 rounded-lg shadow-lg transform transition hover:scale-105 border-b-4 border-yellow-600 text-sm sm:text-base">
+                            Visit The Store
                         </a>
-                        <p class="text-xs text-green-200 mt-3 italic text-center sm:text-left">
-                            *Proceeds help with feed and supplies!
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
-            <h2 class="font-handwritten text-3xl font-bold text-center text-[#2E4A35] mb-2 dark:text-gray-100">Get In Touch</h2>
-            <p class="text-center text-gray-600 mb-6 italic dark:text-gray-400">Questions about eggs, hoodies, or the goats? We'd love to hear from you.</p>
+        <section id="contact" class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
+            <h2 class="font-handwritten text-2xl font-bold text-center text-[#2E4A35] mb-2 dark:text-gray-100">Get In Touch</h2>
+            <p class="text-center text-xs text-gray-600 mb-4 italic dark:text-gray-400">Questions about eggs, hoodies, or the goats?</p>
             
-            <form action="https://formspree.io/f/mdkdynek" method="POST" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <form action="https://formspree.io/f/mdkdynek" method="POST" class="space-y-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 </div>
                 
-                <select name="subject" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <select name="subject" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <option value="" disabled selected>What is this regarding?</option>
                     <option value="Egg Order">🥚 Egg Order / Availability</option>
                     <option value="Merch Question">👕 Merch / Store Support</option>
@@ -200,9 +228,9 @@
                     <option value="Hello">👋 Just Saying Hello</option>
                 </select>
                 
-                <textarea name="message" rows="4" placeholder="How can we help? (e.g., 'Do you have eggs today?' or 'I love the new hoodie!')" required class="w-full p-3 border rounded-lg bg-[#FEF9E7] focus:ring-2 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                <textarea name="message" rows="3" placeholder="How can we help?" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
                 
-                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-4 rounded-lg transition shadow-md text-lg border-b-4 border-[#C7A008] active:scale-95">
+                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-3 rounded-lg transition shadow-md text-base border-b-4 border-[#C7A008] active:scale-95">
                     Send Message
                 </button>
             </form>
@@ -234,5 +262,60 @@
             localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
         }
     </script>
+
+    <script>
+    const API_URL = "https://farm-api.nreed8817.workers.dev/"; 
+
+    async function checkFarmStatus() {
+        try {
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            
+            // Get all the elements we want to change
+            const badge = document.getElementById('egg-badge');
+            const card = document.getElementById('farm-card');
+            const statusBox = document.getElementById('status-container');
+            const statusText = document.getElementById('status-text');
+            const statusIcon = document.getElementById('status-icon');
+            
+            if (data.eggs === "Sold Out") {
+                // RED MODE (STOP) - Text is normal size (text-sm/base)
+                
+                badge.innerText = "SOLD OUT";
+                badge.className = "absolute top-0 right-0 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
+
+                // Status Box
+                statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-900/20 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+                statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
+                statusText.innerText = "SOLD OUT";
+                statusIcon.innerText = "❌";
+
+                card.classList.remove('border-green-400');
+                card.classList.add('border-red-400');
+
+            } else {
+                // GREEN MODE (GO) - Text is normal size (text-sm/base)
+                
+                badge.innerText = "FRESH EGGS";
+                badge.className = "absolute top-0 right-0 bg-green-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
+
+                // Status Box
+                statusBox.className = "py-1 px-3 rounded-full border border-green-500 bg-green-900/20 text-green-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+                statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
+                statusText.innerText = "EGGS IN STOCK";
+                statusIcon.innerText = "🥚";
+
+                card.classList.remove('border-red-400');
+                card.classList.add('border-green-400');
+            }
+
+        } catch (e) {
+            console.log("Farm API sleeping...", e);
+        }
+    }
+
+    checkFarmStatus();
+</script>
+
 </body>
 </html>
