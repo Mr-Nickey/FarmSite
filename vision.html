@@ -146,19 +146,13 @@
                 <a href="vision.html" class="hover:text-white">Vision</a>
             </div>
             <div class="flex justify-center gap-4 text-xs font-semibold mt-4">
-                <button onclick="toggleDyslexiaMode()" class="footer-button" title="Toggle Dyslexia-friendly Font">
+                <button id="dyslexia-toggle" onclick="toggleDyslexiaMode()" class="footer-button" title="Toggle Dyslexia-friendly Font">
                     Toggle Dyslexia Font
                 </button>
             </div>
         </div>
     </footer>
 
-    <script>
-        if (localStorage.getItem('dyslexiaMode') === 'on') { document.body.classList.add('dyslexia-mode'); }
-        function toggleDyslexiaMode() {
-            document.body.classList.toggle('dyslexia-mode');
-            localStorage.setItem('dyslexiaMode', document.body.classList.contains('dyslexia-mode') ? 'on' : 'off');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
