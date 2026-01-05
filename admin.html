@@ -34,111 +34,34 @@
 
     <main id="main-content" class="container mx-auto px-4 mt-8 max-w-4xl space-y-8 grow">
 
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border-t-4 border-blue-600">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h2 class="text-2xl font-bold flex items-center gap-2">📒 Monthly Farm Ledger</h2>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Updates here automatically sync to the "Monthly Feed" Goal.</p>
-                </div>
-                <button onclick="downloadCSV()" class="bg-gray-800 hover:bg-black text-white text-xs font-bold py-2 px-4 rounded flex items-center gap-2 transition hover:scale-105 shadow-md">
-                    📥 Download Spreadsheet
-                </button>
-            </div>
-            
-            <div class="flex gap-4 mb-6">
-                <div class="flex-1">
-                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Month Label</label>
-                    <input type="text" id="ledgerMonth" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. January 2026">
-                </div>
-                <div class="flex-[2]">
-                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Footer Note</label>
-                    <input type="text" id="ledgerNotes" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. Prices from Tractor Supply">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-3 gap-4 mb-8">
-                <div class="bg-red-50 dark:bg-red-900/50 dark:border-red-800 p-3 rounded border border-red-100 text-center">
-                    <div class="text-xs text-red-500 dark:text-red-400 font-bold uppercase">Total Spent</div>
-                    <div class="text-xl font-bold text-red-700 dark:text-red-300" id="dispExpense">$0.00</div>
-                </div>
-                <div class="bg-green-50 dark:bg-green-900/50 dark:border-green-800 p-3 rounded border border-green-100 text-center">
-                    <div class="text-xs text-green-500 dark:text-green-400 font-bold uppercase">Total Income</div>
-                    <div class="text-xl font-bold text-green-700 dark:text-green-300" id="dispIncome">$0.00</div>
-                </div>
-                <div class="bg-blue-50 dark:bg-blue-900/50 dark:border-blue-800 p-3 rounded border border-blue-200 text-center relative overflow-hidden">
-                    <div class="text-xs text-blue-500 dark:text-blue-400 font-bold uppercase">Tax Jar (30%)</div>
-                    <div class="text-xl font-bold text-blue-700 dark:text-blue-300" id="dispTax">$0.00</div>
-                    <div class="text-[9px] text-gray-400 dark:text-gray-500 italic mt-1">*Calc on Profit</div>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="border-r border-gray-100 dark:border-gray-700 pr-0 md:pr-4">
-                    <h3 class="font-bold text-red-800 dark:text-red-300 mb-2 border-b dark:border-gray-700 pb-1">Expenses (Out)</h3>
-                    <div id="expenseList" class="space-y-2 mb-4 max-h-64 overflow-y-auto pr-2"></div>
-                    
-                    <div class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-700/50 p-2 rounded">
-                        <input type="text" id="expName" placeholder="Item (e.g. Feed, Vet)" class="border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                        <div class="flex gap-2">
-                            <input type="text" id="expQty" placeholder="Qty" class="flex-1 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                            <input type="number" id="expCost" placeholder="$0.00" class="w-20 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                            <button onclick="addExpense()" class="bg-red-600 text-white px-4 rounded font-bold hover:bg-red-700 active:scale-95 transition">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pl-0 md:pl-4">
-                    <h3 class="font-bold text-green-800 dark:text-green-300 mb-2 border-b dark:border-gray-700 pb-1">Income (In)</h3>
-                    <div id="incomeList" class="space-y-2 mb-4 max-h-64 overflow-y-auto pr-2"></div>
-                    
-                    <div class="flex flex-col gap-2 bg-gray-50 dark:bg-gray-700/50 p-2 rounded">
-                        <input type="text" id="incSource" placeholder="Source (e.g. Egg Sales)" class="border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                        <div class="flex gap-2">
-                            <input type="text" id="incDetail" placeholder="Detail" class="flex-1 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                            <input type="number" id="incAmount" placeholder="$0.00" class="w-20 border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-2 text-sm rounded">
-                            <button onclick="addIncome()" class="bg-green-600 text-white px-4 rounded font-bold hover:bg-green-700 active:scale-95 transition">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button onclick="saveLedger()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold shadow-md flex justify-center items-center gap-3 transition transform active:scale-95">
-                <span>Save Ledger & Sync Goals</span>
-                <span class="text-[10px] bg-blue-800 text-blue-100 px-2 py-1 rounded uppercase tracking-wider">Auto-Sync On</span>
-            </button>
-        </div>
-
-        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-t-4 border-green-600">
-            <h2 class="text-xl font-bold mb-4 dark:text-gray-200">🎯 Farm Goals (Bars)</h2>
-            
-            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-3 rounded mb-6 text-xs text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                <span class="text-lg">ℹ️</span>
-                <div>
-                    <strong>How this works:</strong><br>
-                    1. <strong>Goal #1 (Top)</strong> is your Primary Ko-fi Goal. It cannot be deleted.<br>
-                    2. <strong>Goal #2 (Feed)</strong> is synced to your Ledger. Add expenses above to increase the Target automatically.
-                </div>
-            </div>
-
-            <div id="goalsList" class="space-y-6 mb-6"></div>
-
-            <div class="bg-green-50 dark:bg-green-900/50 dark:border-green-800 p-4 rounded border border-green-200">
-                <h3 class="font-bold text-sm text-green-800 dark:text-green-300 mb-2">Add New Goal (Misc Projects)</h3>
-                <div class="flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="newGoalName" placeholder="Name" class="flex-1 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
-                    <input type="number" id="newGoalTarget" placeholder="Target $$" class="w-full sm:w-32 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
-                    <button onclick="addGoal()" class="bg-green-600 text-white px-4 py-2 rounded font-bold hover:bg-green-700 active:scale-95 transition">Add</button>
-                </div>
-            </div>
-        </div>
-
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-l-8 border-gray-300" id="eggCard">
-                <h2 class="text-lg font-bold mb-4 dark:text-gray-200">🥚 Egg Status</h2>
-                <button id="eggBtn" onclick="toggleEggs()" class="w-full py-4 text-2xl font-bold rounded text-white transition shadow-md active:scale-95">Loading...</button>
+            <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800" id="eggCard">
+                <div id="eggHeader" class="bg-yellow-600 p-3 text-white font-bold transition-colors duration-300">🥚 Egg Status</div>
+                <div class="p-4">
+                    <button id="eggBtn" onclick="toggleEggs()" class="w-full py-4 text-2xl font-bold rounded text-white transition shadow-md active:scale-95">Loading...</button>
+                </div>
             </div>
-            <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg">
-                <h2 class="text-lg font-bold mb-2 dark:text-gray-200">📢 News / Alerts</h2>
+            
+            <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+                <div class="bg-pink-600 p-3 text-white font-bold">❤️ Donations & Refunds</div>
+                <div class="p-4">
+                    <div class="flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <input type="number" id="quickDonationAmount" placeholder="Donation $$" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                            <button onclick="addDonation()" class="bg-pink-600 text-white px-4 rounded font-bold hover:bg-pink-700 active:scale-95 transition">Add</button>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="number" id="quickRefundAmount" placeholder="Refund $$" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                            <button onclick="addRefund()" class="bg-red-600 text-white px-4 rounded font-bold hover:bg-red-700 active:scale-95 transition">Refund</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-indigo-600 p-3 text-white font-bold">📢 News / Alerts</div>
+            <div class="p-4">
                 <div class="flex gap-2">
                     <input type="text" id="newsInput" class="flex-1 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200" placeholder="Alerts...">
                     <button onclick="saveNews()" class="bg-blue-600 text-white px-6 rounded font-bold hover:bg-blue-700 active:scale-95 transition">Save</button>
@@ -146,21 +69,263 @@
             </div>
         </div>
 
-        <div class="bg-white dark:bg-gray-800 dark:border-gray-700 p-6 rounded-lg shadow-lg border-t-4 border-farm-brown">
-            <h2 class="text-xl font-bold mb-4">🥕 Farmstand Inventory</h2>
-            <div class="flex flex-wrap gap-2 mb-6 bg-yellow-50 dark:bg-yellow-900/50 dark:border-yellow-800 p-3 rounded border border-yellow-200">
-                <input type="text" id="invName" placeholder="Item Name" class="flex-[2] min-w-[120px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
-                <input type="text" id="invQty" placeholder="Qty" class="flex-1 min-w-[60px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
-                <input type="text" id="invPrice" placeholder="Price" class="flex-1 min-w-[80px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
-                <button onclick="addInventory()" class="bg-farm-brown text-white px-4 py-2 rounded font-bold hover:bg-yellow-600 active:scale-95 transition">Add</button>
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-orange-600 p-3 text-white font-bold">🥕 Farmstand Inventory</div>
+            <div class="p-4">
+                <div class="flex flex-wrap gap-2 mb-6 bg-yellow-50 dark:bg-yellow-900/50 dark:border-yellow-800 p-3 rounded border border-yellow-200">
+                    <input type="text" id="invName" placeholder="Item Name (e.g. Tomatoes)" class="flex-[2] min-w-[120px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                    <input type="text" id="invQty" placeholder="Qty (Start Count)" class="flex-1 min-w-[60px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                    <input type="text" id="invPrice" placeholder="Price" class="flex-1 min-w-[80px] border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                    <button onclick="addInventory()" class="bg-farm-brown text-white px-4 py-2 rounded font-bold hover:bg-yellow-600 active:scale-95 transition">Add</button>
+                </div>
+                <p class="text-xs text-gray-500 mb-2">💡 Tip: Click '💲 SELL' to deduct stock and automatically add cash to your Income Ledger.</p>
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 uppercase text-xs">
+                        <tr><th class="p-2">Item</th><th class="p-2">Qty</th><th class="p-2">Price</th><th class="p-2">Active</th><th class="p-2">Action</th></tr>
+                    </thead>
+                    <tbody id="inventoryList" class="divide-y"></tbody>
+                </table>
+                <button onclick="saveInventory()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold transition shadow-lg active:scale-95">Save Inventory</button>
             </div>
-            <table class="w-full text-left text-sm">
-                <thead class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 uppercase text-xs">
-                    <tr><th class="p-2">Item</th><th class="p-2">Qty</th><th class="p-2">Price</th><th class="p-2">Active</th><th class="p-2"></th></tr>
-                </thead>
-                <tbody id="inventoryList" class="divide-y"></tbody>
-            </table>
-            <button onclick="saveInventory()" class="mt-6 w-full bg-gray-800 text-white py-3 rounded font-bold hover:bg-black transition shadow-lg active:scale-95">Save Inventory</button>
+        </div>
+
+        <!-- SHOPPING LIST WIDGET -->
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-teal-600 p-3 text-white font-bold flex justify-between items-center">
+                <span>🛒 Farm Shopping List (To-Buy)</span>
+                <button onclick="clearShoppingList()" class="text-xs bg-white text-teal-800 hover:bg-gray-100 px-3 py-1 rounded shadow-sm transition font-bold">Clear List</button>
+            </div>
+            <div class="p-4">
+                <div class="flex flex-wrap gap-2 mb-4 items-end">
+                    <div class="flex-[2] min-w-[150px]">
+                        <label class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400">Item Name</label>
+                        <input type="text" id="shopItem" placeholder="Item Name" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 text-sm">
+                    </div>
+                    <div class="flex-1 min-w-[120px]">
+                        <label class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400">Category</label>
+                        <select id="shopCat" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 text-sm"></select>
+                    </div>
+                    <div class="flex-1 min-w-[80px]">
+                        <label class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400">Wt/Size</label>
+                        <input type="text" id="shopWeight" placeholder="e.g. 50lb" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 text-sm">
+                    </div>
+                    <div class="flex-1 min-w-[60px]">
+                        <label class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400">Qty</label>
+                        <input type="number" id="shopQty" placeholder="1" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 text-sm">
+                    </div>
+                    <div class="flex-1 min-w-[80px]">
+                        <label class="text-[10px] uppercase font-bold text-gray-500 dark:text-gray-400">Est $</label>
+                        <input type="number" id="shopEst" placeholder="0.00" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 text-sm">
+                    </div>
+                    <button onclick="addShoppingItem()" class="bg-teal-600 text-white px-4 py-2 rounded font-bold hover:bg-teal-700 active:scale-95 transition h-[38px] mb-[1px]">Add</button>
+                </div>
+                <ul id="shoppingListUl" class="space-y-2"></ul>
+            </div>
+        </div>
+
+        <!-- INSIGHTS WIDGET -->
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-purple-700 p-3 text-white font-bold">💡 Farm Insights (Plain & Simple)</div>
+            <div class="p-4">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="flex-1 bg-indigo-50 dark:bg-indigo-900/20 p-4 rounded border border-indigo-100 dark:border-indigo-800">
+                        <h3 class="font-bold text-indigo-800 dark:text-indigo-300 mb-2 border-b border-indigo-200 dark:border-indigo-700 pb-1">📊 Sales Breakdown</h3>
+                        <ul id="insightBreakdown" class="text-sm space-y-1 text-gray-700 dark:text-gray-300 list-disc pl-4">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 bg-purple-50 dark:bg-purple-900/20 p-4 rounded border border-purple-100 dark:border-purple-800">
+                        <h3 class="font-bold text-purple-800 dark:text-purple-300 mb-2 border-b border-purple-200 dark:border-purple-700 pb-1">📈 Trends & Answers</h3>
+                        <div id="insightTrends" class="text-sm text-gray-700 dark:text-gray-300">Loading...</div>
+                    </div>
+                    <div class="flex-1 bg-red-50 dark:bg-red-900/20 p-4 rounded border border-red-100 dark:border-red-800">
+                        <h3 class="font-bold text-red-800 dark:text-red-300 mb-2 border-b border-red-200 dark:border-red-700 pb-1">💸 Top Expenses</h3>
+                        <ul id="insightExpenses" class="text-sm space-y-1 text-gray-700 dark:text-gray-300 list-disc pl-4"><li>Loading...</li></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-blue-700 p-3 text-white font-bold">📒 Monthly Farm Ledger</div>
+            <div class="p-4">
+                <div class="flex justify-between items-start mb-6">
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Updates here automatically sync to the "Monthly Feed" Goal.</p>
+                    <button onclick="downloadCSV()" class="bg-gray-800 hover:bg-black text-white text-xs font-bold py-2 px-4 rounded flex items-center gap-2 transition hover:scale-105 shadow-md">
+                        📥 Download Spreadsheet
+                    </button>
+                </div>
+            
+                <div class="flex gap-4 mb-6">
+                <div class="flex-1">
+                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Month Label</label>
+                    <div class="flex gap-2">
+                        <select id="ledgerMonthSelect" class="w-24 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none">
+                            <option value="Jan">Jan</option>
+                            <option value="Feb">Feb</option>
+                            <option value="Mar">Mar</option>
+                            <option value="Apr">Apr</option>
+                            <option value="May">May</option>
+                            <option value="Jun">Jun</option>
+                            <option value="Jul">Jul</option>
+                            <option value="Aug">Aug</option>
+                            <option value="Sep">Sep</option>
+                            <option value="Oct">Oct</option>
+                            <option value="Nov">Nov</option>
+                            <option value="Dec">Dec</option>
+                        </select>
+                        <input type="number" id="ledgerYear" class="w-20 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Year">
+                        <button onclick="clearMonth()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-2 rounded shadow whitespace-nowrap">⚠️ START NEW MONTH</button>
+                    </div>
+                </div>
+                <div class="flex-[2]">
+                    <label class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400">Footer Note</label>
+                    <input type="text" id="ledgerNotes" class="w-full border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="e.g. Prices from Tractor Supply">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap md:flex-nowrap gap-2 mb-4">
+                <div class="flex-1 bg-white dark:bg-gray-800 p-2 rounded shadow border-b-2 border-red-500 flex flex-col items-center justify-center">
+                    <div class="text-[10px] uppercase text-gray-400 font-bold">Total Spent</div>
+                    <div class="text-lg font-bold text-red-600 leading-none" id="dispExpense">$0.00</div>
+                </div>
+                
+                <div class="flex-1 bg-white dark:bg-gray-800 p-2 rounded shadow border-b-2 border-green-500 flex flex-col items-center justify-center">
+                    <div class="text-[10px] uppercase text-gray-400 font-bold">Total Income</div>
+                    <div class="text-lg font-bold text-green-600 leading-none" id="dispIncome">$0.00</div>
+                    <div class="text-[8px] text-gray-400 mt-1">(+ Goals/Merch)</div>
+                </div>
+                
+                <div class="flex-1 bg-white dark:bg-gray-800 p-2 rounded shadow border-b-2 border-blue-500 flex flex-col items-center justify-center relative group">
+                    <div class="text-[10px] uppercase text-gray-400 font-bold flex gap-1">Tax Jar (30%)</div>
+                    <div class="text-lg font-bold text-blue-600 leading-none" id="dispTax">$0.00</div>
+                </div>
+                
+                <div class="flex-1 bg-white dark:bg-gray-800 p-2 rounded shadow border-b-2 border-yellow-500 flex flex-col items-center justify-center">
+                    <div class="text-[10px] uppercase text-gray-400 font-bold">Asset Value</div>
+                    <div class="text-lg font-bold text-yellow-600 leading-none" id="dispAssets">$0.00</div>
+                    <div class="text-[8px] text-gray-400 mt-1 text-center">Value of Coops/Equipment</div>
+                </div>
+
+                <div class="flex-1 bg-white dark:bg-gray-800 p-2 rounded shadow border-b-2 border-purple-500 flex flex-col items-center justify-center" title="Calculated as: (Total Income + Donations + Ko-fi + Merch) - Expenses">
+                    <div class="text-[10px] uppercase text-gray-400 font-bold">Net Profit ℹ️</div>
+                    <div class="text-lg font-bold text-green-600 leading-none" id="dispProfit">$0.00</div>
+                </div>
+            </div>
+
+            <!-- LEDGER TABLES (Excel Style) -->
+            <div class="space-y-8">
+                <!-- EXPENSES -->
+                <div>
+                    <h3 class="font-bold text-red-800 dark:text-red-300 mb-1 border-b dark:border-gray-700 pb-1 flex justify-between items-end">
+                        <span>Expenses (Out)</span>
+                        <span class="text-[10px] font-normal text-gray-500 italic">If a bear eats feed, change category to 'Loss/Waste'—do not delete! Keep the tax write-off.</span>
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 text-xs uppercase">
+                                <tr>
+                                    <th class="p-1 w-32">Date</th>
+                                    <th class="p-1">Item Name</th>
+                                    <th class="p-1">Category (Sched F)</th>
+                                    <th class="p-1 w-20">Wt/Size</th>
+                                    <th class="p-1 w-20">Qty</th>
+                                    <th class="p-1 w-24">Cost ($)</th>
+                                    <th class="p-1 w-10"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="expenseTableBody" class="divide-y dark:divide-gray-700"></tbody>
+                            <tfoot class="font-bold text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-900/20 border-t dark:border-gray-700 text-xs uppercase">
+                                <tr>
+                                    <td class="p-1 text-right" colspan="5">Total Expenses:</td>
+                                    <td class="p-1 text-right" id="footerExpTotal">$0.00</td>
+                                    <td class="p-1"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <button onclick="addExpenseRow()" class="mt-2 text-xs bg-red-100 hover:bg-red-200 text-red-800 px-3 py-1 rounded font-bold transition">+ Add Expense Row</button>
+                </div>
+
+                <!-- INCOME -->
+                <div>
+                    <h3 class="font-bold text-green-800 dark:text-green-300 mb-1 border-b dark:border-gray-700 pb-1">Income (In)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 text-xs uppercase">
+                                <tr>
+                                    <th class="p-1 w-32">Date</th>
+                                    <th class="p-1">Source</th>
+                                    <th class="p-1 w-24">Unit Price ($)</th>
+                                    <th class="p-1 w-20">Qty Sold</th>
+                                    <th class="p-1 w-24">Total ($)</th>
+                                    <th class="p-1 w-10"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="incomeTableBody" class="divide-y dark:divide-gray-700"></tbody>
+                            <tfoot class="font-bold text-green-700 dark:text-green-300 bg-green-50 dark:bg-green-900/20 border-t dark:border-gray-700 text-xs uppercase">
+                                <tr>
+                                    <td class="p-1 text-right" colspan="4">Total Income:</td>
+                                    <td class="p-1 text-right" id="footerIncTotal">$0.00</td>
+                                    <td class="p-1"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <button onclick="addIncomeRow()" class="mt-2 text-xs bg-green-100 hover:bg-green-200 text-green-800 px-3 py-1 rounded font-bold transition">+ Add Income Row</button>
+                </div>
+
+                <!-- CAPITAL ASSETS -->
+                <div class="bg-amber-50/50 dark:bg-amber-900/10 p-4 rounded border border-amber-100 dark:border-amber-800/50">
+                    <h3 class="font-bold text-amber-800 dark:text-amber-300 mb-1 border-b border-amber-200 dark:border-amber-800 pb-1">🏗️ Capital Assets (Farm Value)</h3>
+                    <p class="text-xs text-gray-500 mb-3">Add items here that you KEEP for years (Incubators, Fencing). These do not lower your monthly profit, but they add to the Farm's total value.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 text-xs uppercase">
+                                <tr>
+                                    <th class="p-1">Asset Name</th>
+                                    <th class="p-1">Notes / ID</th>
+                                    <th class="p-1 w-32">Value ($)</th>
+                                    <th class="p-1 w-10"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="assetTableBody" class="divide-y border-b border-amber-200 dark:border-amber-800 dark:divide-gray-700"></tbody>
+                        </table>
+                    </div>
+                    <button onclick="addAssetRow()" class="mt-2 text-xs bg-amber-200 hover:bg-amber-300 text-amber-900 px-3 py-1 rounded font-bold transition">+ Add Asset</button>
+                </div>
+            </div>
+
+            <button onclick="saveLedger()" class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded font-bold shadow-md flex justify-center items-center gap-3 transition transform active:scale-95">
+                <span>Save Ledger & Sync Goals</span>
+                <span class="text-[10px] bg-blue-800 text-blue-100 px-2 py-1 rounded uppercase tracking-wider">Auto-Sync On</span>
+            </button>
+            </div>
+        </div>
+
+        <div class="rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+            <div class="bg-emerald-700 p-3 text-white font-bold">🎯 Farm Goals & Progress</div>
+            <div class="p-4">
+                <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 p-3 rounded mb-6 text-xs text-gray-600 dark:text-gray-400 flex items-start gap-2">
+                    <span class="text-lg">ℹ️</span>
+                    <div>
+                        <strong>How this works:</strong><br>
+                        1. <strong>Goal #1 (Top)</strong> is your Primary Ko-fi Goal. It cannot be deleted.<br>
+                        2. <strong>Goal #2 (Feed)</strong> is synced to your Ledger. Add expenses above to increase the Target automatically.
+                    </div>
+                </div>
+
+                <div id="goalsList" class="space-y-6 mb-6"></div>
+
+                <div class="bg-green-50 dark:bg-green-900/50 dark:border-green-800 p-4 rounded border border-green-200">
+                    <h3 class="font-bold text-sm text-green-800 dark:text-green-300 mb-2">Add New Goal (Misc Projects)</h3>
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="newGoalName" placeholder="Name" class="flex-1 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                        <input type="number" id="newGoalTarget" placeholder="Target $$" class="w-full sm:w-32 border p-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200">
+                        <button onclick="addGoal()" class="bg-green-600 text-white px-4 py-2 rounded font-bold hover:bg-green-700 active:scale-95 transition">Add</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -188,74 +353,357 @@
     <script src="script.js"></script>
     <script>
         const API_URL = "https://farm-api.nreed8817.workers.dev/";
+        const CATEGORIES = ['Feed', 'Seeds/Plants', 'Vet/Meds', 'Supplies', 'Repairs', 'Utilities', 'Equipment', 'Marketing', 'Loss/Waste', 'Other'];
+
+        const parseMoney = (v) => parseFloat(v?.toString().replace('$','')) || 0;
 
         let dataStore = { 
             eggs: "In Stock", 
             goals: [], 
             inventory: [], 
             news: "",
-            ledger: { month: "", items: [], income: [], notes: "" }
+            ledger: { month: "", items: [], income: [], assets: [], notes: "" }
         };
 
         window.onload = async () => {
             const res = await fetch(API_URL);
             dataStore = await res.json();
-            if (!dataStore.ledger) dataStore.ledger = { month: "", items: [], income: [], notes: "" };
+            if (!dataStore.ledger) dataStore.ledger = { month: "", items: [], income: [], assets: [], notes: "" };
+            if (!dataStore.ledger.assets) dataStore.ledger.assets = [];
+            if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0, kofi: 0, merch: 0 };
+            if (!dataStore.shoppingList) dataStore.shoppingList = [];
             renderAll();
         };
 
+        function syncFeedGoal() {
+            if (!dataStore.goals) return;
+
+            // 1. Calculate Totals from ALL Goals
+            let totalKofi = 0;
+            let totalMerch = 0;
+            let totalOtherGoalCash = 0;
+
+            dataStore.goals.forEach((g, index) => {
+                if (!g.breakdown) g.breakdown = { kofi: 0, cash: 0, merch: 0 };
+                totalKofi += parseFloat(g.breakdown.kofi) || 0;
+                totalMerch += parseFloat(g.breakdown.merch) || 0;
+                if (index !== 1) totalOtherGoalCash += parseFloat(g.breakdown.cash) || 0;
+            });
+
+            // 2. Update Ledger System Income (WRITE TO DB OBJECT)
+            if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0, kofi: 0, merch: 0 };
+            dataStore.ledger.systemIncome.kofi = totalKofi;
+            dataStore.ledger.systemIncome.merch = totalMerch;
+
+            // 3. Update Feed Goal (Goal #1) if it exists
+            if (dataStore.goals.length > 1) {
+                let totalExp = 0; dataStore.ledger.items.forEach(i => totalExp += parseFloat(i.cost) || 0);
+                let totalManualInc = 0; dataStore.ledger.income.forEach(i => totalManualInc += parseFloat(i.amount) || 0);
+                let systemDonations = parseMoney(dataStore.ledger.systemIncome.donations);
+
+                const grandTotal = totalManualInc + systemDonations + totalKofi + totalMerch + totalOtherGoalCash;
+
+                const feedGoal = dataStore.goals[1];
+                feedGoal.target = totalExp;
+                if (!feedGoal.breakdown) feedGoal.breakdown = { kofi: 0, cash: 0, merch: 0 };
+                
+                const currentKofi = parseFloat(feedGoal.breakdown.kofi) || 0;
+                const currentMerch = parseFloat(feedGoal.breakdown.merch) || 0;
+                
+                feedGoal.breakdown.cash = grandTotal - currentKofi - currentMerch;
+                feedGoal.current = grandTotal;
+            }
+        }
+
+        function showToast(msg) {
+            const el = document.createElement('div');
+            el.className = "fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-2 rounded shadow-lg z-50 text-sm font-bold animate-bounce";
+            el.innerText = msg;
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 2000);
+        }
+
         function renderAll() {
+            syncFeedGoal(); // Ensure data is fresh before rendering
             renderEggs();
             renderGoals();
             renderInventory();
             renderLedger();
+            renderInsights();
+            renderShoppingList();
             document.getElementById('newsInput').value = dataStore.news || "";
+        }
+
+        function updateSystemDonation(val) {
+            if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0, kofi: 0, merch: 0 };
+            dataStore.ledger.systemIncome.donations = parseMoney(val);
+            saveLedger();
+            updateTotalsDisplay();
+        }
+
+        function renderInsights() {
+            const income = dataStore.ledger.income || [];
+            const breakdown = {};
+            const dayCounts = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0}; // Sun-Sat
+            const expenses = dataStore.ledger.items || [];
+            const expBreakdown = {};
+            let dozenQty = 0;
+            let halfDozenQty = 0;
+
+            income.forEach(item => {
+                // Breakdown
+                let name = item.source || "Unknown";
+                if(name.startsWith("Farmstand: ")) name = name.replace("Farmstand: ", "");
+                
+                if(!breakdown[name]) breakdown[name] = { qty: 0, amt: 0 };
+                breakdown[name].qty += parseFloat(item.qty) || 0;
+                breakdown[name].amt += parseFloat(item.amount) || 0;
+
+                // Day Analysis
+                if(item.date) {
+                    const parts = item.date.split('-');
+                    if(parts.length === 3) {
+                        const localDate = new Date(parts[0], parts[1]-1, parts[2]);
+                        dayCounts[localDate.getDay()] += parseFloat(item.amount) || 0;
+                    }
+                }
+
+                // Egg Comparison
+                const lowerName = name.toLowerCase();
+                if(lowerName.includes("dozen") && !lowerName.includes("half")) dozenQty += parseFloat(item.qty) || 0;
+                else if(lowerName.includes("half dozen")) halfDozenQty += parseFloat(item.qty) || 0;
+            });
+
+            // Render Breakdown
+            const sortedItems = Object.entries(breakdown).sort((a,b) => b[1].amt - a[1].amt).slice(0, 5);
+            const breakdownHtml = sortedItems.map(([name, data]) => `<li><strong>${name}:</strong> ${data.qty} sold ($${data.amt.toFixed(2)})</li>`).join('');
+            document.getElementById('insightBreakdown').innerHTML = breakdownHtml || "<li>No sales data yet.</li>";
+
+            // Render Trends
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            let bestDayIndex = 0, maxAmt = -1;
+            for(let i=0; i<7; i++) { if(dayCounts[i] > maxAmt) { maxAmt = dayCounts[i]; bestDayIndex = i; } }
+            const bestDayText = maxAmt > 0 ? days[bestDayIndex] : "Not enough data";
+            
+            let eggText = "No egg sales comparison available.";
+            if(dozenQty > 0 || halfDozenQty > 0) {
+                if(dozenQty > halfDozenQty) eggText = `You sell <strong>${(halfDozenQty>0?(dozenQty/halfDozenQty).toFixed(1):dozenQty)}x more</strong> Dozens than Half Dozens.`;
+                else if (halfDozenQty > dozenQty) eggText = `You sell <strong>${(dozenQty>0?(halfDozenQty/dozenQty).toFixed(1):halfDozenQty)}x more</strong> Half Dozens than Dozens.`;
+                else eggText = "You sell exactly the same amount of Dozens and Half Dozens.";
+            }
+
+            document.getElementById('insightTrends').innerHTML = `<p class="mb-2">📅 <strong>Best Sales Day:</strong> ${bestDayText}</p><p>🥚 <strong>Egg Battle:</strong> ${eggText}</p>`;
+
+            // Render Expenses
+            expenses.forEach(item => {
+                const cat = item.category || "Uncategorized";
+                if(!expBreakdown[cat]) expBreakdown[cat] = 0;
+                expBreakdown[cat] += parseMoney(item.cost);
+            });
+            const sortedExp = Object.entries(expBreakdown).sort((a,b) => b[1] - a[1]).slice(0, 5);
+            const expHtml = sortedExp.map(([name, amt]) => `<li><strong>${name}:</strong> $${amt.toFixed(2)}</li>`).join('');
+            document.getElementById('insightExpenses').innerHTML = expHtml || "<li>No expenses yet.</li>";
+        }
+
+        // --- SHOPPING LIST LOGIC ---
+        function renderShoppingList() {
+            const list = document.getElementById('shoppingListUl');
+            const catSelect = document.getElementById('shopCat');
+
+            // Populate Categories
+            if (catSelect.innerHTML === "") {
+                catSelect.innerHTML = `<option value="">-- Cat --</option>` + CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
+
+            list.innerHTML = "";
+            if (!dataStore.shoppingList) dataStore.shoppingList = [];
+            
+            dataStore.shoppingList.forEach((item, index) => {
+                list.innerHTML += `
+                    <li class="flex flex-wrap justify-between items-center bg-gray-50 dark:bg-gray-700/50 p-2 rounded border dark:border-gray-600 gap-2">
+                        <div class="flex flex-col text-xs">
+                            <span class="font-bold dark:text-gray-200 text-sm">${item.name}</span>
+                            <span class="text-gray-500 dark:text-gray-400">${item.category||'Uncat'} | ${item.weight||'-'} | Qty: ${item.qty||1}</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="font-mono font-bold text-teal-600 dark:text-teal-400">~$${parseFloat(item.est).toFixed(2)}</span>
+                            <div class="flex gap-2">
+                                <button onclick="buyItem(${index})" class="bg-green-600 text-white text-xs font-bold px-2 py-1 rounded hover:bg-green-700 transition active:scale-95">✅ BOUGHT</button>
+                                <button onclick="removeShopItem(${index})" class="text-red-400 hover:text-red-600 font-bold px-2">×</button>
+                            </div>
+                        </div>
+                    </li>`;
+            });
+        }
+
+        function addShoppingItem() {
+            const name = document.getElementById('shopItem').value;
+            const cat = document.getElementById('shopCat').value;
+            const weight = document.getElementById('shopWeight').value;
+            const qty = document.getElementById('shopQty').value;
+            const est = document.getElementById('shopEst').value;
+            
+            if(name) {
+                dataStore.shoppingList.push({ name, category: cat, weight, qty, est: est || 0 });
+                document.getElementById('shopItem').value = "";
+                document.getElementById('shopWeight').value = "";
+                document.getElementById('shopQty').value = "";
+                document.getElementById('shopEst').value = "";
+                renderShoppingList();
+                saveLedger();
+            }
+        }
+
+        function clearShoppingList() {
+            if(dataStore.shoppingList.length === 0) return;
+            if(confirm("Clear the entire shopping list?")) {
+                dataStore.shoppingList = [];
+                renderShoppingList();
+                saveLedger();
+            }
+        }
+
+        function removeShopItem(i) { dataStore.shoppingList.splice(i, 1); renderShoppingList(); saveLedger(); }
+
+        function buyItem(i) {
+            const item = dataStore.shoppingList[i];
+            const actualPrice = prompt(`Confirm actual price for ${item.name}?`, item.est);
+            if (actualPrice !== null) {
+                dataStore.ledger.items.push({ date: item.date || new Date().toISOString().split('T')[0], name: item.name, category: item.category || "Supplies", weight: item.weight || "", qty: item.qty || "1", cost: parseFloat(actualPrice).toFixed(2) });
+                dataStore.shoppingList.splice(i, 1);
+                renderAll(); saveLedger(); showToast("🛍️ Item Bought & Added to Ledger!");
+            }
         }
 
         // --- TAX & LEDGER LOGIC ---
         function renderLedger() {
-            document.getElementById('ledgerMonth').value = dataStore.ledger.month || "";
+            const fullMonth = dataStore.ledger.month || "";
+            const parts = fullMonth.split(" ");
+            if (parts.length >= 2) {
+                document.getElementById('ledgerMonthSelect').value = parts[0];
+                document.getElementById('ledgerYear').value = parts[1];
+            } else {
+                document.getElementById('ledgerMonthSelect').value = "Jan";
+                document.getElementById('ledgerYear').value = "2026";
+            }
+            
             document.getElementById('ledgerNotes').value = dataStore.ledger.notes || "";
+            
+            // Ensure systemIncome exists
+            if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0, kofi: 0, merch: 0 };
+            const sys = dataStore.ledger.systemIncome;
 
             let totalExp = 0;
-            let totalInc = 0;
+            let totalAssets = 0;
 
-            const expList = document.getElementById('expenseList');
-            expList.innerHTML = dataStore.ledger.items.map((item, index) => {
-                totalExp += parseFloat(item.cost) || 0;
+            // RENDER EXPENSES
+            const expBody = document.getElementById('expenseTableBody');
+            expBody.innerHTML = dataStore.ledger.items.map((item, index) => {
+                totalExp += parseMoney(item.cost);
+                let displayCost = item.cost;
+                if (displayCost && !displayCost.toString().includes('$') && !isNaN(parseFloat(displayCost))) displayCost = '$' + parseFloat(displayCost).toFixed(2);
+                
                 return `
-                <div class="flex justify-between items-center bg-white dark:bg-gray-700 dark:border-gray-600 p-2 rounded border text-sm hover:bg-red-50 dark:hover:bg-red-900/50 transition">
-                    <div>
-                        <div class="font-bold text-gray-700 dark:text-gray-200">${item.name}</div>
-                        <div class="text-xs text-gray-400 dark:text-gray-500">${item.qty}</div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-red-600 dark:text-red-400">$${item.cost}</span>
-                        <button onclick="removeExpense(${index})" class="text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 font-bold px-1 transition">×</button>
-                    </div>
-                </div>`;
+                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                    <td class="p-1"><input type="date" value="${item.date||''}" onchange="updateLedgerItem('items', ${index}, 'date', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 text-xs"></td>
+                    <td class="p-1"><input type="text" value="${item.name||''}" onchange="updateLedgerItem('items', ${index}, 'name', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200" placeholder="Item Name"></td>
+                    <td class="p-1">
+                        <select onchange="updateLedgerItem('items', ${index}, 'category', this.value)" class="w-full bg-transparent text-xs border-b border-transparent hover:border-gray-300 focus:border-blue-500 outline-none dark:text-gray-300">
+                            <option value="">-- Select --</option>
+                            ${CATEGORIES.map(c => `<option value="${c}" ${item.category === c ? 'selected' : ''}>${c}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td class="p-1"><input type="text" value="${item.weight||''}" onchange="updateLedgerItem('items', ${index}, 'weight', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 text-center" placeholder="--"></td>
+                    <td class="p-1"><input type="text" value="${item.qty||''}" onchange="updateLedgerItem('items', ${index}, 'qty', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 text-center" placeholder="1"></td>
+                    <td class="p-1"><input type="text" value="${displayCost||''}" onchange="updateLedgerItem('items', ${index}, 'cost', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 font-mono text-right" placeholder="$0.00"></td>
+                    <td class="p-1 text-center"><button onclick="removeLedgerItem('items', ${index})" class="text-gray-400 hover:text-red-500 font-bold">×</button></td>
+                </tr>`;
             }).join('');
 
-            const incList = document.getElementById('incomeList');
-            incList.innerHTML = dataStore.ledger.income.map((item, index) => {
-                totalInc += parseFloat(item.amount) || 0;
+            // RENDER INCOME (System Rows + Manual Rows)
+            let totalManualInc = 0;
+            const incBody = document.getElementById('incomeTableBody');
+            
+            const manualRowsHtml = dataStore.ledger.income.map((item, index) => {
+                if (item.unitPrice === undefined) {
+                    item.unitPrice = item.amount;
+                    item.qty = 1;
+                    if (item.detail) { item.source += ` - ${item.detail}`; delete item.detail; }
+                }
+                
+                // Ensure total is calculated
+                item.amount = ((parseFloat(item.unitPrice) || 0) * (parseFloat(item.qty) || 0)).toFixed(2);
+                totalManualInc += parseFloat(item.amount) || 0;
+
                 return `
-                <div class="flex justify-between items-center bg-white dark:bg-gray-700 dark:border-gray-600 p-2 rounded border text-sm hover:bg-green-50 dark:hover:bg-green-900/50 transition">
-                    <div>
-                        <div class="font-bold text-gray-700 dark:text-gray-200">${item.source}</div>
-                        <div class="text-xs text-gray-400 dark:text-gray-500">${item.detail}</div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-green-600 dark:text-green-400">$${item.amount}</span>
-                        <button onclick="removeIncome(${index})" class="text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 font-bold px-1 transition">×</button>
-                    </div>
-                </div>`;
+                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                    <td class="p-1"><input type="date" value="${item.date||''}" onchange="updateLedgerItem('income', ${index}, 'date', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 text-xs"></td>
+                    <td class="p-1"><input type="text" value="${item.source||''}" onchange="updateLedgerItem('income', ${index}, 'source', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200" placeholder="Source"></td>
+                    <td class="p-1"><input type="number" value="${item.unitPrice||''}" onchange="updateLedgerItem('income', ${index}, 'unitPrice', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 font-mono text-right" placeholder="0.00"></td>
+                    <td class="p-1"><input type="number" value="${item.qty||''}" onchange="updateLedgerItem('income', ${index}, 'qty', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 font-mono text-center" placeholder="1"></td>
+                    <td class="p-1"><input type="text" id="incTotal-${index}" value="$${item.amount}" readonly class="w-full bg-transparent outline-none dark:text-gray-400 font-mono text-right font-bold text-green-600 cursor-default" tabindex="-1"></td>
+                    <td class="p-1 text-center"><button onclick="removeLedgerItem('income', ${index})" class="text-gray-400 hover:text-red-500 font-bold">×</button></td>
+                </tr>`;
             }).join('');
+
+            let displayDonations = sys.donations;
+            if (displayDonations && !displayDonations.toString().includes('$') && !isNaN(parseFloat(displayDonations))) displayDonations = '$' + parseFloat(displayDonations).toFixed(2);
+
+            // 2. RENDER THE "SYSTEM ROWS"
+            const systemRows = `
+                <tr class="bg-purple-50 dark:bg-purple-900/20 border-b-2 border-purple-200 dark:border-purple-800">
+                    <td class="p-1"></td>
+                    <td class="p-1 pl-2 font-bold text-purple-800 dark:text-purple-300">❤️ Donations / Tips</td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1"><input type="text" value="${displayDonations}" onchange="updateSystemDonation(this.value)" class="w-full bg-transparent outline-none font-mono text-right font-bold text-purple-600 dark:text-purple-300" placeholder="$0.00"></td>
+                    <td class="p-1"></td>
+                </tr>
+                <tr class="bg-blue-50 dark:bg-blue-900/20 border-b border-blue-100 dark:border-blue-800">
+                    <td class="p-1"></td>
+                    <td class="p-1 pl-2 font-bold text-blue-800 dark:text-blue-300">🏆 Total Ko-fi Income <span class="cursor-help" title="This row is READ-ONLY. It automatically pulls the total from your Goal Cards below.">❓</span></td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1 text-right font-mono font-bold text-blue-600 dark:text-blue-300">$${(parseFloat(sys.kofi)||0).toFixed(2)}</td>
+                    <td class="p-1"></td>
+                </tr>
+                <tr class="bg-yellow-50 dark:bg-yellow-900/20 border-b-4 border-double border-gray-300 dark:border-gray-600">
+                    <td class="p-1"></td>
+                    <td class="p-1 pl-2 font-bold text-yellow-800 dark:text-yellow-300">👕 Total Merch Income <span class="cursor-help" title="This row is READ-ONLY. It automatically pulls the total from your Goal Cards below.">❓</span></td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1 text-center text-gray-400">-</td>
+                    <td class="p-1 text-right font-mono font-bold text-yellow-600 dark:text-yellow-300">$${(parseFloat(sys.merch)||0).toFixed(2)}</td>
+                    <td class="p-1"></td>
+                </tr>
+            `;
+            incBody.innerHTML = systemRows + manualRowsHtml;
+
+            // RENDER ASSETS
+            const assetBody = document.getElementById('assetTableBody');
+            if (!dataStore.ledger.assets) dataStore.ledger.assets = [];
+            assetBody.innerHTML = dataStore.ledger.assets.map((item, index) => {
+                totalAssets += parseFloat(item.value) || 0;
+                return `
+                <tr class="bg-white dark:bg-gray-800 hover:bg-amber-50 dark:hover:bg-amber-900/20 transition">
+                    <td class="p-1"><input type="text" value="${item.name||''}" onchange="updateLedgerItem('assets', ${index}, 'name', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200" placeholder="Asset Name"></td>
+                    <td class="p-1"><input type="text" value="${item.notes||''}" onchange="updateLedgerItem('assets', ${index}, 'notes', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200" placeholder="Notes"></td>
+                    <td class="p-1"><input type="number" value="${item.value||''}" onchange="updateLedgerItem('assets', ${index}, 'value', this.value)" class="w-full border-b border-transparent hover:border-gray-300 focus:border-blue-500 bg-transparent outline-none dark:text-gray-200 font-mono text-right" placeholder="0.00"></td>
+                    <td class="p-1 text-center"><button onclick="removeLedgerItem('assets', ${index})" class="text-gray-400 hover:text-red-500 font-bold">×</button></td>
+                </tr>`;
+            }).join('');
+
+            // 3. ENSURE NO DOUBLE COUNTING & CALCULATE NET PROFIT
+            // Total Income = Manual Rows + System Income
+            const totalSystemIncome = parseMoney(sys.donations) + (parseFloat(sys.kofi)||0) + (parseFloat(sys.merch)||0);
+            const grandTotalInc = totalManualInc + totalSystemIncome;
 
             document.getElementById('dispExpense').innerText = `$${totalExp.toFixed(2)}`;
-            document.getElementById('dispIncome').innerText = `$${totalInc.toFixed(2)}`;
+            document.getElementById('dispIncome').innerText = `$${grandTotalInc.toFixed(2)}`;
+            document.getElementById('dispAssets').innerText = `$${totalAssets.toFixed(2)}`;
+            document.getElementById('footerExpTotal').innerText = `$${totalExp.toFixed(2)}`;
+            document.getElementById('footerIncTotal').innerText = `$${totalManualInc.toFixed(2)}`; // Footer shows manual total only
 
-            const profit = totalInc - totalExp;
+            const profit = grandTotalInc - totalExp;
             let tax = 0;
             if (profit > 0) {
                 tax = profit * 0.30;
@@ -269,8 +717,9 @@
         function downloadCSV() {
             const month = dataStore.ledger.month || "Unknown_Month";
             let csv = "Date/Month,Type,Category/Item,Details/Qty,Amount\n";
-            dataStore.ledger.items.forEach(item => { csv += `${month},EXPENSE,${item.name},${item.qty},-${item.cost}\n`; });
-            dataStore.ledger.income.forEach(item => { csv += `${month},INCOME,${item.source},${item.detail},${item.amount}\n`; });
+            dataStore.ledger.items.forEach(item => { csv += `${item.date || month},EXPENSE,${item.category || 'Uncat'} - ${item.name},${item.qty} (${item.weight||''}),-${item.cost}\n`; });
+            dataStore.ledger.income.forEach(item => { csv += `${item.date || month},INCOME,${item.source},${item.qty} @ ${item.unitPrice},${item.amount}\n`; });
+            dataStore.ledger.assets.forEach(item => { csv += `${month},ASSET,${item.name},${item.notes},${item.value}\n`; });
 
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
@@ -283,56 +732,149 @@
             document.body.removeChild(a);
         }
 
-        function addExpense() {
-            const name = document.getElementById('expName').value;
-            const qty = document.getElementById('expQty').value;
-            const cost = parseFloat(document.getElementById('expCost').value);
-            if(name && cost) {
-                dataStore.ledger.items.push({ name, qty, cost });
-                document.getElementById('expName').value = "";
-                document.getElementById('expCost').value = "";
-                document.getElementById('expQty').value = "";
-                renderLedger();
+        function addExpenseRow() { dataStore.ledger.items.push({ date: new Date().toISOString().split('T')[0], name: "", category: "", weight: "", qty: "", cost: "" }); renderLedger(); saveLedger(); }
+        function addIncomeRow() { dataStore.ledger.income.push({ date: new Date().toISOString().split('T')[0], source: "", unitPrice: "", qty: "", amount: "0.00" }); renderLedger(); saveLedger(); }
+        function addAssetRow() { dataStore.ledger.assets.push({ name: "", notes: "", value: "" }); renderLedger(); saveLedger(); }
+
+        function updateLedgerItem(type, index, field, value) {
+            dataStore.ledger[type][index][field] = value;
+            
+            // Auto-calc for Income
+            if (type === 'income' && (field === 'unitPrice' || field === 'qty')) {
+                const item = dataStore.ledger.income[index];
+                const total = (parseFloat(item.unitPrice) || 0) * (parseFloat(item.qty) || 0);
+                item.amount = total.toFixed(2);
+                const totalInput = document.getElementById(`incTotal-${index}`);
+                if(totalInput) totalInput.value = '$' + item.amount;
+            }
+            
+            updateTotalsDisplay();
+            saveLedger();
+        }
+        
+        function updateTotalsDisplay() {
+            // Recalculate everything for the top widgets
+            syncFeedGoal(); // Keep goal synced in background
+            renderInsights();
+            let totalExp = 0; dataStore.ledger.items.forEach(i => totalExp += parseMoney(i.cost));
+            let totalManualInc = 0; dataStore.ledger.income.forEach(i => totalManualInc += parseFloat(i.amount) || 0);
+            
+            const sys = dataStore.ledger.systemIncome || { donations: 0, kofi: 0, merch: 0 };
+            const totalSystemIncome = parseMoney(sys.donations) + (parseFloat(sys.kofi)||0) + (parseFloat(sys.merch)||0);
+            
+            const grandTotalInc = totalManualInc + totalSystemIncome;
+
+            let totalAssets = 0; dataStore.ledger.assets.forEach(i => totalAssets += parseFloat(i.value) || 0);
+            
+            document.getElementById('dispExpense').innerText = `$${totalExp.toFixed(2)}`;
+            document.getElementById('dispIncome').innerText = `$${grandTotalInc.toFixed(2)}`;
+            document.getElementById('dispAssets').innerText = `$${totalAssets.toFixed(2)}`;
+            document.getElementById('footerExpTotal').innerText = `$${totalExp.toFixed(2)}`;
+            document.getElementById('footerIncTotal').innerText = `$${totalManualInc.toFixed(2)}`;
+            
+            const profit = grandTotalInc - totalExp;
+            const tax = profit > 0 ? profit * 0.30 : 0;
+            const taxEl = document.getElementById('dispTax');
+            taxEl.innerText = `$${tax.toFixed(2)}`;
+            taxEl.className = profit > 0 ? "text-lg font-bold text-red-600 leading-none" : "text-lg font-bold text-green-600 leading-none";
+
+            const profitEl = document.getElementById('dispProfit');
+            if(profitEl) {
+                const formattedProfit = profit < 0 ? `-$${Math.abs(profit).toFixed(2)}` : `$${profit.toFixed(2)}`;
+                profitEl.innerText = formattedProfit;
+                profitEl.className = profit < 0 ? "text-lg font-bold text-red-600 leading-none" : "text-lg font-bold text-green-600 leading-none";
             }
         }
 
-        function addIncome() {
-            const source = document.getElementById('incSource').value;
-            const detail = document.getElementById('incDetail').value;
-            const amount = parseFloat(document.getElementById('incAmount').value);
-            if(source && amount) {
-                dataStore.ledger.income.push({ source, detail, amount });
-                document.getElementById('incSource').value = "";
-                document.getElementById('incAmount').value = "";
-                document.getElementById('incDetail').value = "";
-                renderLedger();
+        function clearMonth() {
+            if(confirm("⚠️ ARE YOU SURE?\n\nThis will DELETE all Expenses and Income to start a fresh month.\n\n(Farmstand Sales will be aggregated into summaries).")) {
+                
+                // 1. AGGREGATE FARMSTAND SALES
+                let summaries = {};
+                
+                dataStore.ledger.income.forEach(item => {
+                    // Identify Farmstand rows (Source format: "Farmstand: ItemName")
+                    if (item.source && item.source.startsWith("Farmstand:")) {
+                        const name = item.source.replace("Farmstand:", "").trim();
+                        const qty = parseFloat(item.qty) || 0;
+                        const amt = parseFloat(item.amount) || 0;
+
+                        if (!summaries[name]) summaries[name] = { qty: 0, amount: 0 };
+                        summaries[name].qty += qty;
+                        summaries[name].amount += amt;
+                    }
+                });
+
+                // 2. CLEAR AND REBUILD INCOME
+                dataStore.ledger.income = [];
+                
+                for (const [name, data] of Object.entries(summaries)) {
+                    dataStore.ledger.income.push({
+                        source: "Monthly Summary",
+                        detail: `${name} (Total Qty: ${data.qty})`,
+                        amount: data.amount.toFixed(2)
+                        // unitPrice/qty undefined here -> triggers renderLedger migration logic to format display
+                    });
+                }
+
+                // 3. FINISH CLEARING
+                dataStore.ledger.items = [];
+                saveLedger();
+                renderAll();
             }
         }
 
-        function removeExpense(i) { dataStore.ledger.items.splice(i, 1); renderLedger(); }
-        function removeIncome(i) { dataStore.ledger.income.splice(i, 1); renderLedger(); }
+        function addDonation() {
+            const amtInput = document.getElementById('quickDonationAmount');
+            const amount = parseFloat(amtInput.value);
+            if (amount) {
+                if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0 };
+                const current = parseFloat(dataStore.ledger.systemIncome.donations) || 0;
+                dataStore.ledger.systemIncome.donations = (current + amount).toFixed(2);
+                
+                amtInput.value = "";
+                renderLedger();
+                saveLedger();
+                showToast("❤️ Donation Added!");
+            }
+        }
+
+        function addRefund() {
+            const amtInput = document.getElementById('quickRefundAmount');
+            const amount = parseFloat(amtInput.value);
+            if (amount) {
+                if (!dataStore.ledger.systemIncome) dataStore.ledger.systemIncome = { donations: 0 };
+                const current = parseFloat(dataStore.ledger.systemIncome.donations) || 0;
+                dataStore.ledger.systemIncome.donations = (current - amount).toFixed(2);
+                
+                amtInput.value = "";
+                renderLedger();
+                saveLedger();
+                showToast("💸 Refund Processed!");
+            }
+        }
+
+        function removeLedgerItem(type, index) {
+            if(confirm("Delete this row?")) {
+                dataStore.ledger[type].splice(index, 1);
+                renderLedger();
+                saveLedger();
+            }
+        }
 
         // --- LEDGER SAVE & SYNC ---
         async function saveLedger() {
-            dataStore.ledger.month = document.getElementById('ledgerMonth').value;
+            const m = document.getElementById('ledgerMonthSelect').value;
+            const y = document.getElementById('ledgerYear').value;
+            dataStore.ledger.month = `${m} ${y}`;
             dataStore.ledger.notes = document.getElementById('ledgerNotes').value;
 
             // SYNC LOGIC
-            let totalExp = 0; dataStore.ledger.items.forEach(i => totalExp += parseFloat(i.cost) || 0);
-            let totalInc = 0; dataStore.ledger.income.forEach(i => totalInc += parseFloat(i.amount) || 0);
-
-            // FORCE INDEX 1 (Feed Goal) TO UPDATE
-            if (dataStore.goals.length > 1) {
-                const feedGoal = dataStore.goals[1];
-                feedGoal.target = totalExp;
-                if(!feedGoal.breakdown) feedGoal.breakdown = { kofi: 0, cash: 0, merch: 0 };
-                feedGoal.breakdown.cash = totalInc;
-                feedGoal.current = (feedGoal.breakdown.kofi||0) + (feedGoal.breakdown.cash||0) + (feedGoal.breakdown.merch||0);
-            }
+            syncFeedGoal(); 
 
             await fetch(API_URL, { method: 'POST', body: JSON.stringify(dataStore) });
             renderGoals();
-            alert("Ledger Saved & Monthly Feed Goal Synced!");
+            showToast("☁️ Ledger Saved!");
         }
 
         // --- GOALS WITH PROTECTED LOGIC ---
@@ -344,10 +886,13 @@
             dataStore.goals.forEach((goal, index) => {
                 if (!goal.breakdown) goal.breakdown = { kofi: 0, cash: goal.current || 0, merch: 0 };
                 const current = goal.current || 0;
+                const totalCollected = (goal.breakdown.kofi||0) + (goal.breakdown.cash||0) + (goal.breakdown.merch||0);
                 
                 // --- SPECIAL LOGIC FOR GOAL 0 AND 1 ---
                 let deleteBtn = `<button onclick="deleteGoal(${index})" class="text-red-400 text-xs font-bold hover:text-red-600 dark:hover:text-red-300 transition">DELETE GOAL</button>`;
+                let resetBtn = `<button onclick="resetGoal(${index})" class="text-orange-400 text-xs font-bold hover:text-orange-600 dark:hover:text-orange-300 transition">RESET</button>`;
                 let badge = "";
+                let warningText = "";
 
                 if (index === 0) {
                     badge = `<span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded border border-blue-200 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-700">🏆 PRIMARY / KO-FI GOAL (Protected)</span>`;
@@ -355,6 +900,7 @@
                 } else if (index === 1) {
                     badge = `<span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded border border-green-200 dark:bg-green-900 dark:text-green-200 dark:border-green-700">🚜 MONTHLY FEED (Synced to Ledger)</span>`;
                     deleteBtn = ""; // Cannot delete feed goal
+                    warningText = `<div class="text-[10px] text-red-600 font-bold mb-2 border border-red-200 bg-red-50 p-1 rounded">⚠️ DO NOT MANUALLY UPDATE CASH HERE. This goal automatically fills up as you add Sales & Donations in the Ledger above.</div>`;
                 }
                 // ----------------------------------------
 
@@ -365,6 +911,7 @@
                 list.innerHTML += `
                     <div class="border dark:border-gray-700 p-4 rounded bg-gray-50 dark:bg-gray-700/50 relative transition hover:shadow-md">
                         <div class="mb-2">${badge}</div>
+                        ${warningText}
                         <div class="flex justify-between items-center mb-3">
                             <input type="text" value="${goal.name}" onchange="updateGoalProp(${index}, 'name', this.value)" class="font-bold text-lg text-gray-800 dark:text-gray-200 bg-transparent border-b border-transparent hover:border-gray-300 focus:border-blue-500 outline-none w-1/2">
                             
@@ -379,15 +926,22 @@
 
                         <div class="grid grid-cols-3 gap-2 mb-3">
                             <div><label class="text-[10px] uppercase font-bold text-blue-500 dark:text-blue-400">Ko-fi</label><input type="number" value="${goal.breakdown.kofi}" onchange="updateBreakdown(${index}, 'kofi', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm"></div>
-                            <div><label class="text-[10px] uppercase font-bold text-green-600 dark:text-green-400">Cash</label><input type="number" value="${goal.breakdown.cash}" onchange="updateBreakdown(${index}, 'cash', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm ${isFeedGoal ? 'opacity-50' : ''}" ${isFeedGoal ? 'readonly' : ''}></div>
+                            <div><label class="text-[10px] uppercase font-bold text-green-600 dark:text-green-400">Cash</label><input type="number" value="${goal.breakdown.cash}" onchange="updateBreakdown(${index}, 'cash', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm ${isFeedGoal ? 'opacity-50 cursor-not-allowed' : ''}" ${isFeedGoal ? 'readonly' : ''}></div>
                             <div><label class="text-[10px] uppercase font-bold text-yellow-600 dark:text-yellow-400">Merch</label><input type="number" value="${goal.breakdown.merch}" onchange="updateBreakdown(${index}, 'merch', this.value)" class="w-full border dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200 p-1 rounded font-mono text-sm"></div>
                         </div>
-                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 mb-2 overflow-hidden flex shadow-inner">
-                            <div class="bg-blue-400 h-full" style="width: ${(goal.breakdown.kofi/goal.target)*100}%"></div>
-                            <div class="bg-green-500 h-full" style="width: ${(goal.breakdown.cash/goal.target)*100}%"></div>
-                            <div class="bg-yellow-400 h-full" style="width: ${(goal.breakdown.merch/goal.target)*100}%"></div>
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="font-bold dark:text-gray-300">Progress</span>
+                            <span class="font-bold text-green-600 dark:text-green-400">Total Collected: $${totalCollected.toFixed(2)}</span>
                         </div>
-                        ${deleteBtn}
+                        <div class="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2.5 mb-2 overflow-hidden flex shadow-inner">
+                            <div class="bg-blue-400 h-full" style="width: ${Math.min(100, (goal.breakdown.kofi/goal.target)*100)}%"></div>
+                            <div class="bg-green-500 h-full" style="width: ${Math.min(100, (goal.breakdown.cash/goal.target)*100)}%"></div>
+                            <div class="bg-yellow-400 h-full" style="width: ${Math.min(100, (goal.breakdown.merch/goal.target)*100)}%"></div>
+                        </div>
+                        <div class="flex justify-end gap-3 mt-2">
+                            ${resetBtn}
+                            ${deleteBtn}
+                        </div>
                     </div>`;
             });
         }
@@ -407,12 +961,42 @@
             dataStore.goals[i].breakdown[t] = parseFloat(v) || 0;
             dataStore.goals[i].current = (dataStore.goals[i].breakdown.kofi || 0) + (dataStore.goals[i].breakdown.cash || 0) + (dataStore.goals[i].breakdown.merch || 0);
             renderGoals();
+            renderLedger();
+            updateTotalsDisplay();
             await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+            showToast("💾 Goal Updated!");
         }
         async function updateGoalProp(i, prop, val) {
             if (prop === 'target') dataStore.goals[i].target = parseFloat(val) || 0;
             if (prop === 'name') dataStore.goals[i].name = val;
             await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+        }
+        async function resetGoal(i) {
+            // Special handling for Feed Goal (Index 1)
+            if (i === 1) {
+                if(!confirm("⚠️ RESET FEED GOAL?\n\nThis goal is synced to your Ledger Income.\nTo reset the Cash amount to $0, we must DELETE ALL INCOME ROWS from the Ledger.\n\nAre you sure you want to delete all Income?")) return;
+                
+                dataStore.ledger.income = []; // Clear income to reset cash
+                dataStore.goals[i].breakdown = { kofi: 0, cash: 0, merch: 0 };
+                dataStore.goals[i].current = 0;
+                
+                renderGoals();
+                renderLedger();
+                updateTotalsDisplay();
+                await fetch(API_URL, { method: 'POST', body: JSON.stringify(dataStore) }); // Save everything
+                showToast("🔄 Feed Goal & Ledger Reset!");
+                return;
+            }
+
+            if(confirm("Reset this goal's progress to zero?")) {
+                dataStore.goals[i].breakdown = { kofi: 0, cash: 0, merch: 0 };
+                dataStore.goals[i].current = 0;
+                renderGoals();
+                renderLedger();
+                updateTotalsDisplay();
+                await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) });
+                showToast("🔄 Goal Reset!");
+            }
         }
         async function deleteGoal(i) {
             if(confirm("Delete?")) { dataStore.goals.splice(i, 1); renderGoals(); await fetch(API_URL, { method: 'POST', body: JSON.stringify({ goals: dataStore.goals }) }); }
@@ -421,15 +1005,16 @@
         // --- EGGS & INVENTORY (Standard) ---
         function renderEggs() {
             const btn = document.getElementById('eggBtn');
-            const card = document.getElementById('eggCard');
+            const header = document.getElementById('eggHeader');
+
             if (dataStore.eggs === "In Stock") {
                 btn.textContent = "✅ EGGS IN STOCK";
                 btn.className = "w-full py-4 text-2xl font-bold rounded text-white shadow-md bg-green-600 hover:bg-green-700 transition active:scale-95";
-                card.classList.replace('border-red-500', 'border-green-500') || card.classList.add('border-green-500');
+                header.className = "bg-green-600 p-3 text-white font-bold transition-colors duration-300";
             } else {
                 btn.textContent = "❌ SOLD OUT";
                 btn.className = "w-full py-4 text-2xl font-bold rounded text-white shadow-md bg-red-600 hover:bg-red-700 transition active:scale-95";
-                card.classList.replace('border-green-500', 'border-red-500') || card.classList.add('border-red-500');
+                header.className = "bg-red-600 p-3 text-white font-bold transition-colors duration-300";
             }
         }
         async function toggleEggs() {
@@ -448,23 +1033,67 @@
             if (!Array.isArray(dataStore.inventory)) dataStore.inventory = [];
             dataStore.inventory.forEach((item, index) => {
                 const rowClass = item.active === false ? "opacity-50 bg-gray-100 dark:bg-gray-700" : "bg-white dark:bg-gray-800";
+                let displayPrice = item.price;
+                if (displayPrice && !displayPrice.includes('$') && !isNaN(parseFloat(displayPrice))) displayPrice = '$' + parseFloat(displayPrice).toFixed(2);
                 tbody.innerHTML += `
                     <tr class="${rowClass} border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition">
                         <td class="p-2 font-medium dark:text-gray-200">${item.name}</td>
                         <td class="p-2"><input type="text" value="${item.qty||''}" onchange="updateInv(${index},'qty',this.value)" class="w-full border rounded p-1 text-center font-bold text-blue-600 dark:bg-gray-600 dark:border-gray-500 dark:text-blue-300"></td>
-                        <td class="p-2"><input type="text" value="${item.price}" onchange="updateInv(${index},'price',this.value)" class="w-full border rounded p-1 text-right dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200"></td>
+                        <td class="p-2"><input type="text" value="${displayPrice}" onchange="updateInv(${index},'price',this.value)" class="w-full border rounded p-1 text-right dark:bg-gray-600 dark:border-gray-500 dark:text-gray-200"></td>
                         <td class="p-2 text-center"><input type="checkbox" ${item.active!==false?'checked':''} onchange="updateInv(${index},'active',this.checked)" class="w-5 h-5 accent-green-600"></td>
-                        <td class="p-2 text-right"><button onclick="removeInv(${index})" class="text-red-400 hover:text-red-500 font-bold px-2 transition">X</button></td>
+                        <td class="p-2 text-right flex gap-2 justify-end">
+                            <button onclick="quickSell(${index})" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold px-2 py-1 rounded shadow transition active:scale-95">💲 SELL</button>
+                            <button onclick="removeInv(${index})" class="text-red-400 hover:text-red-500 font-bold px-2 transition">X</button>
+                        </td>
                     </tr>`;
             });
         }
+        
+        function quickSell(index) {
+            const item = dataStore.inventory[index];
+            const qtyToSell = prompt(`Sell how many ${item.name}?`, "1");
+            if (qtyToSell && !isNaN(qtyToSell)) {
+                const qty = parseFloat(qtyToSell);
+                const price = parseFloat(item.price.replace('$','')) || 0;
+                
+                // Update Inventory
+                const currentQty = parseFloat(item.qty);
+                if (!isNaN(currentQty)) {
+                    item.qty = (currentQty - qty).toString();
+                } else {
+                    item.qty = `${item.qty} - ${qty} SOLD`;
+                }
+                
+                // Add to Income
+                const total = price * qty;
+                dataStore.ledger.income.push({
+                    date: new Date().toISOString().split('T')[0],
+                    source: "Farmstand: " + item.name,
+                    unitPrice: price.toFixed(2),
+                    qty: qty,
+                    amount: total.toFixed(2)
+                });
+                
+                renderInventory();
+                renderLedger();
+                saveInventory();
+                saveLedger();
+                showToast(`Sold ${qty} ${item.name}!`);
+            }
+        }
+        
         function addInventory() {
             const name=document.getElementById('invName').value, price=document.getElementById('invPrice').value, qty=document.getElementById('invQty').value;
-            if(name && price) { dataStore.inventory.push({ name, price, qty, active: true }); renderInventory(); document.getElementById('invName').value=""; }
+            if(name && price) { 
+                dataStore.inventory.push({ name, price, qty, active: true }); 
+                renderInventory(); 
+                document.getElementById('invName').value=""; 
+                saveInventory();
+            }
         }
-        function updateInv(i, f, v) { dataStore.inventory[i][f] = v; renderInventory(); }
-        function removeInv(i) { dataStore.inventory.splice(i, 1); renderInventory(); }
-        async function saveInventory() { await fetch(API_URL, { method: 'POST', body: JSON.stringify({ inventory: dataStore.inventory }) }); alert("Inventory Saved!"); }
+        function updateInv(i, f, v) { dataStore.inventory[i][f] = v; renderInventory(); saveInventory(); }
+        function removeInv(i) { dataStore.inventory.splice(i, 1); renderInventory(); saveInventory(); }
+        async function saveInventory() { await fetch(API_URL, { method: 'POST', body: JSON.stringify({ inventory: dataStore.inventory }) }); showToast("☁️ Inventory Saved!"); }
     </script>
 </body>
 </html>
