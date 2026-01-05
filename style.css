@@ -2,12 +2,13 @@
 
 /* 1. Base Settings */
 body {
-    /* Warm, earthy background (Parchment/Eggshell) */
-    background-color: #FEF9E7; 
-    color: #3E2723; /* Dark Wood text color */
+    /* These are now handled by Tailwind CSS classes directly on the <body> tag in HTML. */
+    /* background-color: #FEF9E7;  */
+    /* color: #3E2723; */
     
     /* Subtle Pattern (Recycled Paper Look) */
-    background-image: radial-gradient(#8D6E63 0.5px, transparent 0.5px);
+    /* Removed background-image to brighten light mode */
+    /* background-image: radial-gradient(#8D6E63 0.5px, transparent 0.5px); */
     background-size: 20px 20px;
     
     -webkit-text-size-adjust: 100%; 
@@ -119,6 +120,17 @@ body.dyslexia-mode {
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .footer-button { /* Dark mode styles for footer-button */
+    background-color: #3E2723; /* Darker background */
+    color: #FACC15; /* Accent color text */
+    border-color: #5D4037; /* Darker border */
+}
+
+.dark .footer-button:hover {
+    background-color: #5D4037; /* Darker hover background */
+    color: #FFFFFF; /* White hover text */
 }
 
 .z-navbar {
