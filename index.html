@@ -409,26 +409,26 @@
             badge.innerText = "SOLD OUT";
             badge.className = "absolute top-0 right-0 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
 
-            statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-900/20 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+            statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-500/80 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
             statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
             statusText.innerText = "SOLD OUT";
             statusIcon.innerText = "❌";
 
-            card.classList.remove('border-green-400');
-            card.classList.add('border-red-400');
+            card.classList.remove('border-green-400', 'dark:border-green-400');
+            card.classList.add('border-red-400', 'dark:border-red-400');
 
         } else {
             // GREEN MODE
             badge.innerText = "FRESH EGGS";
-            badge.className = "absolute top-0 right-0 bg-green-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
+            badge.className = "absolute top-0 right-0 bg-green-400 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
 
-            statusBox.className = "py-1 px-3 rounded-full border border-green-500 bg-green-900/20 text-green-200 flex items-center justify-center gap-2 shadow-inner w-fit";
+            statusBox.className = "py-1 px-3 rounded-full border border-green-300 bg-green-500/80 text-white flex items-center justify-center gap-2 shadow-inner w-fit";
             statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
             statusText.innerText = "EGGS IN STOCK";
             statusIcon.innerText = "🥚";
 
-            card.classList.remove('border-red-400');
-            card.classList.add('border-green-400');
+            card.classList.remove('border-red-400', 'dark:border-red-400');
+            card.classList.add('border-green-400', 'dark:border-green-400');
         }
     }
 
