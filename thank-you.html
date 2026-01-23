@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! | The Flocking Reeds Farm</title>
+    <meta name="description" content="Thank you for supporting our family homestead. Your contribution helps us buy feed, build coops, and care for the flock.">
+    
+    <link rel="icon" href="images/logo.png" type="image/png">
+    
+    <script>
+      // Prevents FOUC (flash of unstyled content) in dark mode
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body data-page="thank-you" class="font-body transition-colors duration-300 bg-farm-light-green text-[#3E2723] dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
+
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 flex-grow max-w-4xl">
+        
+        <header class="text-center mb-12">
+            <h1 class="font-handwritten text-5xl font-bold text-green-600 mb-4 dark:text-green-400">Thank You!</h1>
+            <p class="text-xl text-[#5D4037] max-w-2xl mx-auto dark:text-gray-300">
+                From our family to yours, we are so grateful for your support. It means the world to us.
+            </p>
+        </header>
+
+        <section class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl border-4 border-yellow-400 dark:border-yellow-600 mb-12">
+            <h2 class="font-handwritten text-3xl text-center text-[#3E2723] dark:text-yellow-300 mb-4">You're Fueling the Farm</h2>
+            <p class="text-gray-700 dark:text-gray-300 text-center max-w-xl mx-auto">
+                Every contribution, whether it's subscribing to the monthly feed or donating one-time to a project, directly helps us buy feed, build stronger coops, and provide the best care for our animals. You're a part of our story!
+            </p>
+        </section>
+
+        <!-- YouTube CTA -->
+        <section class="text-center bg-red-50 p-10 rounded-3xl border-2 border-red-100 dark:bg-red-900/20 dark:border-red-800">
+            <h2 class="font-handwritten text-4xl font-bold text-red-700 mb-4 dark:text-red-400">See Your Impact!</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto dark:text-gray-300">
+                The best way to see what your support accomplishes is to watch us in action. Come see the latest chaos on the farm!
+            </p>
+            <a href="https://www.youtube.com/@sammiessimpleliving" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-4 px-10 rounded-full shadow-xl transform transition hover:scale-105 border-b-4 border-red-800">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                Watch on YouTube
+            </a>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.26.2/pocketbase.umd.min.js"></script>
+    <script src="layout.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Confetti Animation on Load
+        window.addEventListener('load', () => {
+            var duration = 3 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function random(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              var particleCount = 50 * (timeLeft / duration);
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaContainer = document.getElementById('member-cta');
+            if (!ctaContainer) return;
+
+            const isLoggedIn = window.pb.authStore.isValid;
+
+            if (isLoggedIn) {
+                ctaContainer.innerHTML = `
+                    <h2 class="font-handwritten text-3xl font-bold text-blue-800 dark:text-blue-300 mb-4">Track Your Flock!</h2>
+                    <p class="text-lg text-gray-700 mb-6 max-w-xl mx-auto dark:text-gray-300">
+                        Since you're already a member, you can head straight to your dashboard to manage your profile and contributions.
+                    </p>
+                    <a href="dashboard.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                        Go to My Dashboard
+                    </a>
+                `;
+            } else {
+                ctaContainer.innerHTML = `
+                    <h2 class="font-handwritten text-3xl font-bold text-blue-800 dark:text-blue-300 mb-4">Become a Farm Member!</h2>
+                    <p class="text-lg text-gray-700 mb-6 max-w-xl mx-auto dark:text-gray-300">
+                        Create a free account to manage your support and personalize your experience.
+                    </p>
+                    <a href="login.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition transform hover:scale-105">
+                        Join or Login
+                    </a>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roost | The Flocking Reeds</title>
+    <meta name="description" content="Daily updates, uncensored farm life, and exclusive content for the flock.">
+
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+    <script>
+      // Prevents FOUC (flash of unstyled content) in dark mode
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="theroost" class="font-body transition-colors duration-300 bg-farm-light-green text-[#3E2723] dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
+
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content" class="container mx-auto px-4 py-12 flex-grow">
+        <div class="flex flex-col md:flex-row gap-8 lg:gap-12">
+            <!-- Sticky Sidebar -->
+            <aside id="timeline-sidebar" class="md:w-1/4 md:sticky top-24 self-start hidden md:block">
+                <h3 class="font-handwritten text-2xl font-bold text-[#2E4A35] dark:text-green-400 mb-4">Timeline</h3>
+                <nav id="timeline-nav" class="space-y-2">
+                    <!-- Timeline links will be injected here -->
+                </nav>
+            </aside>
+    
+            <!-- Main Content -->
+            <div id="posts-wrapper" class="flex-1">
+                <header class="text-center mb-12">
+                     <h1 class="font-handwritten text-5xl font-bold text-[#2E4A35] mb-4 dark:text-green-400">The Roost</h1>
+                    <p class="text-xl text-[#5D4037] max-w-2xl mx-auto dark:text-gray-300">
+                        Daily updates, uncensored farm life, and exclusive content for the flock.
+                    </p>
+                </header>
+                
+                <!-- Hero Section (Latest Post) -->
+                <div id="hero-post-container" class="mb-12"></div>
+
+                <!-- Grid Section (Past Posts) -->
+                <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+
+                <!-- Loading State -->
+                <div id="loading-indicator" class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-green-600"></div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400 font-handwritten text-xl">Fetching the latest gossip from the coop...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Read More Modal -->
+    <div id="readMoreModal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div class="fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity opacity-0" id="modalBackdrop"></div>
+
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <!-- Modal Panel -->
+                <div class="relative transform overflow-hidden rounded-2xl bg-[#FEF9E7] dark:bg-gray-800 text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-3xl border-4 border-[#2E4A35] dark:border-green-600 opacity-0 scale-95" id="modalPanel">
+                    
+                    <!-- Close Button -->
+                    <button type="button" id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white z-20 bg-[#FEF9E7]/50 dark:bg-black/50 rounded-full p-1 transition">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    <!-- Modal Content -->
+                    <div id="modalContent" class="max-h-[80vh] overflow-y-auto">
+                        <!-- Dynamic Content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.26.2/pocketbase.umd.min.js"></script>
+<script src="layout.js"></script>
+<script src="script.js"></script>
+<script src="js/blog.js"></script>
+
+</body>
+</html>

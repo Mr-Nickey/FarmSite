@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Dashboard | Flocking Reed's Farm</title>
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+    <script>
+      // Prevents FOUC (flash of unstyled content) in dark mode
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <link href="dist/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+</head>
+<body data-page="dashboard" class="font-body transition-colors duration-300 bg-farm-light-green text-[#3E2723] dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
+    
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-5xl font-handwritten font-bold text-[#2E4A35] dark:text-green-400">Member Dashboard</h1>
+            <p id="welcomeMessage" class="text-xl text-[#5D4037] dark:text-gray-300">Loading...</p>
+        </header>
+
+        <!-- Dashboard Navigation -->
+        <nav class="flex flex-wrap justify-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
+            <button onclick="switchTab('overview')" id="nav-overview" class="dash-nav-btn px-4 py-2 rounded-lg font-bold transition-colors bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                My Flock
+            </button>
+            <button onclick="switchTab('orders')" id="nav-orders" class="dash-nav-btn px-4 py-2 rounded-lg font-bold text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
+                Orders
+            </button>
+            <button onclick="switchTab('messages')" id="nav-messages" class="dash-nav-btn px-4 py-2 rounded-lg font-bold text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
+                Messages
+            </button>
+            <button onclick="switchTab('settings')" id="nav-settings" class="dash-nav-btn px-4 py-2 rounded-lg font-bold text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 transition-colors">
+                Settings
+            </button>
+        </nav>
+
+        <!-- TAB 1: OVERVIEW (Membership) -->
+        <div id="tab-overview" class="tab-content">
+        <!-- My Membership -->
+        <section id="membership-section" class="mb-12 max-w-4xl mx-auto hidden">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="font-handwritten text-3xl font-bold text-center text-[#2E4A35] dark:text-green-300 mb-4">My Membership</h2>
+                <div id="membership-active-content" class="hidden text-center">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">Status:</span>
+                            <span id="membership-status-badge" class="px-3 py-1 text-sm font-bold rounded-full"></span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold">Tier:</span>
+                            <span id="membership-tier-name" class="font-semibold"></span>
+                        </div>
+                    </div>
+                    <button id="btn-billing-portal" class="mt-6 w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition">
+                        Manage Billing / Cancel
+                    </button>
+                </div>
+                <div id="membership-inactive-content" class="hidden text-center">
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">You are not currently a supporter. Join the flock to get exclusive benefits!</p>
+                    <a href="shop.html" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition">
+                        Become a Supporter
+                    </a>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!-- TAB 2: ORDERS -->
+        <div id="tab-orders" class="tab-content hidden">
+        <!-- Order History -->
+        <section class="mb-12 max-w-4xl mx-auto">
+            <h2 class="font-bold text-2xl mb-4 text-center">Your Order History</h2>
+            <div id="order-history-list" class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <p class="text-center italic text-gray-500">Loading your order history...</p>
+            </div>
+        </section>
+        </div>
+
+        <!-- TAB 3: MESSAGES -->
+        <div id="tab-messages" class="tab-content hidden">
+        <!-- Messaging Section -->
+        <section id="messaging-section" class="mb-12 max-w-4xl mx-auto">
+            <h2 class="font-bold text-2xl mb-4 text-center">Messages</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 flex flex-col" style="height: 600px;">
+                <!-- Chat Header -->
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h3 class="font-bold text-lg text-gray-800 dark:text-gray-100">Conversation with Farmer</h3>
+                </div>
+
+                <!-- Message History -->
+                <div id="message-history" class="flex-grow p-4 overflow-y-auto space-y-4">
+                    <!-- Messages will be injected here -->
+                    <p class="text-center italic text-gray-500">Loading messages...</p>
+                </div>
+
+                <!-- Message Input -->
+                <div class="p-4 bg-gray-50 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-700">
+                    <div id="attachment-preview" class="flex flex-wrap gap-2 mb-2 empty:hidden"></div>
+                    <form id="message-form" class="flex items-center gap-3">
+                        <input type="file" id="message-attachment" multiple accept="image/*" class="hidden">
+                        <button type="button" id="attachment-btn" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition" title="Add Images">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                            </svg>
+                        </button>
+                        <textarea id="message-input" placeholder="Type your message..." class="flex-grow w-full border-2 border-gray-200 p-2 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:border-lime-500 outline-none resize-none" rows="1"></textarea>
+                        <button type="submit" id="send-button" class="bg-lime-600 hover:bg-lime-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition">Send</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!-- TAB 4: SETTINGS -->
+        <div id="tab-settings" class="tab-content hidden">
+        <!-- Email Preferences -->
+        <section class="mb-12 max-w-4xl mx-auto">
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] dark:text-green-300 mb-2">My Subscriptions</h2>
+                <p class="text-sm text-gray-500 mb-4">Stay updated with farm news.</p>
+                <div class="flex items-center justify-between">
+                    <span class="font-bold text-gray-700 dark:text-gray-200">Email Newsletter</span>
+                    <!-- Toggle Switch -->
+                    <label for="subscription-toggle" class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" id="subscription-toggle" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-green-300 dark:peer-focus:ring-green-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile & Security Section -->
+        <section class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Profile Settings -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] dark:text-green-300 mb-4">Profile Settings</h2>
+                <form id="profile-form" class="space-y-4">
+                    <div class="text-center">
+                        <p class="text-sm text-gray-500">Display Name</p>
+                        <p id="display-nickname" class="text-xl font-bold text-gray-800 dark:text-gray-200">Loading...</p>
+                    </div>
+                    <div class="flex flex-col items-center gap-4">
+                        <img id="avatar-preview" src="https://placehold.co/96x96/e2e8f0/475569?text=Avatar" alt="Avatar Preview" class="w-24 h-24 rounded-full object-cover bg-gray-200 border-2 border-gray-300 dark:border-gray-600">
+                        <div class="text-center">
+                            <label for="avatar-upload" class="cursor-pointer bg-blue-500 text-white text-xs font-bold py-2 px-3 rounded-lg hover:bg-blue-600 transition">Change Avatar</label>
+                            <input type="file" id="avatar-upload" class="hidden" accept="image/*">
+                            <p class="text-xs text-gray-500 mt-1">Max 500KB. JPG, PNG, GIF.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="nickname-input" class="block text-sm font-bold text-gray-500 mb-1">Nickname</label>
+                        <input type="text" id="nickname-input" placeholder="Your public display name" class="w-full border-2 border-gray-200 p-2 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:border-green-500 outline-none">
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition">Save Profile</button>
+                </form>
+                <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <h3 class="font-bold text-gray-700 dark:text-gray-300 mb-3">Linked Accounts</h3>
+                    <button onclick="linkGoogleAccount()" type="button" class="w-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-300 font-bold py-2 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2 text-sm">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#EA4335" d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.16-7.27c3.2 0 5.22 1.83 5.71 2.94l2.42-2.27C18.72 2.94 15.52 1 12.16 1c-6.09 0-11 4.92-11 11s4.91 11 11 11c6.59 0 10.93-4.48 10.93-10.46c0-.72-.08-1.39-.25-2.04z"/></svg>
+                        Link Google Account
+                    </button>
+                </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] dark:text-green-300 mb-4">Security</h2>
+                <form id="password-form" class="space-y-4">
+                    <div>
+                        <label for="old-password" class="block text-sm font-bold text-gray-500 mb-1">Old Password</label>
+                        <input type="password" id="old-password" required autocomplete="current-password" class="w-full border-2 border-gray-200 p-2 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:border-green-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="new-password" class="block text-sm font-bold text-gray-500 mb-1">New Password</label>
+                        <input type="password" id="new-password" required autocomplete="new-password" class="w-full border-2 border-gray-200 p-2 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:border-green-500 outline-none">
+                    </div>
+                    <div>
+                        <label for="confirm-password" class="block text-sm font-bold text-gray-500 mb-1">Confirm New Password</label>
+                        <input type="password" id="confirm-password" required autocomplete="new-password" class="w-full border-2 border-gray-200 p-2 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:border-green-500 outline-none">
+                    </div>
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition">Change Password</button>
+                </form>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.26.2/pocketbase.umd.min.js"></script>
+    <script src="layout.js"></script>
+    <script src="js/messages.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        async function linkGoogleAccount() {
+            try {
+                await window.pb.collection('users').authWithOAuth2({ provider: 'google' });
+                alert("Google account linked successfully!");
+            } catch (e) {
+                console.error(e);
+                alert("Failed to link Google account: " + e.message);
+            }
+        }
+
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            // Show selected tab content
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Update nav buttons
+            document.querySelectorAll('.dash-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-green-100', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-200');
+                btn.classList.add('text-gray-600', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-800');
+            });
+            
+            const activeBtn = document.getElementById('nav-' + tabName);
+            activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100', 'dark:text-gray-400', 'dark:hover:bg-gray-800');
+            activeBtn.classList.add('bg-green-100', 'text-green-800', 'dark:bg-green-900', 'dark:text-green-200');
+        }
+    </script>
+</body>
+</html>

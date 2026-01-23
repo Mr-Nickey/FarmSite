@@ -32,20 +32,6 @@ function toggleTheme() {
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
     updateThemeButtonText(isDark);
 }
-
-function applyTheme() {
-    const html = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    
-    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        html.classList.add('dark');
-        updateThemeButtonText(true);
-    } else {
-        html.classList.remove('dark');
-        updateThemeButtonText(false);
-    }
-}
-
 function updateThemeButtonText(isDark) {
     const button = document.getElementById('theme-toggle');
     if (button) {
@@ -53,10 +39,11 @@ function updateThemeButtonText(isDark) {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     applyDyslexiaMode();
-    applyTheme(); // Apply theme on load
+
+    // Update theme button text based on the theme set by the inline script
+    updateThemeButtonText(document.documentElement.classList.contains('dark'));
 
     const themeToggleButton = document.getElementById('theme-toggle');
     if (themeToggleButton) {
