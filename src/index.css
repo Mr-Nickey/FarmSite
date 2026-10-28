@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* THE FLOCKING REED'S FARM - HOMESTEAD THEME */
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+.font-handwritten {
+  font-family: 'Kalam', cursive;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dyslexia Mode */
+body.dyslexia-mode,
+.dyslexia-mode {
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif !important;
+  line-height: 1.8 !important;
+}
+
+/* Cute Frame */
+.cute-frame {
+  border: 12px solid #FFF8E1;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(62, 39, 35, 0.2);
+  display: block;
+}
+
+.dark .cute-frame {
+  border-color: #374151;
+}
+
+/* Granulated Nav Background */
+.granulated-nav-bg {
+  background-color: #D0EAD6;
+  background-image: radial-gradient(rgba(46, 74, 53, 0.08) 0.5px, transparent 0.5px), radial-gradient(rgba(46, 74, 53, 0.05) 0.5px, transparent 0.5px);
+  background-size: 20px 20px, 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+.dark .granulated-nav-bg {
+  background-color: #2E4A35;
+  background-image: radial-gradient(#3E5C45 0.5px, transparent 0.5px), radial-gradient(#1B2E21 0.5px, transparent 0.5px);
+  background-size: 20px 20px, 30px 30px;
+  background-position: 0 0, 15px 15px;
+}
+
+/* Nav Link */
+.nav-link {
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link--home:hover,
+.nav-link--home.is-active {
+  color: #2E4A35;
+}
+
+.dark .nav-link--home:hover,
+.dark .nav-link--home.is-active {
+  color: #A5D6A7;
+}
+
+.nav-link--about:hover,
+.nav-link--about.is-active {
+  color: #5D4037;
+}
+
+.dark .nav-link--about:hover,
+.dark .nav-link--about.is-active {
+  color: #A1887F;
+}
+
+.nav-link--news:hover,
+.nav-link--news.is-active {
+  color: #4285F4;
+}
+
+.dark .nav-link--news:hover,
+.dark .nav-link--news.is-active {
+  color: #67a0fd;
+}
+
+.nav-link--shop:hover,
+.nav-link--shop.is-active {
+  color: #D97706;
+}
+
+.dark .nav-link--shop:hover,
+.dark .nav-link--shop.is-active {
+  color: #e68a00;
+}
+
+.nav-link.is-active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .nav-link.is-active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Timeline navigation */
+@media (min-width: 768px) {
+  #timeline-sidebar {
+    position: sticky;
+    top: 6rem;
+    align-self: flex-start;
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+}
+
+#timeline-nav {
+  padding-left: 0.5rem;
+  border-left: 2px solid #D1C4E9;
+}
+
+.dark #timeline-nav {
+  border-left-color: #512DA8;
+}
+
+#timeline-nav a {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#timeline-nav a:hover {
+  background-color: rgba(46, 74, 53, 0.1);
+  color: #2E4A35;
+}
+
+.dark #timeline-nav a:hover {
+  background-color: rgba(104, 255, 169, 0.1);
+  color: #A5D6A7;
+}
+
+article.pinned-post {
+  border-left: 4px solid #FFC107;
+  background-color: #FFFDE7;
+}
+
+.dark article.pinned-post {
+  border-left-color: #FFC107;
+  background-color: #424242;
+}

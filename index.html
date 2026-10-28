@@ -1,532 +1,136 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flocking Reeds Farm | Fresh Eggs & Homestead in Grafton, NH</title>
+    <meta name="description" content="Family homestead & 24/7 roadside honor stand in Grafton, NH. Farm fresh chicken eggs, coturnix quail eggs ($3/doz), crafts, and simple living.">
+    <meta name="keywords" content="Farm fresh chicken eggs Grafton NH, coturnix quail eggs, Flocking Reeds Farm, Sammies Simple Living, roadside honor stand, Grafton New Hampshire homestead">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://flockingreeds.farm/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flocking Reeds Farm">
+    <meta property="og:url" content="https://flockingreeds.farm/">
+    <meta property="og:title" content="Flocking Reeds Farm | Fresh Eggs & Homestead in Grafton, NH">
+    <meta property="og:description" content="Family homestead & 24/7 roadside honor stand in Grafton, NH. Farm fresh chicken eggs, coturnix quail eggs ($3/doz), crafts, and simple living.">
+    <meta property="og:image" content="https://flockingreeds.farm/images/banner.webp">
+    <meta property="og:image:alt" content="Flocking Reeds Farm - Roadside Stand & Homestead">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flocking Reeds Farm | Fresh Eggs & Homestead in Grafton, NH">
+    <meta name="twitter:description" content="Family homestead & 24/7 roadside honor stand in Grafton, NH. Farm fresh chicken eggs, coturnix quail eggs ($3/doz), crafts, and simple living.">
+    <meta name="twitter:image" content="https://flockingreeds.farm/images/banner.webp">
+    
+    <link rel="icon" href="/images/logo.webp" type="image/webp">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Client-side /donate and /shop shortlink redirects -->
+    <script>
+      (function() {
+        var p = window.location.pathname.toLowerCase().replace(/\/$/, '');
+        var h = window.location.hash.toLowerCase();
+        if (p === '/donate' || h === '#donate') {
+          window.location.replace('https://square.link/u/uIosE4M7');
+        } else if (p === '/shop' || h === '#shop') {
+          window.location.replace('https://flockingreedsfarm.square.site');
+        }
+      })();
+    </script>
+
+    <!-- Schema.org Rich Structured Data for Search Crawlers -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Farm",
-      "name": "The Flocking Reeds Farm",
-      "description": "Family homestead in Grafton, NH offering farm fresh chicken eggs and sharing our journey of simple living.",
+      "@type": ["Farm", "LocalBusiness"],
+      "name": "Flocking Reeds Farm",
+      "alternateName": "The Flocking Reeds Farm",
+      "description": "Family homestead and 24/7 roadside honor stand in Grafton, NH offering farm fresh chicken eggs, coturnix quail eggs, handmade crafts, and simple living.",
       "url": "https://flockingreeds.farm",
       "logo": "https://flockingreeds.farm/images/logo.webp",
       "image": "https://flockingreeds.farm/images/banner.webp",
+      "telephone": "+1-603-729-3568",
+      "email": "support@flockingreeds.farm",
+      "priceRange": "$",
+      "paymentAccepted": "Cash, Square, Apple Pay, Google Pay, Venmo, Cash App, PayPal",
+      "currenciesAccepted": "USD",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "441 Millbrook Rd",
         "addressLocality": "Grafton",
         "addressRegion": "NH",
+        "postalCode": "03240",
         "addressCountry": "US"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "43.5592", 
-        "longitude": "-71.9470" 
+        "latitude": 43.5592, 
+        "longitude": -71.9470 
       },
-      "telephone": "+1-603-729-3568",
-      "sameAs": [
-        "https://www.youtube.com/@sammiessimpleliving"
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
       ],
-      "potentialAction": {
-        "@type": "WatchAction",
-        "target": "https://www.youtube.com/@sammiessimpleliving"
-      },
-      "offers": {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Product",
-          "name": "Farm Fresh Chicken Eggs",
-          "price": "5.00",
-          "priceCurrency": "USD",
-          "description": "Free-range chicken eggs raised with care in Grafton, NH."
-        }
+      "sameAs": [
+        "https://www.youtube.com/@sammiessimpleliving",
+        "https://venmo.com/u/samantha-Reed-183",
+        "https://cash.app/$northeastnymph",
+        "https://paypal.biz/sammiesimpleliving",
+        "https://square.link/u/uIosE4M7",
+        "https://square.link/u/DQtlSmfE",
+        "https://square.link/u/xhJBvE8s",
+        "https://square.link/u/R6yBh3dh"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Roadside Stand Offerings",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Farm Fresh Chicken Eggs",
+              "description": "Free-range, pasture-raised chicken eggs from happy hens in Grafton, NH. Unwashed bloom intact."
+            },
+            "price": "5.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Coturnix Quail Eggs",
+              "description": "Fresh, nutrient-dense speckled quail eggs raised with clean sand baths and fresh forage."
+            },
+            "price": "3.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        ]
       }
     }
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Flocking Reeds Farm | Fresh Eggs & Homesteading in Grafton, NH</title>
-    <meta name="description" content="Fueled by Caffeine & Chaos. The Flocking Reeds Farm offers $5 fresh eggs and a look at simple living in Grafton, NH.">
-    <meta name="keywords" content="Farm fresh eggs Grafton NH, Homesteading New Hampshire, Flocking Reeds Farm, Sammies Simple Living, chicken eggs, farm stand">
-    
-    <link rel="icon" href="images/logo.webp" type="image/webp">
-    <script>
-      // Prevents FOUC (flash of unstyled content) in dark mode
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-    
-    <link href="dist/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<div id="newsAlert" class="hidden bg-yellow-600 text-white text-center py-2 px-4 font-bold font-handwritten text-lg shadow-md animate-pulse"></div>
-<body data-page="home" class="font-body transition-colors duration-300 bg-farm-light-green text-[#3E2723] dark:bg-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
-
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-500 text-black p-2 rounded z-50">Skip to Content</a>
-
-    <!--
-      JIT Class Safelist:
-      This comment ensures Tailwind's JIT engine generates the dynamic classes used in layout.js.
-      The ideal long-term solution is to add '*.js' to the `content` array in your tailwind.config.js file.
-
-      hover:text-green-800 dark:hover:text-green-300 hover:text-yellow-900 dark:hover:text-yellow-300 hover:text-purple-800 dark:hover:text-purple-300
-    -->
-
-    <!-- Hero Section with Navbar Overlay -->
-    <div class="relative w-full min-h-[60vh] flex flex-col">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img src="images/index-cover.webp" alt="Farm Cover" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
-        </div>
-
-        <!-- Navbar Placeholder -->
-        <div id="navbar-placeholder" class="relative z-50"></div>
-
-        <!-- Hero Content -->
-        <div class="relative z-10 flex-grow flex flex-col items-center justify-center text-center px-4 py-12">
-            <img src="images/banner.webp" alt="The Flocking Reed's Farm Logo" class="w-32 sm:w-40 md:w-48 drop-shadow-2xl mb-6 hover:scale-105 transition duration-500 bg-white/20 rounded-full p-4 backdrop-blur-sm">
-            
-            <h1 class="font-handwritten text-4xl sm:text-5xl md:text-6xl font-bold text-green-500 mb-4 drop-shadow-lg">
-                Fueled by Caffeine & Chaos.
-            </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-yellow-100 font-semibold drop-shadow-md max-w-2xl">
-                Fresh Eggs from Happy Hens in Grafton, NH.
-            </p>
-        </div>
-    </div>
-
-    <main id="main-content" class="container mx-auto px-4 pb-12 flex-grow max-w-4xl">
-
-        <section id="farm-card" class="bg-[#FEF9E7] p-5 rounded-xl shadow-xl border-2 sm:border-4 border-gray-300 mb-10 relative overflow-hidden dark:bg-gray-800 dark:border-gray-600 transition-colors duration-500">
-            
-            <div id="egg-badge" class="absolute top-0 right-0 bg-gray-500 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider">
-                LOADING...
-            </div>
-            
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-                
-                <div class="md:w-1/2 w-full">
-                    <div class="relative w-full h-full">
-                        <img src="images/farmstand.webp" alt="The Farm Stand" class="w-full h-48 md:h-56 object-cover rounded-xl shadow-lg border-2 border-white/10">
-                        <div class="absolute bottom-2 right-2 bg-green-700/90 text-white text-[10px] font-bold px-2 py-1 rounded shadow backdrop-blur-sm border border-white/20">
-                            OPEN 24/7
-                        </div>
-                    </div>
-                    <div class="mt-6 text-center">
-    <button onclick="toggleInventory()" class="group relative inline-flex items-center justify-center gap-2 bg-farm-green hover:bg-farm-green-dark text-white font-bold py-3 px-8 rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 overflow-hidden dark:bg-farm-green-dark dark:hover:bg-farm-green">
-        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shimmer"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-        </svg>
-        <span class="font-handwritten text-xl tracking-wide">See What's In Stock</span>
-    </button>
-</div>
-                </div>
-
-                <div class="md:w-1/2 text-left w-full flex flex-col justify-center space-y-3">
-                    <div>
-                        <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] leading-tight dark:text-green-400">The Farm Stand</h2>
-                        <a href="https://maps.app.goo.gl/yoWoFDjWZtRBRsJC6" target="_blank" rel="noopener noreferrer" class="text-sm sm:text-base text-blue-600 dark:text-blue-300 hover:underline flex items-center gap-1">
-                            <span>📍</span> 441 Millbrook Rd, Grafton, NH
-                        </a>
-                    </div>
-                    
-                    <div class="pl-3 border-l-2 border-[#8D6E63] dark:border-gray-500">
-                        <p class="font-bold text-lg text-[#3E2723] dark:text-[#A1887F] tracking-wide">📞 (603) 729-3568</p>
-                    </div>
-
-                    <div id="status-container" class="py-1 px-3 rounded-full border border-dashed flex items-center justify-center gap-2 bg-gray-100/50 dark:bg-black/20 transition-all duration-300 w-fit">
-                        <span id="status-icon" class="text-base">⏳</span>
-                        <span id="status-text" class="text-sm sm:text-base font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">CHECKING...</span>
-                    </div>
-
-                    <ul class="space-y-1 font-medium text-base text-[#3E2723] dark:text-gray-200">
-                        <li class="flex items-center gap-2"><span class="text-lg">🥚</span> <strong>Eggs:</strong> $5 doz - $3 1/2 doz</li>
-                        <li class="flex items-center gap-4"><span class="flex items-center gap-2"><span class="text-lg">💵</span>Cash</span><span class="flex items-center gap-2"><img src="images/cashapp.svg" alt="Cash App" class="h-5 w-5">Cash App</span><span class="flex items-center gap-2"><img src="images/venmo.svg" alt="Venmo" class="h-5 w-5">Venmo</span></li>
-                    </ul>
-                    
-                     <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="https://g.page/r/CYa2i42KWruvEBM/review" target="_blank" rel="noopener noreferrer" class="inline-block bg-google-blue text-white font-bold py-3 px-6 rounded-lg hover:bg-google-blue-dark transition shadow-md dark:bg-google-blue-dark dark:hover:bg-google-blue">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block align-middle w-5 h-5 mr-1" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h6.01c-.26 1.37-1.04 2.53-2.23 3.31v2.77h3.55c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                            <path fill="currentColor" d="M12 23c3.27 0 6.03-1.08 8.04-2.91l-3.55-2.77c-.98.66-2.23 1.06-4.49 1.06-3.46 0-6.39-2.34-7.46-5.48H.9v2.89C2.08 20.25 6.64 23 12 23z"/>
-                            <path fill="currentColor" d="M4.54 14.12c-.11-.33-.18-.69-.18-1.09s.07-.76.18-1.09V9.14H.9C.33 10.36 0 11.63 0 12.98s.33 2.62.9 3.84l3.64-2.7z"/>
-                            <path fill="currentColor" d="M12 4.09c1.78 0 3.36.62 4.61 1.82l3.14-3.14C18.02 1.34 15.25 0 12 0 6.64 0 2.08 2.75.9 7.14l3.64 2.89c1.07-3.14 4-5.48 7.46-5.48z"/>
-                        </svg> Leave A Review
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-[#FEF9E7] p-5 rounded-xl shadow-xl border-2 sm:border-4 border-red-200 mb-10 relative overflow-hidden dark:bg-gray-800 dark:border-red-900 transition-colors duration-500">
-            
-            <div class="flex flex-col md:flex-row-reverse gap-6 items-center">
-                
-                <div class="md:w-1/2 w-full h-48 md:h-56">
-                    <iframe 
-                        src="https://www.youtube.com/embed/Vd8OF8iqnyk?autoplay=1&mute=1&loop=1&playlist=Vd8OF8iqnyk&controls=0&showinfo=0&rel=0&playsinline=1" 
-                        title="Sammies Simple Living Shorts"
-                        class="w-full h-full rounded-xl shadow-lg border-2 border-red-100 object-cover" 
-                        allow="autoplay; encrypted-media" 
-                        frameborder="0">
-                    </iframe>
-                </div>
-
-                <div class="md:w-1/2 text-left w-full flex flex-col justify-center space-y-4">
-                    <div>
-                        <h3 class="font-handwritten text-3xl font-bold text-red-700 dark:text-red-400 leading-tight">Life on the Farm</h3>
-                        <p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mt-1">
-                            From coop chaos to garden wins, catch the daily life of the farm on YouTube.
-                        </p>
-                    </div>
-
-                    <div class="bg-red-50 p-3 rounded-lg border border-red-100 dark:bg-black/20 dark:border-red-900/50">
-                        <p class="text-xs font-bold text-red-800 dark:text-red-300 uppercase mb-2 text-center md:text-left">New Episodes Drop:</p>
-                        <div class="flex justify-center md:justify-start gap-2">
-                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">MON</span>
-                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">WED</span>
-                            <span class="bg-white text-red-800 text-xs font-bold px-3 py-1 rounded shadow-sm border border-red-200">FRI</span>
-                        </div>
-                    </div>
-
-                    <a href="https://www.youtube.com/@sammiessimpleliving/shorts" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-youtube-red text-white font-bold py-3 px-4 rounded-lg hover:bg-red-700 transition shadow-lg active:scale-95 flex items-center justify-center gap-2 dark:bg-youtube-red-dark dark:hover:bg-red-700">
-                        Watch The Chaos
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-[#FEF9E7] dark:bg-gray-800 text-gray-800 dark:text-white p-5 rounded-xl shadow-xl border-4 border-[#2E4A35] dark:border-[#1B2E21] mb-10 relative overflow-hidden">
-            
-            <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="bg-white p-2 rounded-lg transform -rotate-2 shadow-xl hover:rotate-0 transition duration-300">
-                        <img src="images/merch-hoodie.webp" alt="Caffeine and Chaos Hoodie" class="w-48 h-48 object-contain rounded bg-gray-100">
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 text-center md:text-left space-y-3">
-                    <span class="bg-[#FACC15] text-[#3E2723] text-[10px] font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wide">
-                        Fresh Gear
-                    </span>
-                    <h2 class="font-handwritten text-3xl font-bold text-[#2E4A35] dark:text-yellow-100 leading-tight">
-                        "Caffeine & Chaos"
-                    </h2>
-                    <p class="text-gray-700 dark:text-gray-200 text-sm sm:text-base leading-relaxed">
-                        We partner with Printify to fulfill orders through our pop-up store, ensuring quality without the waste. Approximately 25% of your purchase comes directly back to the farm as profit. To put it in perspective: one hoodie purchase buys a 50lb bag of feed for the hens!
-                    </p>
-                    
-                    <div class="pt-2">
-                        <a href="https://store.flockingreeds.farm" target="_blank" rel="noopener noreferrer" class="inline-block btn-green text-white font-bold py-3 px-6 rounded-lg shadow-lg transform transition hover:scale-105 text-sm sm:text-base animate-pulse">
-                            Visit The Store
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div id="goalsContainer" class="max-w-xl mx-auto mt-8 mb-10 space-y-6 hidden">
-            <div class="cute-frame bg-[#FEF9E7] dark:bg-gray-800 p-6 rounded-2xl shadow-md farm-goals-border dark:border-yellow-600 relative">
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-red-800 shadow-sm border border-red-900"></div>
-                
-                <h3 class="text-3xl font-bold text-center text-[#4285F4] dark:text-[#8ab4f8] font-handwritten mb-4">Current Farm Goals</h3>
-                
-                <p class="text-center text-gray-700 dark:text-gray-300 mb-6 text-sm sm:text-base max-w-lg mx-auto">
-                    We believe in 100% transparency. When you chip in, you aren't sending money into the void—you are buying lumber for the coop, wire for the fencing, and grain for the flock.
-                </p>
-                
-                <div id="dynamicGoalsList" class="space-y-6"></div>
-                
-                <div class="pt-4 text-center">
-                    <a href="donate.html" class="inline-block btn-brown text-white font-bold py-3 px-6 rounded-lg shadow-lg transform transition hover:scale-105 text-sm sm:text-base">
-                        Help Our Farm Grow
-                    </a>
-                </div>
-                
-                <p class="text-center text-xs text-gray-600 dark:text-gray-400 mt-6 font-body italic">
-                    Thank you for helping our homestead grow!
-                </p>
-            </div>
-        </div>
-
-        <section id="contact" class="max-w-xl mx-auto bg-[#FEF9E7] p-6 rounded-2xl shadow-md border-t-4 border-[#FACC15] dark:bg-gray-800 dark:border-yellow-600">
-            <h2 class="font-handwritten text-3xl font-bold text-center text-[#D97706] dark:text-[#FACC15] mb-2">Get In Touch</h2>
-            <p class="text-center text-xs text-gray-600 mb-4 italic dark:text-gray-400">Questions about eggs, hoodies, or the goats?</p>
-            
-            <form id="contactForm" action="https://formspree.io/f/manbaweq" method="POST" class="space-y-3">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input type="text" id="nameInput" name="name" placeholder="Your Name" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <input type="email" id="emailInput" name="email" placeholder="Your Email" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                </div>
-                
-                <select id="subjectSelect" name="subject" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                    <option value="" disabled selected>What is this regarding?</option>
-                    <option value="Egg Order">🥚 Egg Order / Availability</option>
-                    <option value="Merch Question">👕 Merch / Store Support</option>
-                    <option value="Donation Question">❤️ Donation Support</option>
-                    <option value="Farm Question">🚜 General Farm Question</option>
-                    <option value="Hello">👋 Just Saying Hello</option>
-                </select>
-                
-                <textarea id="messageInput" name="message" rows="3" placeholder="How can we help?" required class="w-full p-2 text-sm border rounded bg-[#FEF9E7] focus:ring-1 focus:ring-[#4ADE80] outline-none dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-                
-                <button type="submit" class="w-full bg-[#FACC15] hover:bg-yellow-400 text-green-900 font-bold py-3 rounded-lg transition shadow-md text-base border-b-4 border-[#C7A008] active:scale-95">
-                    Send Message
-                </button>
-            </form>
-        </section>
-
-    </main>
-
-    <div id="footer-placeholder"></div>
-
-    <!-- Inventory Modal -->
-    <div id="inventoryModal" class="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 transition-opacity duration-300">
-        <div id="modalContent" class="bg-white dark:bg-gray-800 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300 border-4 border-[#2E4A35] dark:border-green-600 flex flex-col max-h-[90vh]">
-            
-            <div class="bg-[#2E4A35] p-4 flex justify-between items-center shrink-0">
-                <h3 class="font-handwritten text-2xl font-bold text-yellow-100">Farm Stand Inventory</h3>
-                <button onclick="toggleInventory()" class="text-yellow-100 hover:text-white text-3xl font-bold leading-none">&times;</button>
-            </div>
-
-            <div class="p-0 overflow-y-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-xs sticky top-0 shadow-sm">
-                        <tr>
-                            <th class="p-4">Item</th>
-                            <th class="p-4 text-right">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody id="publicInventoryList" class="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
-                        <!-- Items injected here -->
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="p-4 bg-gray-50 dark:bg-gray-900/50 text-center text-xs text-gray-500 dark:text-gray-400 shrink-0">
-                Inventory updated live. First come, first served!
-            </div>
-        </div>
-    </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.26.2/pocketbase.umd.min.js"></script>
-<script src="layout.js"></script>
-<script src="script.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const [statusRec, goalList] = await Promise.all([
-                pb.collection('farm_status').getFirstListItem(''),
-                pb.collection('goals').getFullList()
-            ]);
-
-            const data = {
-                eggs: statusRec.eggs,
-                news: statusRec.news,
-                goals: goalList.map(g => {
-                    const kofi = g.breakdown_kofi || 0;
-                    const cash = g.breakdown_cash || 0;
-                    const merch = g.breakdown_merch || 0;
-                    const currentTotal = kofi + cash + merch;
-
-                    return {
-                        name: g.name,
-                        target: g.target,
-                        current: currentTotal,
-                        breakdown: { kofi, cash, merch },
-                        is_long_term: g.is_long_term
-                    };
-                })
-            };
-
-            // A. Render News
-            if (data.news && data.news.trim() !== "") {
-                const alertBox = document.getElementById('newsAlert');
-                alertBox.textContent = data.news;
-                alertBox.classList.remove('hidden');
-            }
-
-            // B. Render Goals (UPDATED for Color Stacking)
-            const goalsList = document.getElementById('dynamicGoalsList');
-            const goalsContainer = document.getElementById('goalsContainer');
-            
-            if (data.goals && data.goals.length > 0) {
-                goalsContainer.classList.remove('hidden');
-                
-                goalsList.innerHTML = data.goals.map(goal => {
-                    // Safety check: ensure breakdown object exists
-                    const bd = goal.breakdown || { kofi: 0, cash: goal.current, merch: 0 };
-                    
-                    // Calculate percentages based on Target
-                    // (We use goal.target to size the bars relative to the finish line)
-                    const kofiPct = Math.min(100, (bd.kofi / goal.target) * 100);
-                    const cashPct = Math.min(100, (bd.cash / goal.target) * 100);
-                    const merchPct = Math.min(100, (bd.merch / goal.target) * 100);
-                    
-                    // Total percent for the text label
-                    const totalPct = Math.min(100, Math.round((goal.current / goal.target) * 100));
-
-                    const description = goal.is_long_term 
-                        ? "One-time donations for big projects like the Forever Coop and goats."
-                        : "Real-time costs for feed & supplies, funded by farm sales & subscribers.";
-
-                    // Define colors based on goal type (Long Term vs Monthly)
-                    const colors = goal.is_long_term ? {
-                        kofi: 'bg-purple-500',
-                        cash: 'bg-teal-500',
-                        merch: 'bg-orange-400'
-                    } : {
-                        kofi: 'bg-blue-400',
-                        cash: 'bg-green-500',
-                        merch: 'bg-yellow-400'
-                    };
-
-                    return `
-                        <div>
-                            <div class="flex justify-between items-end mb-0.5">
-                                <span class="font-bold text-[#3E2723] dark:text-gray-100">${goal.name}</span>
-                                <span class="text-sm font-medium text-green-700 dark:text-green-400">$${goal.current} / $${goal.target}</span>
-                            </div>
-                            <p class="text-xs text-gray-600 dark:text-gray-400 mb-2 leading-tight italic">${description}</p>
-                            
-                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4 border border-gray-300 dark:border-gray-600 overflow-hidden relative">
-                                
-                                <div class="flex h-full w-full">
-                                    <div style="width: ${kofiPct}%" class="${colors.kofi} h-full shadow-inner" title="Donations: $${bd.kofi.toFixed(2)}"></div>
-                                    <div style="width: ${cashPct}%" class="${colors.cash} h-full shadow-inner" title="Farm Sales: $${bd.cash.toFixed(2)}"></div>
-                                    <div style="width: ${merchPct}%" class="${colors.merch} h-full shadow-inner" title="Merch: $${bd.merch.toFixed(2)}"></div>
-                                </div>
-
-                                ${totalPct > 10 ? `<span class="absolute right-2 top-[-1px] text-[10px] text-black/50 font-bold">${totalPct}%</span>` : ''}
-                            </div>
-                            
-                            <div class="flex gap-3 mt-1 text-[9px] uppercase font-bold text-gray-400">
-                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full ${colors.kofi}"></div> Donated</span>
-                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full ${colors.cash}"></div> Farm</span>
-                                <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full ${colors.merch}"></div> Merch</span>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-
-            // C. Render Eggs Status Badge
-            checkFarmStatus(data);
-
-        } catch (e) {
-            console.error("Farm API Error:", e);
-        }
-    });
-    function checkFarmStatus(data) {
-        const badge = document.getElementById('egg-badge');
-        const card = document.getElementById('farm-card');
-        const statusBox = document.getElementById('status-container');
-        const statusText = document.getElementById('status-text');
-        const statusIcon = document.getElementById('status-icon');
-        
-        if (data.eggs === "Sold Out") {
-            // RED MODE
-            badge.innerText = "SOLD OUT";
-            badge.className = "absolute top-0 right-0 bg-red-600 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-12 translate-y-6 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
-
-            statusBox.className = "py-1 px-3 rounded-full border border-red-500 bg-red-500/80 text-red-200 flex items-center justify-center gap-2 shadow-inner w-fit";
-            statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
-            statusText.innerText = "SOLD OUT";
-            statusIcon.innerText = "❌";
-
-            card.classList.remove('border-green-400', 'dark:border-green-400');
-            card.classList.add('border-red-400', 'dark:border-red-400');
-
-        } else {
-            // GREEN MODE
-            badge.innerText = "FRESH EGGS";
-            badge.className = "absolute top-0 right-0 bg-green-400 text-white text-[10px] sm:text-xs font-bold w-48 py-1 transform rotate-45 translate-x-14 translate-y-8 shadow-md z-50 transition-colors duration-300 text-center tracking-wider";
-
-            statusBox.className = "py-1 px-3 rounded-full border border-green-300 bg-green-500/80 text-white flex items-center justify-center gap-2 shadow-inner w-fit";
-            statusText.className = "text-sm sm:text-base font-bold uppercase tracking-wider";
-            statusText.innerText = "EGGS IN STOCK";
-            statusIcon.innerText = "🥚";
-
-            card.classList.remove('border-red-400', 'dark:border-red-400');
-            card.classList.add('border-green-400', 'dark:border-green-400');
-        }
-    }
-    async function toggleInventory() {
-        const modal = document.getElementById('inventoryModal');
-        const modalContent = document.getElementById('modalContent');
-        
-        const isHidden = modal.classList.contains('hidden');
-
-        if (isHidden) {
-            // Make it visible
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            
-            // Animate it in
-            setTimeout(() => {
-                modalContent.classList.remove('opacity-0', 'scale-95');
-            }, 50); 
-
-            loadInventoryItems();
-        } else {
-            // Animate it out
-            modalContent.classList.add('opacity-0', 'scale-95');
-
-            // Hide it after animation
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
-        }
-    }
-    async function loadInventoryItems() {
-        const tbody = document.getElementById('publicInventoryList');
-        tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center italic text-gray-500">Checking the stand...</td></tr>';
-        
-        try {
-            const items = await pb.collection('inventory').getFullList();
-
-            // FILTER: Only show items where active is NOT false
-            const activeItems = items.filter(item => item.active !== false);
-
-            if (activeItems.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center italic text-gray-600">Stand is empty right now! Check back later.</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = activeItems.map(item => {
-                const stockDisplay = (item.qty && item.qty > 0)
-                    ? `<span class="block text-xs font-normal text-gray-500 dark:text-gray-400 italic">(${item.qty} available)</span>`
-                    : `<span class="block text-xs font-normal text-red-500 dark:text-red-400 font-bold">Sold Out</span>`;
-
-                return `
-                    <tr class="hover:bg-farm-green/10 dark:hover:bg-green-900/20 transition border-b border-farm-green/20 dark:border-green-800 last:border-0">
-                        <td class="px-4 py-3 font-semibold text-gray-800 dark:text-gray-200">
-                            ${item.name}
-                            ${stockDisplay}
-                        </td>
-                        <td class="px-4 py-3 text-right text-farm-brown dark:text-yellow-400 font-bold">$${parseFloat(item.price || 0).toFixed(2)}</td>
-                    </tr>
-                `;
-            }).join('');
-        } catch (e) {
-            tbody.innerHTML = '<tr><td colspan="2" class="p-4 text-center text-red-500">Could not load items.</td></tr>';
-        }
-    }
-    document.addEventListener('keydown', function(e) {
-        if (e.key === '`') { // Check for the backtick key
-            e.preventDefault(); // Prevent default behavior (e.g., typing ` in an input field)
-            const confirmed = confirm("WARNING: You are about to access the admin panel. Continue?");
-            if (confirmed) {
-                window.open('/admin.html', '_blank'); // Open admin.html in a new tab
-            }
-        }
-    });
-</script>
+<body class="font-body transition-colors duration-300 bg-farm-light-green text-[#3E2723] dark:bg-gray-900 dark:text-gray-100 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

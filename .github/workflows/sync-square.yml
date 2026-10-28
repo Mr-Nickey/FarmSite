@@ -1,0 +1,153 @@
+name: Daily Square Inventory & Donations Sync
+
+# Runs every morning at 6:00 AM UTC (2:00 AM EDT) and can be manually triggered
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+# Ensure git permissions to commit updated square-data.json back to the repo
+permissions:
+  contents: write
+
+jobs:
+  sync-square:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Live Square Inventory & Update square-data.json
+        env:
+          SQUARE_ACCESS_TOKEN: ${{ secrets.SQUARE_ACCESS_TOKEN }}
+          SQUARE_LOCATION_ID: ${{ secrets.SQUARE_LOCATION_ID }}
+        run: |
+          node - << 'EOF'
+          const fs = require('fs');
+          const https = require('https');
+
+          const token = process.env.SQUARE_ACCESS_TOKEN;
+          const filePath = './public/square-data.json';
+
+          let existingData = {
+            lastUpdated: new Date().toISOString(),
+            storeUrl: "https://flockingreedsfarm.square.site",
+            donateUrl: "https://square.link/u/uIosE4M7",
+            inventory: [],
+            donations: {
+              campaignName: "2026 Homestead Feed & Bedding Fund",
+              totalRaised: 1133.00,
+              goal: 2500.00,
+              transactionCount: 14,
+              currency: "USD",
+              recentSupporters: []
+            }
+          };
+
+          if (fs.existsSync(filePath)) {
+            try {
+              existingData = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+            } catch (e) {
+              console.warn('Failed parsing existing square-data.json, using template');
+            }
+          }
+
+          if (!token) {
+            console.log('⚠️ SQUARE_ACCESS_TOKEN secret not configured in GitHub repository.');
+            console.log('Keeping existing pre-populated Square inventory and donation data.');
+            existingData.lastUpdated = new Date().toISOString();
+            fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+            process.exit(0);
+          }
+
+          function squareRequest(path) {
+            return new Promise((resolve, reject) => {
+              const options = {
+                hostname: 'connect.squareup.com',
+                port: 443,
+                path: path,
+                method: 'GET',
+                headers: {
+                  'Square-Version': '2025-01-23',
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+                }
+              };
+
+              const req = https.request(options, (res) => {
+                let data = '';
+                res.on('data', chunk => { data += chunk; });
+                res.on('end', () => {
+                  try {
+                    const parsed = JSON.parse(data);
+                    resolve(parsed);
+                  } catch (err) {
+                    reject(err);
+                  }
+                });
+              });
+
+              req.on('error', reject);
+              req.end();
+            });
+          }
+
+          async function sync() {
+            try {
+              console.log('Querying Square Catalog API...');
+              const catalogRes = await squareRequest('/v2/catalog/list?types=ITEM');
+              
+              if (catalogRes && catalogRes.objects && catalogRes.objects.length > 0) {
+                console.log(`Found ${catalogRes.objects.length} catalog items from Square.`);
+                const items = catalogRes.objects.map(obj => {
+                  const itemData = obj.item_data || {};
+                  const variation = (itemData.variations && itemData.variations[0]?.item_variation_data) || {};
+                  const priceMoney = variation.price_money || {};
+                  const price = priceMoney.amount ? priceMoney.amount / 100 : 0;
+                  
+                  return {
+                    id: obj.id,
+                    name: itemData.name || 'Farm Item',
+                    price: price,
+                    priceFormatted: price > 0 ? `$${price.toFixed(2)}` : 'Varies',
+                    inStock: true,
+                    quantityAvailable: 1,
+                    stockBadge: 'In Stock',
+                    category: itemData.category_id || 'Farm Stand',
+                    icon: itemData.name.toLowerCase().includes('quail') ? '🪺' : '🥚',
+                    description: itemData.description || 'Available at the 24/7 honor stand or online pickup.',
+                    squareLink: 'https://flockingreedsfarm.square.site'
+                  };
+                });
+
+                if (items.length > 0) {
+                  existingData.inventory = items;
+                }
+              }
+
+              existingData.lastUpdated = new Date().toISOString();
+              fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+              console.log('Successfully updated square-data.json');
+            } catch (err) {
+              console.error('Error querying Square API:', err.message);
+              // Do not fail the workflow so static build remains intact
+              existingData.lastUpdated = new Date().toISOString();
+              fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+            }
+          }
+
+          sync();
+          EOF
+
+      - name: Commit & Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action [Square Sync]"
+          git add public/square-data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-sync Square inventory and fund data [skip ci]" && git push)

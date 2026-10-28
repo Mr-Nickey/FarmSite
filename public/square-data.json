@@ -1,0 +1,122 @@
+{
+  "lastUpdated": "2026-03-30T12:00:00Z",
+  "storeUrl": "https://flockingreedsfarm.square.site",
+  "donateUrl": "https://square.link/u/uIosE4M7",
+  "inventory": [
+    {
+      "id": "item-dozen-eggs",
+      "name": "Pasture-Raised Chicken Eggs (Dozen)",
+      "price": 5.00,
+      "priceFormatted": "$5.00 / dozen",
+      "inStock": true,
+      "quantityAvailable": 2,
+      "stockBadge": "2 available",
+      "category": "Eggs",
+      "icon": "🥚",
+      "description": "Farm-fresh unwashed bloom eggs from our free-range, pasture-raised flock in Grafton, NH.",
+      "squareLink": "https://flockingreedsfarm.square.site"
+    },
+    {
+      "id": "item-half-dozen-eggs",
+      "name": "Pasture-Raised Chicken Eggs (Half Dozen)",
+      "price": 3.00,
+      "priceFormatted": "$3.00 / 6-pack",
+      "inStock": true,
+      "quantityAvailable": 1,
+      "stockBadge": "1 available",
+      "category": "Eggs",
+      "icon": "🥚",
+      "description": "Half-dozen fresh pasture eggs, perfect for quick morning breakfasts.",
+      "squareLink": "https://flockingreedsfarm.square.site"
+    },
+    {
+      "id": "item-quail-eggs",
+      "name": "Coturnix Quail Eggs (Dozen)",
+      "price": 3.00,
+      "priceFormatted": "$3.00 / dozen",
+      "inStock": true,
+      "quantityAvailable": 4,
+      "stockBadge": "4 available",
+      "category": "Eggs",
+      "icon": "🪺",
+      "description": "Delicate, speckled nutrient powerhouses raised with clean sand baths and fresh forage.",
+      "squareLink": "https://flockingreedsfarm.square.site"
+    },
+    {
+      "id": "item-tip-jar",
+      "name": "Feed the Flock & Stand Tip Jar",
+      "price": 5.00,
+      "priceFormatted": "$5.00+ custom",
+      "inStock": true,
+      "quantityAvailable": 999,
+      "stockBadge": "Always Available",
+      "category": "Tips",
+      "icon": "🌾",
+      "description": "Directly supports non-GMO feed, cozy pine shavings bedding, and coop repairs.",
+      "squareLink": "https://square.link/u/uIosE4M7"
+    },
+    {
+      "id": "item-brownies-cookies",
+      "name": "Homemade Farmstand Brownies & Cookies",
+      "price": 3.00,
+      "priceFormatted": "$3.00 / treat",
+      "inStock": false,
+      "quantityAvailable": 0,
+      "stockBadge": "Sold Out / Check Stand",
+      "category": "Baked Goods",
+      "icon": "🥖",
+      "description": "Baked fresh in small batches. Kept at stand no more than 3 days. Catch them on baking mornings!",
+      "squareLink": "https://flockingreedsfarm.square.site"
+    },
+    {
+      "id": "item-crafts-dreamcatcher",
+      "name": "Handcrafted Dreamcatchers & Keepsakes",
+      "price": 15.00,
+      "priceFormatted": "$15.00 / ea",
+      "inStock": false,
+      "quantityAvailable": 0,
+      "stockBadge": "Sold Out / Custom Order",
+      "category": "Crafts",
+      "icon": "🎨",
+      "description": "Handmade by Sammie using natural farm feathers, twigs, and rustic twine.",
+      "squareLink": "https://flockingreedsfarm.square.site"
+    }
+  ],
+  "donations": {
+    "campaignName": "2026 Homestead Feed & Bedding Fund",
+    "totalRaised": 1133.00,
+    "goal": 2500.00,
+    "transactionCount": 14,
+    "currency": "USD",
+    "recentSupporters": [
+      {
+        "id": "tx-14",
+        "name": "Homestead Supporter",
+        "amount": 200.00,
+        "date": "2026-03-24",
+        "note": "Feed and flock winter bedding support"
+      },
+      {
+        "id": "tx-13",
+        "name": "Local NH Neighbor",
+        "amount": 100.00,
+        "date": "2026-03-20",
+        "note": "For the hard-working laying hens"
+      },
+      {
+        "id": "tx-12",
+        "name": "YouTube Channel Fan",
+        "amount": 100.00,
+        "date": "2026-03-12",
+        "note": "Love Sammie's videos, keep going!"
+      },
+      {
+        "id": "tx-11",
+        "name": "Stand Visitor",
+        "amount": 50.00,
+        "date": "2026-03-05",
+        "note": "Best fresh eggs in Grafton"
+      }
+    ]
+  }
+}
