@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFarm } from '../context/FarmContext';
-import { Sparkles, Heart, CreditCard, Users, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Heart, CreditCard, Users, ShieldCheck, CheckCircle2, Clock } from 'lucide-react';
 import { SquareDonations } from '../types';
 
 export const FundWidget: React.FC = () => {
@@ -131,7 +131,7 @@ export const FundWidget: React.FC = () => {
       </div>
 
       {/* Primary Donation CTA Button (Directs to Square with notice of other options below) */}
-      <div className="pt-2">
+      <div className="pt-2 space-y-3">
         <a
           href="https://square.link/u/uIosE4M7"
           target="_blank"
@@ -149,6 +149,19 @@ export const FundWidget: React.FC = () => {
             (💡 Other payment options listed below)
           </span>
         </a>
+
+        {/* Donation Reflection Timeframe Notice */}
+        <div className="p-3.5 rounded-2xl bg-amber-100/80 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2.5 shadow-2xs">
+          <Clock className="w-4 h-4 text-amber-800 dark:text-amber-300 flex-shrink-0 mt-0.5" />
+          <div className="space-y-0.5 text-left">
+            <span className="font-bold text-amber-900 dark:text-yellow-200 block">
+              ⏳ Note on Donation Tracker Updates:
+            </span>
+            <p className="text-[11px] sm:text-xs text-amber-900/90 dark:text-amber-200/90 leading-snug">
+              Online donations (Square, Venmo, Cash App, PayPal) and honor box cash are manually synced once daily. Please allow <strong>24–48 hours</strong> for your support to reflect on the website progress bar and community backer list. Thank you so much for your patience and support!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

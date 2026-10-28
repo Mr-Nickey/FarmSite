@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Check, ExternalLink, AlertTriangle, ShieldCheck, Sparkles, CreditCard, Info } from 'lucide-react';
+import { AlertTriangle, CreditCard } from 'lucide-react';
 
 interface StandItemOption {
   label: string;
   count: string;
   price: number;
   squareUrl: string;
-  popular?: boolean;
 }
 
 export const StandProductSelector: React.FC = () => {
@@ -24,7 +23,6 @@ export const StandProductSelector: React.FC = () => {
       count: '12 Large Brown & Pastel Eggs',
       price: 5.00,
       squareUrl: 'https://square.link/u/DQtlSmfE',
-      popular: true,
     },
     half: {
       label: 'Half Dozen (6 Eggs)',
@@ -39,122 +37,107 @@ export const StandProductSelector: React.FC = () => {
     count: '12 Spotted Coturnix Eggs',
     price: 3.00,
     squareUrl: 'https://square.link/u/R6yBh3dh',
-    popular: true,
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* Required Stock Notice */}
-      <div className="bg-amber-50 dark:bg-amber-950/50 border-2 border-amber-400 dark:border-amber-700/80 rounded-2xl p-4 text-xs sm:text-sm text-stone-800 dark:text-stone-200 shadow-sm flex items-start gap-3">
-        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
-        <div className="space-y-1">
-          <p className="font-bold text-amber-900 dark:text-amber-200 text-sm">
+      <div className="bg-amber-50 dark:bg-amber-950/50 border-2 border-amber-400 dark:border-amber-700/80 rounded-2xl p-3 sm:p-4 text-xs text-stone-800 dark:text-stone-200 shadow-xs flex items-start gap-2.5">
+        <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+        <div className="space-y-0.5">
+          <p className="font-bold text-amber-900 dark:text-amber-200 text-xs sm:text-sm">
             Please Grab Your Items Before Paying!
           </p>
-          <p className="text-stone-700 dark:text-stone-300 leading-relaxed text-xs">
-            Please make sure to stop by the stand cooler and grab your carton in person <strong>before sending payment</strong> to make sure we have it on hand. Because stock is updated once a day and our honor stand is open 24/7, we are not responsible if you send online payment and an item happens to be sold out.
+          <p className="text-stone-700 dark:text-stone-300 leading-snug text-[11px] sm:text-xs">
+            Please stop by the stand cooler and grab your carton in person <strong>before sending payment</strong> to make sure it is in stock. Because our honor stand is open 24/7, we are not responsible if online payment is sent when an item is sold out.
           </p>
         </div>
       </div>
 
       {/* Direct Stand Selection Cards */}
-      <div className="space-y-3 pt-1">
+      <div className="space-y-2.5 pt-0.5">
         <div className="flex items-center justify-between">
-          <h3 className="font-handwritten text-2xl font-bold text-stone-900 dark:text-yellow-100">
+          <h3 className="font-handwritten text-xl sm:text-2xl font-bold text-stone-900 dark:text-yellow-100">
             Select Your Stand Items:
           </h3>
-          <span className="text-[11px] font-semibold text-stone-500 dark:text-stone-400">
-            Tap for Direct Square Checkout
+          <span className="text-[10px] sm:text-[11px] font-semibold text-stone-500 dark:text-stone-400">
+            Tap for Square Checkout
           </span>
         </div>
 
         {/* 1. Chicken Eggs Card */}
-        <div className="bg-white/95 dark:bg-gray-900/90 rounded-2xl p-4 sm:p-5 border-2 border-green-600/60 dark:border-green-600 shadow-md space-y-3 text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-100 dark:border-gray-800 pb-3">
-            <div className="flex items-center gap-2.5">
-              <span className="text-3xl select-none">🥚</span>
+        <div className="bg-white/95 dark:bg-gray-900/90 rounded-2xl p-3.5 sm:p-4 border-2 border-green-600/60 dark:border-green-600 shadow-sm space-y-2.5 text-left">
+          <div className="flex items-center justify-between gap-2 border-b border-stone-100 dark:border-gray-800 pb-2">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl sm:text-3xl select-none">🥚</span>
               <div>
-                <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-stone-900 dark:text-stone-100 text-base sm:text-lg">
+                <div className="flex items-center flex-wrap gap-1.5">
+                  <h4 className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base">
                     Farm Fresh Chicken Eggs
                   </h4>
-                  <span className="bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                  <span className="bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-300 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
                     Pasture-Raised
                   </span>
                 </div>
-                <p className="text-xs text-stone-600 dark:text-stone-300 mt-0.5">
-                  Natural bloom intact • Never chemically washed • From 60+ free-ranging hens
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300">
+                  Natural bloom intact • Unwashed • From 60+ free-ranging hens
                 </p>
               </div>
             </div>
           </div>
 
           {/* Size / Quantity Selection */}
-          <div className="space-y-1.5">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-400">
-              Choose Size:
-            </span>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {/* Dozen option */}
-              <button
-                type="button"
-                onClick={() => setSelectedChickenOption('dozen')}
-                className={`p-3 rounded-xl border-2 transition text-left cursor-pointer flex items-center justify-between ${
-                  selectedChickenOption === 'dozen'
-                    ? 'border-green-600 bg-green-50/80 dark:bg-green-950/60 shadow-xs'
-                    : 'border-stone-200 dark:border-gray-700 hover:border-stone-300 dark:hover:border-gray-600'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-bold text-sm text-stone-900 dark:text-stone-100">
-                      Full Dozen (12 Eggs)
-                    </span>
-                    <span className="bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-yellow-300 text-[10px] font-bold px-1.5 py-0.2 rounded">
-                      Most Popular
-                    </span>
-                  </div>
-                  <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
-                    12 Large Brown & Pastel Eggs
-                  </span>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <span className="font-mono font-extrabold text-base sm:text-lg text-green-800 dark:text-green-300">
-                    $5.00
-                  </span>
-                </div>
-              </button>
+          <div className="grid grid-cols-2 gap-2">
+            {/* Dozen option */}
+            <button
+              type="button"
+              onClick={() => setSelectedChickenOption('dozen')}
+              className={`p-2.5 sm:p-3 rounded-xl border-2 transition text-left cursor-pointer flex items-center justify-between gap-1 ${
+                selectedChickenOption === 'dozen'
+                  ? 'border-green-600 bg-green-50/80 dark:bg-green-950/60 shadow-xs'
+                  : 'border-stone-200 dark:border-gray-700 hover:border-stone-300 dark:hover:border-gray-600'
+              }`}
+            >
+              <div>
+                <span className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 block">
+                  Full Dozen (12)
+                </span>
+                <span className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 block">
+                  Brown & Pastel
+                </span>
+              </div>
+              <span className="font-mono font-extrabold text-sm sm:text-base text-green-800 dark:text-green-300 flex-shrink-0">
+                $5.00
+              </span>
+            </button>
 
-              {/* Half Dozen option */}
-              <button
-                type="button"
-                onClick={() => setSelectedChickenOption('half')}
-                className={`p-3 rounded-xl border-2 transition text-left cursor-pointer flex items-center justify-between ${
-                  selectedChickenOption === 'half'
-                    ? 'border-green-600 bg-green-50/80 dark:bg-green-950/60 shadow-xs'
-                    : 'border-stone-200 dark:border-gray-700 hover:border-stone-300 dark:hover:border-gray-600'
-                }`}
-              >
-                <div>
-                  <span className="font-bold text-sm text-stone-900 dark:text-stone-100">
-                    Half Dozen (6 Eggs)
-                  </span>
-                  <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
-                    6 Farm Fresh Eggs
-                  </span>
-                </div>
-                <div className="text-right flex-shrink-0">
-                  <span className="font-mono font-extrabold text-base sm:text-lg text-green-800 dark:text-green-300">
-                    $3.00
-                  </span>
-                </div>
-              </button>
-            </div>
+            {/* Half Dozen option */}
+            <button
+              type="button"
+              onClick={() => setSelectedChickenOption('half')}
+              className={`p-2.5 sm:p-3 rounded-xl border-2 transition text-left cursor-pointer flex items-center justify-between gap-1 ${
+                selectedChickenOption === 'half'
+                  ? 'border-green-600 bg-green-50/80 dark:bg-green-950/60 shadow-xs'
+                  : 'border-stone-200 dark:border-gray-700 hover:border-stone-300 dark:hover:border-gray-600'
+              }`}
+            >
+              <div>
+                <span className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 block">
+                  Half Dozen (6)
+                </span>
+                <span className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400 block">
+                  6 Fresh Eggs
+                </span>
+              </div>
+              <span className="font-mono font-extrabold text-sm sm:text-base text-green-800 dark:text-green-300 flex-shrink-0">
+                $3.00
+              </span>
+            </button>
           </div>
 
           {/* Action Row */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
-            <span className="text-xs text-stone-500 dark:text-stone-400">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-1">
+            <span className="text-[11px] sm:text-xs text-stone-500 dark:text-stone-400">
               Selected: <strong>{chickenOptions[selectedChickenOption].label}</strong> (${chickenOptions[selectedChickenOption].price.toFixed(2)})
             </span>
 
@@ -163,9 +146,9 @@ export const StandProductSelector: React.FC = () => {
                 href={chickenOptions[selectedChickenOption].squareUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#FACC15] hover:bg-yellow-400 text-stone-900 font-extrabold py-2.5 px-5 rounded-xl shadow transition transform hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 bg-[#FACC15] hover:bg-yellow-400 text-stone-900 font-extrabold py-2 px-4 rounded-xl shadow-xs transition active:scale-95 text-xs cursor-pointer whitespace-nowrap"
               >
-                <CreditCard className="w-4 h-4 text-stone-900" />
+                <CreditCard className="w-3.5 h-3.5 text-stone-900" />
                 <span>Pay ${chickenOptions[selectedChickenOption].price.toFixed(2)} on Square →</span>
               </a>
 
@@ -179,7 +162,7 @@ export const StandProductSelector: React.FC = () => {
                     squareUrl: chickenOptions[selectedChickenOption].squareUrl,
                   })
                 }
-                className="px-3 py-2.5 rounded-xl bg-stone-100 dark:bg-gray-800 hover:bg-stone-200 dark:hover:bg-gray-700 text-stone-700 dark:text-stone-300 font-bold text-xs transition cursor-pointer"
+                className="px-2.5 py-2 rounded-xl bg-stone-100 dark:bg-gray-800 hover:bg-stone-200 dark:hover:bg-gray-700 text-stone-700 dark:text-stone-300 font-bold text-xs transition cursor-pointer whitespace-nowrap"
                 title="View All Payment Methods"
               >
                 Other Ways
@@ -189,36 +172,36 @@ export const StandProductSelector: React.FC = () => {
         </div>
 
         {/* 2. Quail Eggs Card */}
-        <div className="bg-white/95 dark:bg-gray-900/90 rounded-2xl p-4 sm:p-5 border-2 border-amber-500/60 dark:border-amber-600 shadow-md space-y-3 text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-100 dark:border-gray-800 pb-3">
-            <div className="flex items-center gap-2.5">
-              <span className="text-3xl select-none">🪺</span>
+        <div className="bg-white/95 dark:bg-gray-900/90 rounded-2xl p-3.5 sm:p-4 border-2 border-amber-500/60 dark:border-amber-600 shadow-sm space-y-2 text-left">
+          <div className="flex items-center justify-between gap-2 border-b border-stone-100 dark:border-gray-800 pb-2">
+            <div className="flex items-center gap-2">
+              <span className="text-2xl sm:text-3xl select-none">🪺</span>
               <div>
-                <div className="flex items-center gap-2">
-                  <h4 className="font-bold text-stone-900 dark:text-stone-100 text-base sm:text-lg">
+                <div className="flex items-center flex-wrap gap-1.5">
+                  <h4 className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base">
                     Farm Fresh Quail Eggs
                   </h4>
-                  <span className="bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-yellow-300 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
+                  <span className="bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-yellow-300 text-[9px] sm:text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase">
                     Coturnix Speckled
                   </span>
                 </div>
-                <p className="text-xs text-stone-600 dark:text-stone-300 mt-0.5">
-                  Delicate gourmet eggs with creamy rich yolks • Nutrient packed • 12 eggs per carton
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300">
+                  Delicate gourmet eggs • Creamy rich yolks • 12 eggs/carton
                 </p>
               </div>
             </div>
 
-            <div className="flex items-baseline gap-1.5 self-start sm:self-auto">
-              <span className="font-mono font-extrabold text-xl text-amber-800 dark:text-yellow-400">
+            <div className="flex items-baseline gap-1 flex-shrink-0">
+              <span className="font-mono font-extrabold text-base sm:text-lg text-amber-800 dark:text-yellow-400">
                 $3.00
               </span>
-              <span className="text-xs text-stone-500 dark:text-stone-400">/ dozen</span>
+              <span className="text-[10px] sm:text-xs text-stone-500 dark:text-stone-400">/ doz</span>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
-            <span className="text-xs text-stone-500 dark:text-stone-400">
-              Coturnix laying coops on clean shavings & sandbox nutrition
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-0.5">
+            <span className="text-[11px] text-stone-500 dark:text-stone-400">
+              Raised on clean shavings & sand baths
             </span>
 
             <div className="flex items-center gap-2">
@@ -226,9 +209,9 @@ export const StandProductSelector: React.FC = () => {
                 href={quailOption.squareUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-[#FACC15] hover:bg-yellow-400 text-stone-900 font-extrabold py-2.5 px-5 rounded-xl shadow transition transform hover:-translate-y-0.5 active:scale-95 text-xs sm:text-sm cursor-pointer whitespace-nowrap"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 bg-[#FACC15] hover:bg-yellow-400 text-stone-900 font-extrabold py-2 px-4 rounded-xl shadow-xs transition active:scale-95 text-xs cursor-pointer whitespace-nowrap"
               >
-                <CreditCard className="w-4 h-4 text-stone-900" />
+                <CreditCard className="w-3.5 h-3.5 text-stone-900" />
                 <span>Pay $3.00 on Square →</span>
               </a>
 
@@ -242,7 +225,7 @@ export const StandProductSelector: React.FC = () => {
                     squareUrl: quailOption.squareUrl,
                   })
                 }
-                className="px-3 py-2.5 rounded-xl bg-stone-100 dark:bg-gray-800 hover:bg-stone-200 dark:hover:bg-gray-700 text-stone-700 dark:text-stone-300 font-bold text-xs transition cursor-pointer"
+                className="px-2.5 py-2 rounded-xl bg-stone-100 dark:bg-gray-800 hover:bg-stone-200 dark:hover:bg-gray-700 text-stone-700 dark:text-stone-300 font-bold text-xs transition cursor-pointer whitespace-nowrap"
                 title="View All Payment Methods"
               >
                 Other Ways

@@ -30,7 +30,7 @@ const defaultOfferings: StandOffering[] = [
     name: 'Farm Fresh Chicken Eggs',
     price: '$5.00 / dozen • $3.00 / half-dozen',
     description: 'Free-range, pasture-raised eggs with rich golden yolks from our happy flock of laying hens.',
-    tag: 'Always in Stock 24/7',
+    tag: 'Pasture-Raised',
     icon: '🥚',
   },
   {

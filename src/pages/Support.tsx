@@ -192,8 +192,17 @@ export const Support: React.FC = () => {
               </a>
             </div>
 
-            {/* Memo Note & All Sales Final Policy */}
+            {/* Memo Note, Tracker Timeframe & All Sales Final Policy */}
             <div className="space-y-2 pt-2 border-t border-stone-200 dark:border-gray-700 text-[11px] text-stone-600 dark:text-stone-300 leading-relaxed">
+              <div className="bg-amber-100/80 dark:bg-amber-950/40 p-3 rounded-xl border border-amber-300 dark:border-amber-800 space-y-1">
+                <span className="font-bold text-amber-900 dark:text-yellow-200 block">
+                  ⏳ Note on Tracker Processing Time:
+                </span>
+                <p>
+                  Online donations (Square, Venmo, Cash App, PayPal) and honor box contributions are manually synced to our site once daily. Please allow <strong>24–48 hours</strong> for your donation to reflect on the progress bar and recent supporters list.
+                </p>
+              </div>
+
               <div className="bg-stone-50 dark:bg-gray-900/60 p-3 rounded-xl border border-stone-200 dark:border-gray-700 space-y-1">
                 <span className="font-bold text-stone-800 dark:text-stone-200 block">
                   ⚠️ Note on Venmo, Cash App & PayPal Transfers:
