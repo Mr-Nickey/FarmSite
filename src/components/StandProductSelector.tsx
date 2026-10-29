@@ -325,7 +325,7 @@ export const StandProductSelector: React.FC = () => {
                 className="flex items-center justify-between p-3 rounded-xl bg-[#008CFF]/15 hover:bg-[#008CFF]/25 text-[#008CFF] font-bold transition"
               >
                 <div className="flex items-center gap-2">
-                  <img src="/images/venmo.svg" alt="Venmo" className="h-4 w-4" />
+                  <img src="/images/venmo.svg" alt="Venmo Payment Icon" loading="lazy" decoding="async" className="h-4 w-4" />
                   <span>Venmo (@samantha-Reed-183)</span>
                 </div>
                 <span>Send ${activePaymentModal.price.toFixed(2)} →</span>
@@ -339,7 +339,7 @@ export const StandProductSelector: React.FC = () => {
                 className="flex items-center justify-between p-3 rounded-xl bg-[#00D632]/15 hover:bg-[#00D632]/25 text-[#009e24] dark:text-[#00D632] font-bold transition"
               >
                 <div className="flex items-center gap-2">
-                  <img src="/images/cashapp.svg" alt="Cash App" className="h-4 w-4" />
+                  <img src="/images/cashapp.svg" alt="Cash App Payment Icon" loading="lazy" decoding="async" className="h-4 w-4" />
                   <span>Cash App ($northeastnymph)</span>
                 </div>
                 <span>Send ${activePaymentModal.price.toFixed(2)} →</span>
@@ -353,7 +353,7 @@ export const StandProductSelector: React.FC = () => {
                 className="flex items-center justify-between p-3 rounded-xl bg-[#003087]/15 hover:bg-[#003087]/25 text-[#003087] dark:text-[#5289df] font-bold transition"
               >
                 <div className="flex items-center gap-2">
-                  <img src="/images/paypal.svg" alt="PayPal" className="h-4 w-4" />
+                  <img src="/images/paypal.svg" alt="PayPal Payment Icon" loading="lazy" decoding="async" className="h-4 w-4" />
                   <span>PayPal (sammiesimpleliving)</span>
                 </div>
                 <span>Send ${activePaymentModal.price.toFixed(2)} →</span>

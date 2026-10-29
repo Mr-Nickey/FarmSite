@@ -63,9 +63,9 @@ export const FarmContact: React.FC = () => {
           <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-3 py-1 rounded-full border border-emerald-300/50">
             Direct Farm Inquiries
           </span>
-          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 mt-1.5">
+          <h2 className="font-handwritten text-3xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 mt-1.5">
             Questions, Stock Checks & Inquiries
-          </h3>
+          </h2>
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1 max-w-xl">
             Heading over to the stand, asking about quail hatching eggs, or want to say hello? Reach out directly to Nicky & Sammie.
           </p>

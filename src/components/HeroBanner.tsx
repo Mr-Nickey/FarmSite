@@ -42,7 +42,9 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
         {logoUrl && (
           <img
             src={logoUrl}
-            alt={logoAlt || 'Flocking Reeds Farm Logo'}
+            alt={logoAlt || 'Flocking Reeds Farm Logo - Grafton, NH'}
+            fetchPriority="high"
+            decoding="async"
             className="w-24 sm:w-32 md:w-36 drop-shadow-2xl mb-2 sm:mb-3 hover:scale-105 transition duration-500 bg-white/20 rounded-full p-2 sm:p-3 backdrop-blur-sm border-2 border-white/40"
           />
         )}

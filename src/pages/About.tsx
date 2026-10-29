@@ -242,9 +242,9 @@ export const About: React.FC = () => {
 
       {/* Section 6: YouTube Promotion Banner */}
       <section className="text-center bg-white/95 dark:bg-[#132232]/95 p-8 rounded-3xl border-2 border-sky-500/80 dark:border-sky-500/80 shadow-xl space-y-4">
-        <h3 className="font-handwritten text-4xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300">
+        <h2 className="font-handwritten text-4xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300">
           Catch the Action on YouTube!
-        </h3>
+        </h2>
         <p className="text-sm sm:text-base text-stone-700 dark:text-stone-300 max-w-xl mx-auto leading-relaxed">
           Instead of keeping up with blog posts, we document all our farm antics, builds, and daily chores live on video. Subscribe to join our homestead family!
         </p>
@@ -381,10 +381,10 @@ const ResidentGallerySection: React.FC = () => {
     <section className="bg-white/95 dark:bg-[#132232]/95 p-6 sm:p-8 rounded-3xl shadow-xl border-2 border-emerald-500/80 dark:border-emerald-500/80 space-y-6">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left border-b border-emerald-100 dark:border-emerald-900/50 pb-4">
         <div>
-          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-2 justify-center sm:justify-start">
+          <h2 className="font-handwritten text-3xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-2 justify-center sm:justify-start">
             <span>Meet the Residents & Guardians</span>
             <Sparkles className="w-6 h-6 text-amber-500 hidden sm:inline" />
-          </h3>
+          </h2>
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1">
             Click any resident photo card below to open their full personal story & photo spotlight!
           </p>
@@ -459,6 +459,8 @@ const ResidentGallerySection: React.FC = () => {
               <img
                 src={activeResident.img}
                 alt={activeResident.alt}
+                loading="lazy"
+                decoding="async"
                 className="w-full max-h-[380px] object-contain rounded-2xl shadow-xl border border-emerald-500/30"
               />
               <span className="absolute bottom-2 left-3 bg-black/60 backdrop-blur-md text-emerald-300 text-[10px] font-semibold px-2.5 py-0.5 rounded-full border border-emerald-500/30">

@@ -77,7 +77,7 @@ export const Support: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-[#008CFF] hover:bg-blue-600 text-white font-bold py-3 px-3 rounded-xl shadow transition text-xs cursor-pointer active:scale-95"
                 >
-                  <img src="/images/venmo.svg" alt="Venmo" className="h-4 w-4 invert" />
+                  <img src="/images/venmo.svg" alt="Venmo Donation Icon" loading="lazy" decoding="async" className="h-4 w-4 invert" />
                   <span>Venmo: @samantha-Reed-183</span>
                 </a>
 
@@ -87,7 +87,7 @@ export const Support: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-[#00D632] hover:bg-green-600 text-white font-bold py-3 px-3 rounded-xl shadow transition text-xs cursor-pointer active:scale-95"
                 >
-                  <img src="/images/cashapp.svg" alt="Cash App" className="h-4 w-4" />
+                  <img src="/images/cashapp.svg" alt="Cash App Donation Icon" loading="lazy" decoding="async" className="h-4 w-4" />
                   <span>Cash App: $northeastnymph</span>
                 </a>
 
@@ -97,7 +97,7 @@ export const Support: React.FC = () => {
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-[#003087] hover:bg-[#002466] text-white font-bold py-3 px-3 rounded-xl shadow transition text-xs cursor-pointer active:scale-95"
                 >
-                  <img src="/images/paypal.svg" alt="PayPal" className="h-4 w-4" />
+                  <img src="/images/paypal.svg" alt="PayPal Donation Icon" loading="lazy" decoding="async" className="h-4 w-4" />
                   <span>PayPal: sammiesimpleliving</span>
                 </a>
               </div>

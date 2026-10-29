@@ -37,11 +37,22 @@ export const SEO: React.FC<SEOProps> = ({
 
     // Standard Meta
     setMeta('name', 'description', description);
+    setMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+
+    // Canonical Link
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', resolvedUrl);
 
     // OpenGraph
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:type', ogType);
+    setMeta('property', 'og:locale', 'en_US');
     setMeta('property', 'og:url', resolvedUrl);
     setMeta('property', 'og:image', ogImage);
     setMeta('property', 'og:site_name', 'Flocking Reeds Farm');
@@ -77,7 +88,9 @@ export const SEO: React.FC<SEOProps> = ({
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <link rel="canonical" href={resolvedUrl} />
       <meta property="og:type" content={ogType} />
+      <meta property="og:locale" content="en_US" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={resolvedUrl} />

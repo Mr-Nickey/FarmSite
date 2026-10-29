@@ -6,6 +6,9 @@
 
 body {
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   background-color: #f4f7f4;
   color: #0f172a;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -14,6 +17,27 @@ body {
 .dark body {
   background-color: #0b131e;
   color: #f1f5f9;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* Cross-browser WebKit vendor prefixes for backdrop-filter & user-select */
+.backdrop-blur-xs,
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+}
+
+.select-none {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .font-handwritten {
@@ -55,7 +79,7 @@ body.dyslexia-mode,
   background: #f1f5f9;
 }
 
-.dark ::webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: #0b131e;
 }
 

@@ -14,20 +14,20 @@ export const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <SEO
-        title="Flocking Reeds Farm | Fresh Eggs & 24/7 Honor Stand (Grafton, NH)"
-        description="Family homestead & 24/7 roadside honor stand in Grafton, NH. Farm fresh pasture-raised chicken eggs, Coturnix quail eggs ($3/doz), and hand-painted cartons."
+        title="Flocking Reeds Farm | Fresh Pasture-Raised Chicken & Quail Eggs in Grafton & Canaan, NH"
+        description="Visit our 24/7 self-serve honor farmstand at 441 Millbrook Rd in Grafton, NH or Canaan Hardware in Canaan, NH for fresh pasture-raised chicken eggs ($5/doz), speckled Coturnix quail eggs ($3/doz), baked goods, and crafts from our 100% no-kill family homestead."
         canonicalUrl="https://flockingreeds.farm/"
         ogImage="https://flockingreeds.farm/images/banner.webp"
       />
       {/* Unified Hero Banner */}
       <HeroBanner
         bgImage="/images/index-cover.webp"
-        bgAlt="The Flocking Reeds Homestead"
+        bgAlt="Flocking Reeds Farm 100% No-Kill Family Homestead and Pasture in Grafton, NH"
         badgeText="Farm Stand • Grafton, NH"
         title="Fueled by Caffeine & Chaos."
         subtitle="Fresh Chicken & Quail Eggs from Happy Pasture-Raised Birds on our No-Kill Family Homestead."
         logoUrl="/images/banner.webp"
-        logoAlt="Flocking Reeds Farm Logo"
+        logoAlt="Flocking Reeds Farm - Fresh Pasture-Raised Chicken & Quail Eggs in Grafton, NH"
       />
 
       {/* Main Content Area */}
@@ -317,9 +317,9 @@ export const Home: React.FC = () => {
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
                 Fresh Quail & Hand-Painted Cartons
               </span>
-              <h3 className="font-handwritten text-2xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 leading-tight">
+              <h2 className="font-handwritten text-2xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 leading-tight">
                 Inside Our 24/7 Farmstand & Coolers
-              </h3>
+              </h2>
             </div>
             <span className="text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-300/50 self-start sm:self-auto">
               Daily Gathered • Open 24/7
@@ -396,9 +396,9 @@ export const Home: React.FC = () => {
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/80 px-3 py-0.5 rounded-full inline-block border border-sky-300/50">
               Unfiltered Homestead Life • @sammiessimpleliving
             </span>
-            <h3 className="font-handwritten text-3xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300 leading-tight">
+            <h2 className="font-handwritten text-3xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300 leading-tight">
               Watch the Real Ups & Downs on YouTube!
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-snug sm:leading-relaxed max-w-2xl mx-auto">
               From tough New Hampshire weather to newborn critters, coop builds, and hilarious goose antics — Sammie captures it all raw, real, and unscripted.
             </p>
@@ -660,9 +660,9 @@ export const Home: React.FC = () => {
                 <HelpCircle className="w-5 h-5" />
               </span>
               <div>
-                <h3 className="font-handwritten text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300 leading-none">
+                <h2 className="font-handwritten text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300 leading-none">
                   Frequently Asked Questions
-                </h3>
+                </h2>
                 <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 mt-0.5">
                   Tap any question below for quick answers about farmstand stock, gift cards & egg care.
                 </p>
@@ -727,6 +727,9 @@ export const Home: React.FC = () => {
                   className="bg-white dark:bg-[#0b131e] rounded-xl border-2 border-emerald-500/40 dark:border-emerald-500/50 hover:border-emerald-400 overflow-hidden shadow-2xs transition"
                 >
                   <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${idx}`}
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
                     className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between gap-2.5 text-left hover:bg-emerald-500/5 dark:hover:bg-emerald-500/10 transition cursor-pointer"
                   >
@@ -734,9 +737,9 @@ export const Home: React.FC = () => {
                       <span className="hidden sm:inline-block text-[9px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full flex-shrink-0">
                         {faq.tag}
                       </span>
-                      <h4 className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 leading-snug">
+                      <h3 className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100 leading-snug">
                         {faq.q}
-                      </h4>
+                      </h3>
                     </div>
                     <ChevronDown
                       className={`w-4 h-4 text-stone-500 dark:text-stone-400 flex-shrink-0 transition-transform duration-200 ${
@@ -745,7 +748,10 @@ export const Home: React.FC = () => {
                     />
                   </button>
                   {isOpen && (
-                    <div className="px-3.5 pb-3 pt-2 sm:px-4 sm:pb-3.5 text-xs text-stone-700 dark:text-stone-300 leading-relaxed border-t border-emerald-100 dark:border-emerald-900/40 space-y-1.5">
+                    <div
+                      id={`faq-answer-${idx}`}
+                      className="px-3.5 pb-3 pt-2 sm:px-4 sm:pb-3.5 text-xs text-stone-700 dark:text-stone-300 leading-relaxed border-t border-emerald-100 dark:border-emerald-900/40 space-y-1.5"
+                    >
                       <p>{faq.a}</p>
                       {'link' in faq && faq.link && (
                         <div className="pt-0.5">

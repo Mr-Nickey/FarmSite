@@ -14,19 +14,23 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-[#f4f7f4]/95 dark:bg-[#0b131e]/95 backdrop-blur-md px-2.5 sm:px-4 pt-2 sm:pt-2.5 pb-1.5 sm:pb-2 transition-all duration-300">
-      <nav className="max-w-5xl mx-auto backdrop-blur-md bg-white/95 dark:bg-[#132232]/95 text-stone-800 dark:text-stone-100 shadow-lg shadow-emerald-500/5 rounded-2xl sm:rounded-full border-2 border-emerald-500/40 dark:border-emerald-500/60">
+      <nav aria-label="Main Navigation" className="max-w-5xl mx-auto backdrop-blur-md bg-white/95 dark:bg-[#132232]/95 text-stone-800 dark:text-stone-100 shadow-lg shadow-emerald-500/5 rounded-2xl sm:rounded-full border-2 border-emerald-500/40 dark:border-emerald-500/60">
         <div className="px-3 sm:px-6 py-1.5 sm:py-2 flex flex-col md:flex-row justify-between items-center gap-1.5 sm:gap-3">
           {/* Logo & Brand */}
           <button
+            type="button"
             onClick={() => {
               setCurrentPage('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
+            aria-label="Flocking Reeds Farm Home"
             className="flex items-center gap-2.5 group text-left cursor-pointer focus:outline-none"
           >
             <img
               src="/images/logo.webp"
-              alt="Flocking Reeds Farm Logo"
+              alt="Flocking Reeds Farm Logo - Grafton, NH Homestead"
+              fetchPriority="high"
+              decoding="async"
               className="h-8 sm:h-10 w-auto transform group-hover:scale-105 transition duration-300 drop-shadow"
             />
             <div className="flex items-center">
@@ -43,6 +47,8 @@ export const Navbar: React.FC = () => {
               return (
                 <button
                   key={item.id}
+                  type="button"
+                  aria-current={isActive ? 'page' : undefined}
                   onClick={() => {
                     setCurrentPage(item.id);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -61,8 +67,10 @@ export const Navbar: React.FC = () => {
             {/* Quick Utility Toggles in Header */}
             <div className="flex items-center gap-1 pl-1.5 sm:pl-2 border-l border-emerald-300/60 dark:border-sky-700/60 ml-0.5 sm:ml-1">
               <button
+                type="button"
                 onClick={toggleDyslexiaMode}
                 title="Toggle Dyslexia-Friendly Font"
+                aria-pressed={isDyslexiaMode}
                 className={`p-1.5 sm:p-2 rounded-full transition cursor-pointer ${
                   isDyslexiaMode
                     ? 'bg-amber-400 text-stone-900 shadow font-bold'
@@ -74,8 +82,10 @@ export const Navbar: React.FC = () => {
               </button>
 
               <button
+                type="button"
                 onClick={toggleTheme}
                 title="Toggle Dark / Light Theme"
+                aria-pressed={isDarkMode}
                 className="p-1.5 sm:p-2 rounded-full text-stone-600 dark:text-amber-300 hover:bg-emerald-500/10 dark:hover:bg-sky-500/10 transition cursor-pointer"
                 aria-label="Toggle Theme"
               >

@@ -67,9 +67,9 @@ export const Contact: React.FC = () => {
               <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
                 Primary 24/7 Honor Farmstand
               </span>
-              <h3 className="font-handwritten text-2xl font-bold text-emerald-900 dark:text-emerald-300">
+              <h2 className="font-handwritten text-2xl font-bold text-emerald-900 dark:text-emerald-300">
                 The Millbrook Road Farmstand
-              </h3>
+              </h2>
             </div>
           </div>
 
@@ -102,9 +102,9 @@ export const Contact: React.FC = () => {
               <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
                 Also in Canaan, NH
               </span>
-              <h3 className="font-handwritten text-2xl font-bold text-amber-900 dark:text-amber-200">
+              <h2 className="font-handwritten text-2xl font-bold text-amber-900 dark:text-amber-200">
                 Canaan Hardware & Supply
-              </h3>
+              </h2>
             </div>
           </div>
 
@@ -135,9 +135,9 @@ export const Contact: React.FC = () => {
           <span className="text-[11px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/80 px-3 py-0.5 rounded-full border border-sky-300/50">
             Follow The Homestead Online
           </span>
-          <h3 className="font-handwritten text-3xl font-bold text-sky-900 dark:text-sky-200 mt-1">
+          <h2 className="font-handwritten text-3xl font-bold text-sky-900 dark:text-sky-200 mt-1">
             Connect with Sammie Across Socials
-          </h3>
+          </h2>
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-0.5">
             Follow along with daily coop builds, critter antics, and simple living updates on your favorite platform:
           </p>
@@ -245,9 +245,9 @@ export const Contact: React.FC = () => {
             <HelpCircle className="w-6 h-6" />
           </span>
           <div>
-            <h3 className="font-handwritten text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300">
+            <h2 className="font-handwritten text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300">
               Looking for Common Farm Stand FAQs?
-            </h3>
+            </h2>
             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-0.5 max-w-xl">
               Answers about egg availability, exact change at the honor box, how to wash fresh eggs at home, shelf life, and our no-kill philosophy are on our main page.
             </p>

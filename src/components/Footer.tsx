@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
             <img
               src="/images/banner.webp"
-              alt="Flocking Reeds Farm"
+              alt="Flocking Reeds Farm - 24/7 Self-Serve Farmstand in Grafton, NH"
               loading="lazy"
               decoding="async"
               className="w-44 h-auto opacity-95 hover:opacity-100 transition duration-300 drop-shadow"
@@ -208,14 +208,20 @@ export const Footer: React.FC = () => {
           {/* Accessibility & Theme Toggles */}
           <div className="flex gap-4 text-xs items-center text-stone-600 dark:text-stone-400">
             <button
+              type="button"
               onClick={toggleDyslexiaMode}
+              aria-pressed={isDyslexiaMode}
+              aria-label="Toggle Dyslexia-Friendly Font"
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition cursor-pointer font-medium"
             >
               Dyslexia Font: {isDyslexiaMode ? 'On' : 'Off'}
             </button>
             <span className="text-stone-400">|</span>
             <button
+              type="button"
               onClick={toggleTheme}
+              aria-pressed={isDarkMode}
+              aria-label="Toggle Dark or Light Theme"
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition cursor-pointer font-medium"
             >
               Theme: {isDarkMode ? 'Dark 🌙' : 'Light ☀️'}

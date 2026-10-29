@@ -11,7 +11,9 @@ export const NotFound: React.FC = () => {
         <div className="w-48 h-48 mx-auto rounded-2xl overflow-hidden shadow">
           <img
             src="/images/404.webp"
-            alt="Lost Hen"
+            alt="Lost Hen - Page Not Found at Flocking Reeds Farm in Grafton, NH"
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>
