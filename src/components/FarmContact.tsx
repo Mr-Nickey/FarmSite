@@ -189,7 +189,7 @@ export const FarmContact: React.FC = () => {
           {/* Honor stand etiquette reminder */}
           <div className="bg-stone-50 dark:bg-[#0b131e] p-4 rounded-2xl border-2 border-emerald-500/40 dark:border-emerald-500/50 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
             <span className="font-bold text-emerald-900 dark:text-emerald-300 block mb-1">
-              Visiting the Driveway Stand:
+              Visiting the Farmstand:
             </span>
             No need to knock or schedule an appointment to buy eggs! Pull up anytime 24/7, browse the coolers, drop payment in the metal box or scan with Square / Venmo / Cash App / PayPal.
           </div>

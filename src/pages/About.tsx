@@ -11,7 +11,7 @@ export const About: React.FC = () => {
         title="About Us | Flocking Reeds Farm & Homestead (Grafton, NH)"
         description="Meet Sammie & Nicky Reed. Married 15 years, operating our 100% no-kill family homestead and 24/7 honor stand with 60+ pasture-raised chickens & quail in Grafton, NH."
         canonicalUrl="https://flockingreeds.farm/about"
-        ogImage="https://flockingreeds.farm/about"
+        ogImage="https://flockingreeds.farm/images/sammie-chicks.webp"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -61,7 +61,7 @@ export const About: React.FC = () => {
                 className="rounded-xl w-full h-72 object-cover"
               />
               <p className="text-center font-handwritten text-xs text-stone-600 dark:text-stone-400 mt-2">
-                Our first stand sign, rescued and hand-painted from a neighbor's old canoe.
+                Our first farmstand sign, rescued and hand-painted from a neighbor's old canoe.
               </p>
             </div>
           </div>
@@ -130,7 +130,7 @@ export const About: React.FC = () => {
               </p>
             </div>
             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed max-w-sm">
-              Nicky is the muscle, carpenter, and caregiver. He builds coops from upcycled pallets and trailers, clears woodland runs, stocks the stand, and coded this website. When something needs building or fixing, Nicky is on it.
+              Nicky is the muscle, carpenter, and caregiver. He builds coops from upcycled pallets and trailers, clears woodland runs, stocks the farmstand, and coded this website. When something needs building or fixing, Nicky is on it.
             </p>
           </div>
         </div>
@@ -186,7 +186,7 @@ export const About: React.FC = () => {
               Upcycled Ingenuity
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
-              We repurpose what others discard. From turning an old vintage camper into our main chicken coop, to building our stand sign from a fiberglass canoe, we craft a resilient, sustainable homestead without unnecessary waste.
+              We repurpose what others discard. From turning an old vintage camper into our chicken & quail coop, to building our farmstand sign from a fiberglass canoe, we craft a resilient, sustainable homestead without unnecessary waste.
             </p>
           </div>
         </div>
@@ -207,7 +207,7 @@ export const About: React.FC = () => {
               Eggs at Canaan Hardware Store
             </h3>
             <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
-              In addition to our roadside stand, we sell our farm fresh eggs with <strong>Canaan Hardware Store</strong> in Canaan, NH! They are great, helpful local folks where we buy our coop building materials, hardware, and farm feed.
+              In addition to our roadside farmstand, we sell our farm fresh eggs with <strong>Canaan Hardware Store</strong> in Canaan, NH! They are great, helpful local folks where we buy our coop building materials, hardware, and farm feed.
             </p>
             <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
               Almost all proceeds from our eggs go right back to Canaan Hardware to keep our flock fed and happy. From there, they help strengthen the local community. We are proud to build a healthier, happier community one carton at a time!
@@ -231,11 +231,11 @@ export const About: React.FC = () => {
               We understand times are rough, groceries are expensive, and not everyone has easy access to healthy protein.
             </p>
             <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
-              If you or your family are in need and can't afford the regular cost of eggs, please feel free to stop by our 24/7 honor stand, grab a dozen fresh eggs, and <strong>leave whatever you can afford — even a dollar in pennies</strong>. Nobody in our neighborhood should go hungry. We are here to help our community.
+              If you or your family are in need and can't afford the regular cost of eggs, please feel free to stop by our 24/7 honor farmstand, grab a dozen fresh eggs, and <strong>leave whatever you can afford — even a dollar in pennies</strong>. Nobody in our neighborhood should go hungry. We are here to help our community.
             </p>
           </div>
           <div className="pt-2 border-t border-emerald-200 dark:border-emerald-900/60 text-xs font-semibold text-emerald-900 dark:text-emerald-300 flex items-center gap-1.5">
-            <span>💛</span> Always available at our 24/7 honor stand, 441 Millbrook Rd.
+            <span>💛</span> Always available at our 24/7 farmstand, 441 Millbrook Rd.
           </div>
         </div>
       </section>
@@ -263,71 +263,71 @@ export const About: React.FC = () => {
 );
 };
 
-/* Resident Data List */
+/* Resident Data List - Harmonized Category Pill Badges, Titles & Authentic Homestead Stories */
 const RESIDENTS_DATA = [
   {
     id: 'camper-coop',
-    title: 'The Camper Coop',
-    tag: 'Bantam Winter Home & Hurt Hens Ward',
+    title: 'The Vintage Camper Coop',
+    tag: 'Upcycled Coop Build',
     img: '/assets/aistudio/PXL_20260917_132453213_8e87d5b5.jpg',
-    alt: 'Vintage Catalina camper converted into chicken coop and animal recovery ward',
-    story: 'This converted camper houses our bantam chickens for the winter and our quail! It is also where all our hurt or recovering girls live — as we currently have 3 chickens with a massive limp in their step who get extra care, soft bedding, and individual attention here.'
+    alt: 'Vintage Catalina camper converted into a warm chicken coop and recovery ward',
+    story: 'Repurposed from an old vintage Catalina camper trailer, this insulated coop serves as the cozy winter home for our bantam chickens and Coturnix quail! It also doubles as our dedicated recovery ward for injured hens — including three sweet girls with a heavy limp in their step who receive extra TLC, deep pine shavings, and a peaceful place to rest.'
   },
   {
     id: 'main-coop-flock',
     title: 'Protected Main Coop Flock',
-    tag: 'Original Hen Flock & Main Coop',
+    tag: 'The Laying Flock',
     img: '/assets/aistudio/PXL_20260406_132637436_17af7e99.jpg',
-    alt: 'Chickens eating and drinking inside the main wooden coop',
-    story: 'The protected main coop flock is a mix of all our girls, from the very first chickens we ever got to the ones we have now! They are all protected by whichever rooster is in charge at the time, as we have sadly lost a few brave roosters over the years protecting the flock.'
+    alt: 'Pasture-raised laying hens eating and drinking inside the main wooden coop',
+    story: 'Our main wooden coop houses a vibrant mix of over 60 pasture-raised hens — from the very first chickens we ever raised to our newest layers! They spend their days foraging naturally and are watched over by our head rooster, carrying on the legacy of several brave roosters who have protected the flock over the years.'
   },
   {
     id: 'coturnix-quail',
-    title: 'Coturnix Quail',
-    tag: 'Nutella, Toast & The Quail Crew',
+    title: 'Nutella, Toast & The Quail',
+    tag: 'Coturnix Quail',
     img: '/assets/aistudio/PXL_20260917_133046258_1f146885.jpg',
-    alt: 'Close-up of Japanese Coturnix Quail Nutella',
-    story: 'We have 5 quail in total and all of them are named! The single quail pictured alone is named Nutella — she can be mean to the others, so she is kept safely separated from the rest, while our handsome male quail is named Toast.'
+    alt: 'Close-up of Japanese Coturnix Quail Nutella in clean pine shavings',
+    story: 'Our Coturnix quail flock started with five named birds that we breed and hatch right here on the homestead! Pictured here is Nutella — a feisty little hen who prefers her own private quarters away from the others — while our handsome rooster, Toast, looks after the rest of the covey.'
   },
   {
     id: 'white-geese',
-    title: 'Watchful White Geese',
-    tag: 'Hecate the Embden Guardian Goose',
+    title: 'Hecate the Embden Goose',
+    tag: 'Waterfowl Guardian',
     img: '/assets/aistudio/PXL_20260529_141145648.MP_765d679f.jpg',
-    alt: 'White Embden guardian goose Hecate standing on water tub',
-    story: 'That is Hecate, our male Embden guardian goose! He absolutely loves his mommy (Sammie) and pretty much hates everyone else. He is a great, loud, and watchful goose keeping guard over our entire farmyard.'
+    alt: 'White Embden guardian goose Hecate standing watch over the farmyard',
+    story: 'Meet Hecate, our proud male Embden guardian goose! He is fiercely devoted to his mommy (Sammie) and suspicious of just about everyone else. With his booming honk and watchful eye, Hecate is our loudest barnyard alarm system and keeps constant guard over the flock.'
   },
   {
     id: 'pasture-goose',
-    title: 'Pasture Goose Patrol',
-    tag: 'Persephone the Sebastopol Goose',
+    title: 'Persephone the Sebastopol',
+    tag: 'Pasture Waterfowl',
     img: '/assets/aistudio/PXL_20260529_141207855.MP_0157eeec.jpg',
-    alt: 'Persephone the Sebastopol farm goose',
-    story: 'Her name is Persephone (like the goddess), and she is the mate to Hecate! She is a curly Sebastopol goose, and we are actively working on breeding her and Hecate together for future goslings.'
+    alt: 'Persephone the curly-feathered Sebastopol farm goose',
+    story: 'Named after the Greek goddess, Persephone is our gentle, curly-feathered Sebastopol goose and Hecate\'s devoted mate! The two patrol the pasture side by side, and we are excited to pair them together to hatch future goslings here on the farm.'
   },
   {
     id: 'barn-cat',
-    title: 'Barn Cat Mouse Watch',
-    tag: 'Belladonna Nightshade Reed',
+    title: 'Belladonna the Barn Cat',
+    tag: 'Homestead Mouser',
     img: '/assets/aistudio/PXL_20261007_161533335_8fe70700.jpg',
-    alt: 'Tuxedo farm cat resting in autumn leaves',
-    story: 'Barn cat Belladonna is the newest addition to our cat family! Named after the plant, her full name when she is doing something wrong is Belladonna Nightshade Reed — and her name fits her spicy personality perfectly!'
+    alt: 'Belladonna the tuxedo farm cat resting in autumn leaves',
+    story: 'Belladonna is the newest addition to our homestead cat family! Named after the nightshade plant, she earns her full name — Belladonna Nightshade Reed — whenever she is getting into mischief. Spirited, curious, and full of spice, her name fits her personality to a tee!'
   },
   {
     id: 'aussie-guardian',
-    title: 'Flock Guardian & Companion',
-    tag: 'Gemma the Mini Aussie',
+    title: 'Gemma the Mini Aussie',
+    tag: 'Farm Dog & Companion',
     img: '/assets/aistudio/PXL_20261007_161441565.MP_01ab5372.jpg',
-    alt: 'Gemma the Mini Australian Shepherd resting by firewood stack in fall',
-    story: 'Flock guardian is more of a companion — her name is Gemma and she is a Mini Aussie! Her brother is the full-grown Australian Shepherd livestock guardian, while Gemma stays close by our side as our loyal farm companion.'
+    alt: 'Gemma the Mini Australian Shepherd resting by the firewood stack in autumn',
+    story: 'Sweet Gemma is our loyal Miniature Australian Shepherd! While her full-grown Aussie brother takes on the heavy livestock guardian duties around the perimeter, Gemma stays right by our side during daily chores as the ultimate homestead companion.'
   },
   {
     id: 'homestead-bunnies',
-    title: 'Homestead Bunnies',
-    tag: 'Jolene the Chatty Bunny',
+    title: 'Jolene the Homestead Bunny',
+    tag: 'Homestead Rabbits',
     img: '/assets/aistudio/PXL_20260811_202438351_75faae4a.jpg',
-    alt: 'Jolene the grey rabbit relaxing in hay',
-    story: 'That is Jolene! She is a little grumpy and talks a lot with her funny grunts, but she is cuddly, lovable, and affectionate once she knows you. She loves her hay and carrots and hangs out watching the chickens all day.'
+    alt: 'Jolene the grey homestead rabbit relaxing in fresh hay',
+    story: 'Meet Jolene, our expressive and chatty homestead rabbit! She can act a little grumpy and loves to "talk" with funny little grunts, but she is endlessly cuddly and affectionate once she knows you. She spends her days munching fresh hay and carrots while watching the chickens go by.'
   }
 ];
 

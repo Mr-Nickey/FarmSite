@@ -69,10 +69,10 @@ export const Terms: React.FC = () => {
         {/* 3. Roadside Honor System */}
         <section className="space-y-2 text-xs sm:text-sm leading-relaxed">
           <h2 className="text-xl font-bold font-handwritten text-[#3E2723] dark:text-yellow-400">
-            24/7 Roadside Honor Stand Guidelines
+            24/7 Roadside Honor Farmstand Guidelines
           </h2>
           <p>
-            Our driveway stand is open 24/7 on an honor system built on community trust. Please close all insulated cooler lids securely after taking your eggs to protect them from weather and wildlife. Drop exact cash into the locked metal honor box or use Square, Venmo, Cash App, or PayPal.
+            Our farmstand is open 24/7 on an honor system built on community trust. Please close all insulated cooler lids securely after taking your eggs to protect them from weather and wildlife. Drop exact cash into the locked metal honor box or use Square, Venmo, Cash App, or PayPal.
           </p>
         </section>
 

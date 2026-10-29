@@ -13,8 +13,8 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full px-2.5 sm:px-4 pt-2 sm:pt-3 pb-1.5 sm:pb-2 transition-all duration-300">
-      <nav className="max-w-5xl mx-auto backdrop-blur-md bg-white/90 dark:bg-[#132232]/95 text-stone-800 dark:text-stone-100 shadow-lg shadow-emerald-500/5 rounded-2xl sm:rounded-full border-2 border-emerald-500/40 dark:border-emerald-500/60">
+    <header className="sticky top-0 z-50 w-full bg-[#f4f7f4]/95 dark:bg-[#0b131e]/95 backdrop-blur-md px-2.5 sm:px-4 pt-2 sm:pt-2.5 pb-1.5 sm:pb-2 transition-all duration-300">
+      <nav className="max-w-5xl mx-auto backdrop-blur-md bg-white/95 dark:bg-[#132232]/95 text-stone-800 dark:text-stone-100 shadow-lg shadow-emerald-500/5 rounded-2xl sm:rounded-full border-2 border-emerald-500/40 dark:border-emerald-500/60">
         <div className="px-3 sm:px-6 py-1.5 sm:py-2 flex flex-col md:flex-row justify-between items-center gap-1.5 sm:gap-3">
           {/* Logo & Brand */}
           <button

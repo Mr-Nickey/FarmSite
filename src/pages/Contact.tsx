@@ -57,7 +57,7 @@ export const Contact: React.FC = () => {
       {/* Stand Location & Retail Partner Details Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        {/* Driveway Stand Details */}
+        {/* Farmstand Details */}
         <div className="bg-white/95 dark:bg-[#132232]/95 p-6 rounded-3xl border-2 border-emerald-500/80 dark:border-emerald-500/80 shadow-md shadow-emerald-500/5 space-y-4 text-left">
           <div className="flex items-center gap-3">
             <span className="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
@@ -65,10 +65,10 @@ export const Contact: React.FC = () => {
             </span>
             <div>
               <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
-                Primary Honor Stand (24/7)
+                Primary 24/7 Honor Farmstand
               </span>
               <h3 className="font-handwritten text-2xl font-bold text-emerald-900 dark:text-emerald-300">
-                The Millbrook Road Stand
+                The Millbrook Road Farmstand
               </h3>
             </div>
           </div>
