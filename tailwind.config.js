@@ -8,19 +8,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'farm-green': '#2E4A35',
-        'farm-green-dark': '#3a5c44',
-        'farm-brown': '#5D4037',
-        'farm-accent': '#FACC15',
-        'farm-orange': '#D97706',
-        'farm-orange-dark': '#e68a00',
+        // Core Signature Greens (Sammie's Favorite)
+        'farm-green': '#10b981',        // Meadow Emerald / Pine
+        'farm-green-dark': '#047857',   // Deep Forest Pine
+        'farm-sage': '#4d7c0f',         // Warm Orchard Sage
+        'farm-light-green': '#e6f4ea',   // Spring Sprout Tint
+        
+        // Core Signature Blues (Nicky's Favorite)
+        'stream-blue': '#0ea5e9',       // Millbrook Stream Blue
+        'stream-blue-light': '#38bdf8', // Bluebird Sky
+        'navy-slate': '#0f172a',        // Deep Homestead Slate-Navy
+        'twilight-dark': '#0b131e',     // Autumn Twilight Base
+        'card-dark': '#132232',          // Deep Blue-Pine Charcoal Card Surface
+
+        // Seasonal Farm Accents
+        'harvest-gold': '#f59e0b',      // Sunflower / Harvest Gold
+        'harvest-gold-light': '#fbbf24',// Warm Sunburst
+        'autumn-cider': '#ea580c',      // Cider Terracotta
+        'autumn-orange': '#f97316',     // Barn Pumpkin Orange
+        
+        // Legacy compatibility
         'google-blue': '#4285F4',
-        'google-blue-dark': '#67a0fd',
         'youtube-red': '#FF0000',
-        'youtube-red-dark': '#ff4d4d',
-        'ledger-blue': '#4A5568',
-        'ledger-blue-dark': '#718096',
-        'farm-light-green': '#D0EAD6'
       },
       fontFamily: {
         handwritten: ['Kalam', 'cursive'],

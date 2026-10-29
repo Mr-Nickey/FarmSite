@@ -4,11 +4,12 @@ import { YoutubeIcon } from '../components/YoutubeIcon';
 import { FarmContact } from '../components/FarmContact';
 import { useFarm } from '../context/FarmContext';
 import { SEO } from '../components/SEO';
+import { HeroBanner } from '../components/HeroBanner';
 
 export const Contact: React.FC = () => {
   const { setCurrentPage } = useFarm();
   return (
-    <main className="container mx-auto px-4 py-10 flex-grow max-w-5xl space-y-10">
+    <div className="flex flex-col min-h-screen">
       <SEO
         title="Contact Us | Flocking Reeds Farm & Roadside Stand (Grafton, NH)"
         description="Contact Nicky & Sammie at Flocking Reeds Farm. Inquire about farm stand egg availability, Coturnix quail eggs, or homestead visits in Grafton, NH."
@@ -36,18 +37,17 @@ export const Contact: React.FC = () => {
           }
         }}
       />
-      {/* Page Header */}
-      <header className="text-center max-w-2xl mx-auto space-y-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-950/60 px-3.5 py-1 rounded-full">
-          Homestead Communications
-        </span>
-        <h1 className="font-handwritten text-5xl sm:text-6xl font-bold text-[#2E4A35] dark:text-green-400 mt-2 mb-2">
-          Contact Us
-        </h1>
-        <p className="text-sm sm:text-base text-[#5D4037] dark:text-gray-300 leading-relaxed">
-          Have a question about daily egg stock, Coturnix quail chicks, or need driving directions down Millbrook Road? Reach out directly to Nicky & Sammie.
-        </p>
-      </header>
+
+      {/* Unified Hero Banner */}
+      <HeroBanner
+        bgImage="/images/farmstand.webp"
+        bgAlt="Flocking Reeds Roadside Farm Stand on Millbrook Rd"
+        badgeText="441 Millbrook Rd • Grafton, NH"
+        title="Contact & Stand Location"
+        subtitle="Have a question about daily egg stock, Coturnix quail chicks, or need driving directions down Millbrook Road? Reach out directly to Nicky & Sammie."
+      />
+
+      <main className="container mx-auto px-4 pt-2 sm:pt-4 pb-12 flex-grow max-w-5xl space-y-10 sm:space-y-12">
 
       {/* Main Interactive Contact Component */}
       <section>
@@ -58,16 +58,16 @@ export const Contact: React.FC = () => {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         {/* Driveway Stand Details */}
-        <div className="bg-white/95 dark:bg-gray-800/90 p-6 rounded-3xl border-2 border-stone-200 dark:border-gray-700 shadow-md space-y-4 text-left">
+        <div className="bg-white/95 dark:bg-[#132232]/95 p-6 rounded-3xl border-2 border-emerald-500/80 dark:border-emerald-500/80 shadow-md shadow-emerald-500/5 space-y-4 text-left">
           <div className="flex items-center gap-3">
-            <span className="p-2.5 rounded-xl bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-400">
+            <span className="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
               <MapPin className="w-5 h-5" />
             </span>
             <div>
               <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
                 Primary Honor Stand (24/7)
               </span>
-              <h3 className="font-handwritten text-2xl font-bold text-stone-900 dark:text-stone-100">
+              <h3 className="font-handwritten text-2xl font-bold text-emerald-900 dark:text-emerald-300">
                 The Millbrook Road Stand
               </h3>
             </div>
@@ -84,7 +84,7 @@ export const Contact: React.FC = () => {
             href="https://maps.app.goo.gl/yoWoFDjWZtRBRsJC6"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#2E4A35] hover:bg-[#3d6347] text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-sm"
+            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-sm"
           >
             <Navigation className="w-4 h-4" />
             <span>Open Stand in Google Maps</span>
@@ -93,16 +93,16 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Also In Canaan at Canaan Hardware */}
-        <div className="bg-white/95 dark:bg-gray-800/90 p-6 rounded-3xl border-2 border-stone-200 dark:border-gray-700 shadow-md space-y-4 text-left">
+        <div className="bg-white/95 dark:bg-[#132232]/95 p-6 rounded-3xl border-2 border-amber-500/80 dark:border-amber-500/80 shadow-md shadow-amber-500/5 space-y-4 text-left">
           <div className="flex items-center gap-3">
-            <span className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-yellow-400">
+            <span className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-950 text-amber-800 dark:text-amber-300">
               <span className="text-xl">🏪</span>
             </span>
             <div>
               <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">
                 Also in Canaan, NH
               </span>
-              <h3 className="font-handwritten text-2xl font-bold text-stone-900 dark:text-stone-100">
+              <h3 className="font-handwritten text-2xl font-bold text-amber-900 dark:text-amber-200">
                 Canaan Hardware & Supply
               </h3>
             </div>
@@ -119,7 +119,7 @@ export const Contact: React.FC = () => {
             href="https://www.google.com/maps/search/?api=1&query=Canaan+Hardware+%26+Supply+489+US-4+Canaan+NH+03741"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-stone-200 hover:bg-stone-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-stone-800 dark:text-stone-100 font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-xs"
+            className="inline-flex items-center gap-2 bg-stone-200 hover:bg-stone-300 dark:bg-[#0b131e] dark:hover:bg-sky-950 text-stone-800 dark:text-stone-100 font-bold py-2.5 px-4 rounded-xl text-xs transition shadow-xs border border-stone-300 dark:border-sky-800/60"
           >
             <Navigation className="w-4 h-4" />
             <span>Directions to Canaan Hardware</span>
@@ -129,14 +129,13 @@ export const Contact: React.FC = () => {
 
       </section>
 
-
       {/* Sammie's Homestead Socials */}
-      <section className="bg-gradient-to-r from-red-50 via-amber-50 to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-6 sm:p-8 rounded-3xl border-2 border-stone-200 dark:border-gray-700 shadow-md space-y-4 text-left">
+      <section className="bg-white/95 dark:bg-[#132232]/95 p-6 sm:p-8 rounded-3xl border-2 border-sky-500/80 dark:border-sky-500/80 shadow-md space-y-4 text-left">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-red-700 dark:text-red-400 bg-red-100 dark:bg-red-950/60 px-3 py-0.5 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/80 px-3 py-0.5 rounded-full border border-sky-300/50">
             Follow The Homestead Online
           </span>
-          <h3 className="font-handwritten text-3xl font-bold text-stone-900 dark:text-yellow-100 mt-1">
+          <h3 className="font-handwritten text-3xl font-bold text-sky-900 dark:text-sky-200 mt-1">
             Connect with Sammie Across Socials
           </h3>
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-0.5">
@@ -150,17 +149,17 @@ export const Contact: React.FC = () => {
             href="https://www.youtube.com/@sammiessimpleliving"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-white dark:bg-gray-800 border-2 border-red-300 dark:border-red-900/60 hover:border-amber-500 dark:hover:border-white transition-all duration-200 shadow-sm hover:shadow-xl hover:shadow-red-500/10 group transform hover:-translate-y-1 block cursor-pointer"
+            className="p-4 rounded-2xl bg-stone-50 dark:bg-[#0b131e] border-2 border-sky-500/50 dark:border-sky-500/60 hover:border-sky-400 transition-all duration-200 shadow-sm group cursor-pointer block"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="p-2.5 rounded-xl bg-red-100 dark:bg-red-950/80 text-red-600 dark:text-red-400 group-hover:bg-red-600 group-hover:text-white transition-colors duration-200 shadow-xs">
+              <span className="p-2.5 rounded-xl bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-300 shadow-xs">
                 <YoutubeIcon className="w-5 h-5" />
               </span>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-red-700 dark:text-red-300 bg-red-50 dark:bg-red-950/50 px-2 py-0.5 rounded-md border border-red-200 dark:border-red-900/60">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/50 px-2 py-0.5 rounded-md border border-sky-300/50">
                 Videos
               </span>
             </div>
-            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition block">
+            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition block">
               YouTube Channel
             </span>
             <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
@@ -173,17 +172,17 @@ export const Contact: React.FC = () => {
             href="https://www.instagram.com/sammies.simple.living/"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-white dark:bg-gray-800 border-2 border-pink-300 dark:border-pink-900/60 hover:border-amber-500 dark:hover:border-white transition-all duration-200 shadow-sm hover:shadow-xl hover:shadow-pink-500/10 group transform hover:-translate-y-1 block cursor-pointer"
+            className="p-4 rounded-2xl bg-stone-50 dark:bg-[#0b131e] border-2 border-emerald-500/50 dark:border-emerald-500/60 hover:border-emerald-400 transition-all duration-200 shadow-sm group cursor-pointer block"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="p-2.5 rounded-xl bg-gradient-to-tr from-amber-100 via-pink-100 to-purple-100 dark:from-amber-950/50 dark:via-pink-950/60 dark:to-purple-950/50 text-pink-600 dark:text-pink-400 group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white transition-all duration-200 shadow-xs text-base">
+              <span className="p-2.5 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-300 shadow-xs text-base">
                 📸
               </span>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-pink-700 dark:text-pink-300 bg-pink-50 dark:bg-pink-950/50 px-2 py-0.5 rounded-md border border-pink-200 dark:border-pink-900/60">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-300/50">
                 Photos
               </span>
             </div>
-            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition block">
+            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition block">
               Instagram
             </span>
             <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
@@ -196,17 +195,17 @@ export const Contact: React.FC = () => {
             href="https://www.tiktok.com/@sammiessimpleliving"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-white dark:bg-gray-800 border-2 border-cyan-300 dark:border-cyan-900/60 hover:border-amber-500 dark:hover:border-white transition-all duration-200 shadow-sm hover:shadow-xl hover:shadow-cyan-500/10 group transform hover:-translate-y-1 block cursor-pointer"
+            className="p-4 rounded-2xl bg-stone-50 dark:bg-[#0b131e] border-2 border-sky-500/50 dark:border-sky-500/60 hover:border-sky-400 transition-all duration-200 shadow-sm group cursor-pointer block"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="p-2.5 rounded-xl bg-cyan-100 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 group-hover:bg-black dark:group-hover:bg-white group-hover:text-cyan-400 dark:group-hover:text-black transition-colors duration-200 shadow-xs text-base">
+              <span className="p-2.5 rounded-xl bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 text-base shadow-xs">
                 🎵
               </span>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-cyan-700 dark:text-cyan-300 bg-cyan-50 dark:bg-cyan-950/50 px-2 py-0.5 rounded-md border border-cyan-200 dark:border-cyan-900/60">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/50 px-2 py-0.5 rounded-md border border-sky-300/50">
                 Shorts
               </span>
             </div>
-            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-cyan-600 dark:group-hover:text-white transition block">
+            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-sky-600 transition block">
               TikTok
             </span>
             <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
@@ -219,17 +218,17 @@ export const Contact: React.FC = () => {
             href="https://www.reddit.com/user/Sammiesimpleliving/"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-white dark:bg-gray-800 border-2 border-orange-300 dark:border-orange-900/60 hover:border-amber-500 dark:hover:border-white transition-all duration-200 shadow-sm hover:shadow-xl hover:shadow-orange-500/10 group transform hover:-translate-y-1 block cursor-pointer"
+            className="p-4 rounded-2xl bg-stone-50 dark:bg-[#0b131e] border-2 border-amber-500/50 dark:border-amber-500/60 hover:border-amber-400 transition-all duration-200 shadow-sm group cursor-pointer block"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="p-2.5 rounded-xl bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 group-hover:bg-[#FF4500] group-hover:text-white transition-colors duration-200 shadow-xs text-base">
+              <span className="p-2.5 rounded-xl bg-amber-100 dark:bg-amber-950/80 text-amber-600 dark:text-amber-300 text-base shadow-xs">
                 💬
               </span>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-orange-700 dark:text-orange-300 bg-orange-50 dark:bg-orange-950/50 px-2 py-0.5 rounded-md border border-orange-200 dark:border-orange-900/60">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/50 px-2 py-0.5 rounded-md border border-amber-300/50">
                 Community
               </span>
             </div>
-            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition block">
+            <span className="text-base font-bold text-stone-900 dark:text-stone-100 group-hover:text-amber-600 transition block">
               Reddit
             </span>
             <span className="text-xs text-stone-500 dark:text-stone-400 block mt-0.5">
@@ -240,13 +239,13 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* Direct Link to Homepage Comprehensive FAQ */}
-      <section className="bg-[#FEF9E7] dark:bg-gray-800 p-6 sm:p-7 rounded-3xl border-2 border-stone-300 dark:border-gray-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <section className="bg-white/95 dark:bg-[#132232]/95 p-6 sm:p-7 rounded-3xl border-2 border-emerald-500/80 dark:border-emerald-500/80 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <div className="flex items-center gap-3.5">
-          <span className="p-3 rounded-2xl bg-green-100 dark:bg-green-950 text-green-700 dark:text-green-400 flex-shrink-0">
+          <span className="p-3 rounded-2xl bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 flex-shrink-0">
             <HelpCircle className="w-6 h-6" />
           </span>
           <div>
-            <h3 className="font-handwritten text-2xl sm:text-3xl font-bold text-[#2E4A35] dark:text-yellow-100">
+            <h3 className="font-handwritten text-2xl sm:text-3xl font-bold text-emerald-800 dark:text-emerald-300">
               Looking for Common Farm Stand FAQs?
             </h3>
             <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-0.5 max-w-xl">
@@ -264,11 +263,12 @@ export const Contact: React.FC = () => {
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }, 100);
           }}
-          className="inline-flex items-center gap-2 bg-[#2E4A35] hover:bg-[#3d6347] text-white font-bold py-3 px-5 rounded-xl shadow-md transition text-xs sm:text-sm whitespace-nowrap cursor-pointer flex-shrink-0 active:scale-95"
+          className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-md transition text-xs sm:text-sm whitespace-nowrap cursor-pointer flex-shrink-0 active:scale-95"
         >
           <span>View All FAQs on Home Page →</span>
         </button>
       </section>
     </main>
-  );
+  </div>
+);
 };

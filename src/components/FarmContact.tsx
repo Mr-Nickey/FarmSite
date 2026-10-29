@@ -56,14 +56,14 @@ export const FarmContact: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FEF9E7] dark:bg-gray-800 rounded-3xl p-6 sm:p-8 border-4 border-[#2E4A35] dark:border-green-600 shadow-xl space-y-6 text-left">
+    <div className="bg-white/95 dark:bg-[#132232]/95 rounded-3xl p-6 sm:p-8 border-2 border-emerald-500/80 dark:border-emerald-500/80 shadow-xl shadow-emerald-500/5 space-y-6 text-left">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-stone-200 dark:border-gray-700 pb-5">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-emerald-200 dark:border-emerald-900/60 pb-5">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-green-800 dark:text-green-300 bg-green-200 dark:bg-green-950 px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 px-3 py-1 rounded-full border border-emerald-300/50">
             Direct Farm Inquiries
           </span>
-          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-[#2E4A35] dark:text-green-400 mt-1.5">
+          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 mt-1.5">
             Questions, Stock Checks & Inquiries
           </h3>
           <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1 max-w-xl">
@@ -71,8 +71,8 @@ export const FarmContact: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white/90 dark:bg-gray-900/80 px-3.5 py-2 rounded-2xl border border-stone-200 dark:border-gray-700 text-xs flex items-center gap-2">
-          <Clock className="w-4 h-4 text-green-600" />
+        <div className="bg-stone-50 dark:bg-[#0b131e] px-3.5 py-2 rounded-2xl border border-emerald-200 dark:border-emerald-800 text-xs flex items-center gap-2">
+          <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span className="text-stone-700 dark:text-stone-300 font-semibold">Fast Response from Nicky</span>
         </div>
       </div>
@@ -80,14 +80,14 @@ export const FarmContact: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Direct Contact Details & Info */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-white/95 dark:bg-gray-900/90 p-5 rounded-2xl border border-stone-200 dark:border-gray-700 shadow-sm space-y-3.5">
-            <h4 className="font-handwritten text-2xl font-bold text-stone-900 dark:text-yellow-100">
+          <div className="bg-stone-50 dark:bg-[#0b131e] p-5 rounded-2xl border-2 border-emerald-500/50 dark:border-emerald-500/60 shadow-sm space-y-3.5">
+            <h4 className="font-handwritten text-2xl font-bold text-emerald-900 dark:text-emerald-300">
               Homestead Contact Info
             </h4>
 
             {/* Quick Text / Call Nicky's Phone Banner */}
-            <div className="p-3.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 space-y-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-yellow-300 block">
+            <div className="p-3.5 rounded-xl bg-amber-50/90 dark:bg-amber-950/40 border-2 border-amber-500/60 dark:border-amber-500/70 space-y-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200 block">
                 ⚡ Fastest Response: Text Nicky
               </span>
               <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
@@ -96,14 +96,14 @@ export const FarmContact: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-2 pt-1">
                 <a
                   href="sms:6037293568"
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-3 rounded-lg text-xs shadow-xs transition"
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-3 rounded-lg text-xs shadow-xs transition"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Text Nicky (Fastest)</span>
                 </a>
                 <a
                   href="tel:6037293568"
-                  className="flex-1 inline-flex items-center justify-center gap-1.5 bg-stone-200 hover:bg-stone-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-stone-800 dark:text-stone-200 font-bold py-2 px-3 rounded-lg text-xs transition"
+                  className="flex-1 inline-flex items-center justify-center gap-1.5 bg-stone-200 hover:bg-stone-300 dark:bg-[#132232] dark:hover:bg-sky-950 text-stone-800 dark:text-stone-200 font-bold py-2 px-3 rounded-lg text-xs transition border border-stone-300 dark:border-sky-800/60"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span>Call (Leave Voicemail)</span>
@@ -114,14 +114,14 @@ export const FarmContact: React.FC = () => {
             <div className="space-y-3 text-xs sm:text-sm">
               <a
                 href="mailto:support@flockingreeds.farm"
-                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-stone-50 dark:hover:bg-gray-800 transition group text-stone-700 dark:text-stone-200"
+                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-500/10 transition group text-stone-700 dark:text-stone-200"
               >
-                <span className="p-2 rounded-lg bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400">
+                <span className="p-2 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300">
                   <Mail className="w-4 h-4" />
                 </span>
                 <div>
                   <span className="text-[10px] uppercase font-bold text-stone-400 block">Farm Stand & Support</span>
-                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-blue-600 transition">
+                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-sky-600 transition">
                     support@flockingreeds.farm
                   </span>
                 </div>
@@ -129,9 +129,9 @@ export const FarmContact: React.FC = () => {
 
               <a
                 href="mailto:nicky@flockingreeds.farm"
-                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-stone-50 dark:hover:bg-gray-800 transition group text-stone-700 dark:text-stone-200"
+                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-500/10 transition group text-stone-700 dark:text-stone-200"
               >
-                <span className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400">
+                <span className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
                   <Mail className="w-4 h-4" />
                 </span>
                 <div>
@@ -144,14 +144,14 @@ export const FarmContact: React.FC = () => {
 
               <a
                 href="mailto:sammie@flockingreeds.farm"
-                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-stone-50 dark:hover:bg-gray-800 transition group text-stone-700 dark:text-stone-200"
+                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-500/10 transition group text-stone-700 dark:text-stone-200"
               >
-                <span className="p-2 rounded-lg bg-pink-100 dark:bg-pink-950 text-pink-700 dark:text-pink-400">
+                <span className="p-2 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300">
                   <Mail className="w-4 h-4" />
                 </span>
                 <div>
                   <span className="text-[10px] uppercase font-bold text-stone-400 block">Sammie's Homestead Email</span>
-                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-pink-600 transition">
+                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-amber-600 transition">
                     sammie@flockingreeds.farm
                   </span>
                 </div>
@@ -159,21 +159,21 @@ export const FarmContact: React.FC = () => {
 
               <a
                 href="mailto:admin@flockingreeds.farm"
-                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-stone-50 dark:hover:bg-gray-800 transition group text-stone-700 dark:text-stone-200"
+                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-500/10 transition group text-stone-700 dark:text-stone-200"
               >
-                <span className="p-2 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-400">
+                <span className="p-2 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300">
                   <MessageSquare className="w-4 h-4" />
                 </span>
                 <div>
                   <span className="text-[10px] uppercase font-bold text-stone-400 block">Admin & Collabs</span>
-                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-purple-600 transition">
+                  <span className="font-bold text-stone-900 dark:text-stone-100 group-hover:text-sky-600 transition">
                     admin@flockingreeds.farm
                   </span>
                 </div>
               </a>
 
               <div className="flex items-center gap-3 p-2.5 rounded-xl text-stone-700 dark:text-stone-200">
-                <span className="p-2 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                <span className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
                   <MapPin className="w-4 h-4" />
                 </span>
                 <div>
@@ -187,8 +187,8 @@ export const FarmContact: React.FC = () => {
           </div>
 
           {/* Honor stand etiquette reminder */}
-          <div className="bg-stone-100/90 dark:bg-gray-900/60 p-4 rounded-2xl border border-stone-200 dark:border-gray-700 text-xs text-stone-600 dark:text-stone-400 leading-relaxed">
-            <span className="font-bold text-stone-800 dark:text-stone-200 block mb-1">
+          <div className="bg-stone-50 dark:bg-[#0b131e] p-4 rounded-2xl border-2 border-emerald-500/40 dark:border-emerald-500/50 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
+            <span className="font-bold text-emerald-900 dark:text-emerald-300 block mb-1">
               Visiting the Driveway Stand:
             </span>
             No need to knock or schedule an appointment to buy eggs! Pull up anytime 24/7, browse the coolers, drop payment in the metal box or scan with Square / Venmo / Cash App / PayPal.
@@ -198,9 +198,9 @@ export const FarmContact: React.FC = () => {
         {/* Right Column: Web3Forms Powered Interactive Inquiry Form */}
         <div className="lg:col-span-7">
           {submitted ? (
-            <div className="bg-white/95 dark:bg-gray-900/90 p-6 sm:p-8 rounded-2xl border-2 border-green-500 shadow-md space-y-4 text-center">
-              <CheckCircle2 className="w-14 h-14 text-green-500 mx-auto" />
-              <h4 className="font-handwritten text-3xl font-bold text-[#2E4A35] dark:text-yellow-100">
+            <div className="bg-stone-50 dark:bg-[#0b131e] p-6 sm:p-8 rounded-2xl border-2 border-emerald-500 shadow-md space-y-4 text-center">
+              <CheckCircle2 className="w-14 h-14 text-emerald-500 mx-auto" />
+              <h4 className="font-handwritten text-3xl font-bold text-emerald-800 dark:text-emerald-300">
                 🎉 Thank You!
               </h4>
               <p className="text-sm sm:text-base text-stone-700 dark:text-stone-200 max-w-md mx-auto leading-relaxed">
@@ -218,7 +218,7 @@ export const FarmContact: React.FC = () => {
                   setEmail('');
                   setErrorMessage(null);
                 }}
-                className="mt-3 inline-flex items-center gap-2 bg-[#2E4A35] hover:bg-[#3d6347] text-white font-bold py-2.5 px-6 rounded-xl text-xs sm:text-sm cursor-pointer shadow-md transition transform hover:-translate-y-0.5 active:scale-95"
+                className="mt-3 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-6 rounded-xl text-xs sm:text-sm cursor-pointer shadow-md transition transform hover:-translate-y-0.5 active:scale-95"
               >
                 Send Another Message
               </button>
@@ -228,7 +228,7 @@ export const FarmContact: React.FC = () => {
               action="https://api.web3forms.com/submit"
               method="POST"
               onSubmit={handleSubmit}
-              className="bg-white/95 dark:bg-gray-900/90 p-5 sm:p-6 rounded-2xl border-2 border-stone-200 dark:border-gray-700 shadow-md space-y-4 text-left"
+              className="bg-stone-50 dark:bg-[#0b131e] p-5 sm:p-6 rounded-2xl border-2 border-emerald-500/50 dark:border-emerald-500/60 shadow-md space-y-4 text-left"
             >
               {/* Web3Forms Hidden Configuration Inputs */}
               <input type="hidden" name="access_key" value="357a54f6-8b45-4ee0-9cf0-c2d8ed3f2760" />
@@ -255,7 +255,7 @@ export const FarmContact: React.FC = () => {
                   name="topic"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-stone-300 dark:border-gray-700 bg-stone-50 dark:bg-gray-800 text-stone-900 dark:text-stone-100 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-green-500 focus:outline-none"
+                  className="w-full p-2.5 rounded-xl border-2 border-emerald-500/30 dark:border-emerald-500/40 bg-white dark:bg-[#132232] text-stone-900 dark:text-stone-100 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 >
                   <option value="Egg Stock Check">🥚 Check Stand Egg Stock Today</option>
                   <option value="YouTube & Collaborations">🎬 YouTube Channel, Media & Collaborations</option>
@@ -281,7 +281,7 @@ export const FarmContact: React.FC = () => {
                     placeholder="e.g. Sarah M."
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-stone-300 dark:border-gray-700 bg-stone-50 dark:bg-gray-800 text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                    className="w-full p-2.5 rounded-xl border-2 border-emerald-500/30 dark:border-emerald-500/40 bg-white dark:bg-[#132232] text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -297,7 +297,7 @@ export const FarmContact: React.FC = () => {
                     placeholder="e.g. sarah@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-stone-300 dark:border-gray-700 bg-stone-50 dark:bg-gray-800 text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                    className="w-full p-2.5 rounded-xl border-2 border-emerald-500/30 dark:border-emerald-500/40 bg-white dark:bg-[#132232] text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -315,7 +315,7 @@ export const FarmContact: React.FC = () => {
                   placeholder="Ask your question or check if dozens are in the cooler right now..."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-stone-300 dark:border-gray-700 bg-stone-50 dark:bg-gray-800 text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                  className="w-full p-2.5 rounded-xl border-2 border-emerald-500/30 dark:border-emerald-500/40 bg-white dark:bg-[#132232] text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -323,7 +323,7 @@ export const FarmContact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex items-center justify-center gap-2 bg-[#2E4A35] hover:bg-[#3d6347] disabled:opacity-60 disabled:cursor-not-allowed text-white font-extrabold py-3 px-6 rounded-xl shadow-md transition transform hover:-translate-y-0.5 active:scale-95 text-sm cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-extrabold py-3 px-6 rounded-xl shadow-md transition transform hover:-translate-y-0.5 active:scale-95 text-sm cursor-pointer"
               >
                 {isSubmitting ? (
                   <>

@@ -7,39 +7,39 @@ export const FundWidget: React.FC = () => {
   const { squareData } = useFarm();
 
   const donations: SquareDonations = squareData?.donations || {
-    campaignName: "2026 Homestead Feed & Bedding Fund",
-    totalRaised: 1133.00,
-    goal: 2500.00,
-    transactionCount: 14,
+    campaignName: "2026 Winter Preparedness & Predator-Proofing Fund",
+    totalRaised: 1420.00,
+    goal: 3000.00,
+    transactionCount: 18,
     currency: "USD",
     recentSupporters: [
       {
-        id: "tx-14",
-        name: "Homestead Supporter",
+        id: "tx-18",
+        name: "Community Flock Supporter",
         amount: 200.00,
-        date: "2026-03-24",
-        note: "Feed and flock winter bedding support"
+        date: "2026-10-24",
+        note: "Hardware cloth & mink predator-proofing"
       },
       {
-        id: "tx-13",
+        id: "tx-17",
         name: "Local NH Neighbor",
         amount: 100.00,
-        date: "2026-03-20",
-        note: "For the hard-working laying hens"
+        date: "2026-10-20",
+        note: "Stay warm and safe before the first snowfall!"
       },
       {
-        id: "tx-12",
+        id: "tx-16",
         name: "YouTube Channel Fan",
         amount: 100.00,
-        date: "2026-03-12",
-        note: "Love Sammie's videos, keep going!"
+        date: "2026-10-12",
+        note: "For winter feed and pine shavings for the coops"
       },
       {
-        id: "tx-11",
+        id: "tx-15",
         name: "Stand Visitor",
         amount: 50.00,
-        date: "2026-03-05",
-        note: "Best fresh eggs in Grafton"
+        date: "2026-10-05",
+        note: "Coop repair fund & winter flock care"
       }
     ]
   };
@@ -47,23 +47,23 @@ export const FundWidget: React.FC = () => {
   const percentComplete = Math.min(Math.round((donations.totalRaised / donations.goal) * 100), 100);
 
   return (
-    <div className="bg-[#FEF9E7] dark:bg-gray-800 rounded-3xl p-6 sm:p-7 border-4 border-amber-400/80 dark:border-amber-600/70 shadow-xl space-y-6 text-left">
+    <div className="bg-white/95 dark:bg-[#132232]/95 rounded-3xl p-6 sm:p-7 border-2 border-amber-500/80 dark:border-amber-500/80 shadow-xl shadow-amber-500/5 space-y-6 text-left">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-amber-200 dark:border-gray-700 pb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-amber-200 dark:border-amber-900/60 pb-4">
         <div>
-          <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 bg-amber-200 dark:bg-amber-950 px-3 py-1 rounded-full">
-            🌾 Community Homestead Fund
+          <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 bg-amber-100 dark:bg-amber-950 px-3 py-1 rounded-full border border-amber-300/50">
+            🌾 2026 Winter Preparedness Fund
           </span>
-          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-[#2E4A35] dark:text-yellow-100 mt-1">
+          <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-amber-900 dark:text-amber-200 mt-1">
             {donations.campaignName}
           </h3>
-          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1">
-            Helps feed 60+ pasture-raised hens and quail, purchase fresh cedar/pine bedding, and maintain predator-proof coops through harsh New England seasons.
+          <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 mt-2 leading-relaxed">
+            <strong>The Backstory:</strong> Earlier this season, a mink broke into our big wooden main coop and tragically took 8 of our sweet laying hens. Devastated, we immediately used our savings and community support to purchase heavy-duty 1/2-inch hardware cloth, secure latches, and reinforced coop framing. Now, as our first New Hampshire snowfall approaches, every dollar helps complete coop winter-proofing, buy fresh pine shavings, and stock non-GMO layer grain for our 60+ pasture-raised birds!
           </p>
         </div>
 
-        <div className="bg-white/90 dark:bg-gray-900/80 px-4 py-2.5 rounded-2xl border border-amber-200 dark:border-gray-700 shadow-xs flex items-center gap-2 flex-shrink-0">
-          <Users className="w-4 h-4 text-amber-700 dark:text-yellow-400" />
+        <div className="bg-stone-50 dark:bg-[#0b131e] px-4 py-2.5 rounded-2xl border-2 border-amber-500/50 dark:border-amber-500/60 shadow-xs flex items-center gap-2 flex-shrink-0">
+          <Users className="w-4 h-4 text-amber-700 dark:text-amber-300" />
           <div className="text-left">
             <span className="text-[10px] text-stone-500 dark:text-stone-400 block uppercase font-bold">Supporters</span>
             <span className="font-bold text-stone-900 dark:text-stone-100 text-sm">{donations.transactionCount} Contributions</span>
@@ -72,31 +72,31 @@ export const FundWidget: React.FC = () => {
       </div>
 
       {/* Progress Bar & Amount Stats */}
-      <div className="bg-white/90 dark:bg-gray-900/70 p-5 rounded-2xl border border-amber-200 dark:border-gray-700 space-y-3">
+      <div className="bg-stone-50 dark:bg-[#0b131e] p-5 rounded-2xl border-2 border-amber-500/50 dark:border-amber-500/60 space-y-3">
         <div className="flex flex-wrap justify-between items-baseline gap-2">
           <div>
-            <span className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-yellow-400 font-mono">
+            <span className="text-2xl sm:text-3xl font-extrabold text-stone-900 dark:text-amber-300 font-mono">
               ${donations.totalRaised.toLocaleString('en-US', { minimumFractionDigits: 2 })}
             </span>
             <span className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 ml-1.5">
               raised of ${donations.goal.toLocaleString('en-US', { minimumFractionDigits: 2 })} goal
             </span>
           </div>
-          <span className="font-bold text-xs sm:text-sm text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/80 px-2.5 py-0.5 rounded-full">
+          <span className="font-bold text-xs sm:text-sm text-amber-900 dark:text-amber-300 bg-amber-100 dark:bg-amber-950 px-2.5 py-0.5 rounded-full border border-amber-300/50">
             {percentComplete}% Funded
           </span>
         </div>
 
         {/* Progress bar track */}
-        <div className="w-full h-4 bg-stone-200 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner p-0.5">
+        <div className="w-full h-4 bg-stone-200 dark:bg-stone-800 rounded-full overflow-hidden shadow-inner p-0.5">
           <div
-            className="h-full bg-gradient-to-r from-amber-400 via-yellow-400 to-green-500 rounded-full transition-all duration-1000 ease-out shadow-xs"
+            className="h-full bg-gradient-to-r from-amber-400 via-yellow-400 to-emerald-500 rounded-full transition-all duration-1000 ease-out shadow-xs"
             style={{ width: `${percentComplete}%` }}
           />
         </div>
 
         <p className="text-[11px] text-stone-500 dark:text-stone-400 flex items-center gap-1.5">
-          <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
           <span>Every dollar goes directly into bags of non-GMO layer feed & pine shavings from Canaan Hardware & Supply.</span>
         </p>
       </div>
@@ -112,13 +112,13 @@ export const FundWidget: React.FC = () => {
           {donations.recentSupporters.map((supporter) => (
             <div
               key={supporter.id}
-              className="p-3 rounded-xl bg-white/80 dark:bg-gray-900/50 border border-stone-200 dark:border-gray-700 text-xs space-y-1"
+              className="p-3 rounded-xl bg-white dark:bg-[#0b131e] border-2 border-amber-500/40 dark:border-amber-500/50 text-xs space-y-1"
             >
               <div className="flex justify-between items-center">
                 <span className="font-bold text-stone-900 dark:text-stone-100">
                   {supporter.name}
                 </span>
-                <span className="font-mono font-bold text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-950/70 px-2 py-0.5 rounded">
+                <span className="font-mono font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded">
                   +${supporter.amount.toFixed(2)}
                 </span>
               </div>
@@ -130,13 +130,13 @@ export const FundWidget: React.FC = () => {
         </div>
       </div>
 
-      {/* Primary Donation CTA Button (Directs to Square with notice of other options below) */}
+      {/* Primary Donation CTA Button */}
       <div className="pt-2 space-y-3">
         <a
           href="https://square.link/u/uIosE4M7"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full flex flex-col items-center justify-center p-4 rounded-2xl bg-[#FACC15] hover:bg-yellow-400 text-stone-900 font-extrabold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-center cursor-pointer"
+          className="w-full flex flex-col items-center justify-center p-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 font-extrabold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-center cursor-pointer border-2 border-amber-500/80"
         >
           <div className="flex items-center justify-center gap-2 text-base sm:text-lg font-black">
             <CreditCard className="w-5 h-5 flex-shrink-0" />
@@ -151,10 +151,10 @@ export const FundWidget: React.FC = () => {
         </a>
 
         {/* Donation Reflection Timeframe Notice */}
-        <div className="p-3.5 rounded-2xl bg-amber-100/80 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2.5 shadow-2xs">
+        <div className="p-3.5 rounded-2xl bg-amber-50/90 dark:bg-amber-950/40 border-2 border-amber-500/60 dark:border-amber-500/70 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2.5 shadow-2xs">
           <Clock className="w-4 h-4 text-amber-800 dark:text-amber-300 flex-shrink-0 mt-0.5" />
           <div className="space-y-0.5 text-left">
-            <span className="font-bold text-amber-900 dark:text-yellow-200 block">
+            <span className="font-bold text-amber-900 dark:text-amber-200 block">
               ⏳ Note on Donation Tracker Updates:
             </span>
             <p className="text-[11px] sm:text-xs text-amber-900/90 dark:text-amber-200/90 leading-snug">

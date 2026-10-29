@@ -20,15 +20,13 @@ const SQUARE_SHOP_URL = 'https://flockingreedsfarm.square.site';
 const AppContent: React.FC = () => {
   const { currentPage } = useFarm();
 
-  // Client-side shortlink redirect for /donate, #donate, /shop, #shop
+  // Client-side shortlink redirect for /shop, #shop
   useEffect(() => {
     const checkRedirects = () => {
       const path = window.location.pathname.toLowerCase().replace(/\/$/, '');
       const hash = window.location.hash.toLowerCase();
 
-      if (path === '/donate' || hash === '#donate') {
-        window.location.replace(SQUARE_CHECKOUT_URL);
-      } else if (path === '/shop' || hash === '#shop') {
+      if (path === '/shop' || hash === '#shop') {
         window.location.replace(SQUARE_SHOP_URL);
       }
     };
@@ -49,8 +47,8 @@ const AppContent: React.FC = () => {
       case 'about':
         return <About />;
       case 'support':
+      case 'donate':
       case 'visit':
-      case 'shop':
         return <Support />;
       case 'contact':
         return <Contact />;
