@@ -191,7 +191,7 @@ export const FarmContact: React.FC = () => {
             <span className="font-bold text-emerald-900 dark:text-emerald-300 block mb-1">
               Visiting the Farmstand:
             </span>
-            No need to knock or schedule an appointment to buy eggs! Pull up anytime 24/7, browse the coolers, drop payment in the metal box or scan with Square / Venmo / Cash App / PayPal.
+            No need to knock or schedule an appointment to buy eggs! Pull up anytime 24/7, open the glass front doors to grab eggs off the back shelf or browse the open racks, and drop payment in the metal box or scan with Square / Venmo / Cash App / PayPal.
           </div>
         </div>
 

@@ -119,10 +119,10 @@ export const Home: React.FC = () => {
                 <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 text-base">02.</span>
                 <div>
                   <h4 className="font-bold text-xs sm:text-sm text-stone-900 dark:text-stone-100">
-                    Choose Chicken or Quail Eggs
+                    Open the Glass Doors & Grab Eggs Off the Back Shelf
                   </h4>
                   <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300">
-                    Open the insulated coolers for chicken eggs ($5/doz, $3/half doz) or fresh quail eggs ($3/doz). Check shelves for crafts & surprise baked goods!
+                    Open the front glass doors for easy, out-in-the-open access to rainbow chicken eggs ($5/doz, $3/half doz) and fresh quail eggs ($3/doz) on the back shelf, plus crafts & baked goods!
                   </p>
                 </div>
               </div>
@@ -310,28 +310,28 @@ export const Home: React.FC = () => {
 
         </section>
 
-        {/* 4-PHOTO FARMSTAND SHOWCASE GRID (Moved Down Above YouTube Section) */}
+        {/* 4-PHOTO FARMSTAND SHOWCASE GRID (Updated Glass-Door & Open Shelf Design) */}
         <section className="bg-white/95 dark:bg-[#132232]/95 p-4 sm:p-7 rounded-3xl shadow-xl border-2 border-emerald-500/80 dark:border-emerald-500/80 shadow-emerald-500/5 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-left border-b border-emerald-200 dark:border-emerald-900/60 pb-3">
             <div>
               <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-                Fresh Quail & Hand-Painted Cartons
+                Beautiful Glass Front Doors • Open Back-Shelf Display
               </span>
               <h2 className="font-handwritten text-2xl sm:text-4xl font-bold text-emerald-800 dark:text-emerald-300 leading-tight">
-                Inside Our 24/7 Farmstand & Coolers
+                Inside Our Updated 24/7 Farmstand
               </h2>
             </div>
             <span className="text-[10px] sm:text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-300/50 self-start sm:self-auto">
-              Daily Gathered • Open 24/7
+              Easy Open Shelves • Open 24/7
             </span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {/* Photo 1: 441 Millbrook Rd */}
+            {/* Photo 1: Wide Daytime View of 441 Millbrook Rd Farmstand & Bantam Coop */}
             <div className="relative rounded-2xl overflow-hidden shadow-sm border-2 border-emerald-500/50 dark:border-emerald-500/60 group">
               <img
-                src="/assets/aistudio/PXL_20260917_132832965_c707baf7.jpg"
-                alt="Flocking Reeds Farm Roadside Honor Stand Exterior"
+                src="/assets/aistudio/PXL_20261031_162121610_c104aee5.jpg"
+                alt="Flocking Reeds Farm 24/7 Glass-Door Roadside Stand and Bantam Coop at 441 Millbrook Rd"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-36 sm:h-48 object-cover group-hover:scale-105 transition duration-500"
@@ -344,45 +344,45 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            {/* Photo 2: Inside Stand Coolers */}
+            {/* Photo 2: Open Glass Doors & Back Egg Shelf */}
             <div className="relative rounded-2xl overflow-hidden shadow-sm border-2 border-emerald-500/50 dark:border-emerald-500/60 group">
               <img
-                src="/assets/aistudio/PXL_20260917_132843208_8ac92c84.jpg"
-                alt="Inside the Farmstand with fresh egg coolers, quail eggs, and baked goods"
+                src="/assets/aistudio/PXL_20261101_215606810_26123ec9.jpg"
+                alt="Inside the open glass doors showing Rainbow Chicken Eggs ($5) and Quail Eggs ($3) on the back shelf alongside crafts, baked goods, and honor box"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-36 sm:h-48 object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute bottom-2 left-2 bg-black/75 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-md">
-                Inside Stand Coolers
+                Back Shelf Eggs & Goods
               </div>
             </div>
 
-            {/* Photo 3: Quail Eggs ($3/doz) */}
+            {/* Photo 3: Main Chicken Coop, Covered Run & Bunnies */}
             <div className="relative rounded-2xl overflow-hidden shadow-sm border-2 border-emerald-500/50 dark:border-emerald-500/60 group">
               <img
-                src="/assets/aistudio/PXL_20261028_172944314_4a0d5d9d.jpg"
-                alt="Dozen fresh Coturnix quail eggs in carton at Flocking Reeds Farmstand"
+                src="/assets/aistudio/PXL_20260917_132505720_77e713d6.jpg"
+                alt="Main wooden chicken coop, covered outdoor run, and elevated bunny hutch at Flocking Reeds Farm"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-36 sm:h-48 object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute bottom-2 left-2 bg-black/75 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-md">
-                Quail Eggs ($3/doz)
+                Main Coop, Run & Bunnies
               </div>
             </div>
 
-            {/* Photo 4: Hand-Painted Cartons */}
+            {/* Photo 4: Evening Illuminated Stand */}
             <div className="relative rounded-2xl overflow-hidden shadow-sm border-2 border-emerald-500/50 dark:border-emerald-500/60 group">
               <img
-                src="/assets/aistudio/PXL_20261028_172928155_132412d5.jpg"
-                alt="Hand-painted seasonal pumpkin cartons in the farmstand cooler"
+                src="/assets/aistudio/PXL_20261101_215538619_09755a8c.jpg"
+                alt="Evening view of the 24/7 Flocking Reeds Farmstand glowing warmly through the glass front doors"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-36 sm:h-48 object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute bottom-2 left-2 bg-black/75 backdrop-blur-xs text-white text-[10px] sm:text-xs font-semibold px-2.5 py-0.5 rounded-md">
-                Hand-Painted Cartons
+                Lit Up Day & Night
               </div>
             </div>
           </div>
@@ -674,7 +674,7 @@ export const Home: React.FC = () => {
             {[
               {
                 q: "Are chicken and quail eggs always in stock at the farmstand?",
-                a: "No — our farmstand operates strictly on a first-come, first-served basis. Please open the coolers in person to confirm eggs are on hand before sending digital payments. We are not responsible if payment is sent when the farmstand is sold out.",
+                a: "No — our farmstand operates strictly on a first-come, first-served basis. Everything is out in the open on the back shelf behind our glass front doors, so you can easily check in person to confirm eggs are on hand before sending digital payments. We are not responsible if payment is sent when the farmstand is sold out.",
                 tag: "Stock"
               },
               {
@@ -775,7 +775,7 @@ export const Home: React.FC = () => {
 
           <div className="pt-1 flex flex-col sm:flex-row items-center justify-between gap-2.5 bg-stone-50 dark:bg-[#0b131e] p-3 sm:p-3.5 rounded-xl border border-emerald-200 dark:border-emerald-900/40">
             <span className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 text-center sm:text-left">
-              Still have a question or checking today's cooler stock?
+              Still have a question or checking today's farmstand shelf stock?
             </span>
             <div className="flex items-center gap-2">
               <a
@@ -814,7 +814,7 @@ export const Home: React.FC = () => {
                   Select Your Stand Items
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300">
-                  Grab your carton from the cooler, then select your items below for fast digital payment!
+                  Open the glass doors and grab your carton off the back shelf, then select your items below for fast digital payment!
                 </p>
               </div>
               <button

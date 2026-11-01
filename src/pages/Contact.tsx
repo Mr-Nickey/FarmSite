@@ -40,8 +40,8 @@ export const Contact: React.FC = () => {
 
       {/* Unified Hero Banner */}
       <HeroBanner
-        bgImage="/images/farmstand.webp"
-        bgAlt="Flocking Reeds Roadside Farm Stand on Millbrook Rd"
+        bgImage="/assets/aistudio/PXL_20261101_215538619_09755a8c.jpg"
+        bgAlt="Updated Flocking Reeds 24/7 Glass-Door Roadside Farmstand on Millbrook Rd in Grafton, NH"
         badgeText="441 Millbrook Rd • Grafton, NH"
         title="Contact & Stand Location"
         subtitle="Have a question about daily egg stock, Coturnix quail chicks, or need driving directions down Millbrook Road? Reach out directly to Nicky & Sammie."
@@ -76,6 +76,7 @@ export const Contact: React.FC = () => {
           <div className="space-y-2 text-xs sm:text-sm text-stone-700 dark:text-stone-300">
             <p><strong>Address:</strong> 441 Millbrook Rd, Grafton, NH 03240</p>
             <p><strong>Hours:</strong> Open 24 Hours / 7 Days a Week (All Weather)</p>
+            <p><strong>Setup:</strong> Beautiful front glass doors with fresh chicken & quail eggs out in the open on the back shelf, plus crafts and baked goods!</p>
             <p><strong>Directions:</strong> Turn onto Millbrook Road from Route 4. Look for our iconic hand-painted old canoe sign right by the gravel driveway.</p>
             <p><strong>Payment:</strong> Cash in locked metal box, Square, PayPal, Venmo, or Cash App.</p>
           </div>

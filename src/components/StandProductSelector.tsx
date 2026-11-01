@@ -49,7 +49,7 @@ export const StandProductSelector: React.FC = () => {
             Please Grab Your Items Before Paying!
           </p>
           <p className="text-stone-700 dark:text-stone-300 leading-snug text-[11px] sm:text-xs">
-            Please stop by the stand cooler and grab your carton in person <strong>before sending payment</strong> to make sure it is in stock. Because our honor stand is open 24/7, we are not responsible if online payment is sent when an item is sold out.
+            Please open the glass front doors and grab your carton off the back shelf in person <strong>before sending payment</strong> to make sure it is in stock. Because our honor stand is open 24/7, we are not responsible if online payment is sent when an item is sold out.
           </p>
         </div>
       </div>
