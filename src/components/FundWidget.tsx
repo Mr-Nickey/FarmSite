@@ -1,45 +1,59 @@
 import React from 'react';
 import { useFarm } from '../context/FarmContext';
-import { Sparkles, Heart, CreditCard, Users, ShieldCheck, CheckCircle2, Clock } from 'lucide-react';
+import { Heart, Users, ShieldCheck, Clock } from 'lucide-react';
 import { SquareDonations } from '../types';
 
 export const FundWidget: React.FC = () => {
   const { squareData } = useFarm();
 
   const donations: SquareDonations = squareData?.donations || {
-    campaignName: "2026 Winter Preparedness & Predator-Proofing Fund",
-    totalRaised: 1420.00,
-    goal: 3000.00,
-    transactionCount: 18,
+    campaignName: "2026 Homestead Feed & Bedding Fund",
+    totalRaised: 1383.00,
+    goal: 2500.00,
+    transactionCount: 17,
     currency: "USD",
     recentSupporters: [
       {
-        id: "tx-18",
-        name: "Community Flock Supporter",
-        amount: 200.00,
-        date: "2026-10-24",
-        note: "Hardware cloth & mink predator-proofing"
-      },
-      {
         id: "tx-17",
-        name: "Local NH Neighbor",
+        name: "Your farm friend from MA",
         amount: 100.00,
-        date: "2026-10-20",
-        note: "Stay warm and safe before the first snowfall!"
+        date: "2026-11-14",
+        note: "Feed the Flock & Homestead Tip Jar - Nov 14, 2026"
       },
       {
         id: "tx-16",
-        name: "YouTube Channel Fan",
-        amount: 100.00,
-        date: "2026-10-12",
-        note: "For winter feed and pine shavings for the coops"
+        name: "Community Backer",
+        amount: 50.00,
+        date: "2026-11-08",
+        note: "eGift Card support - Nov 8, 2026"
       },
       {
         id: "tx-15",
-        name: "Stand Visitor",
-        amount: 50.00,
-        date: "2026-10-05",
-        note: "Coop repair fund & winter flock care"
+        name: "Monthly Farm Subscriber",
+        amount: 100.00,
+        date: "2026-11-04",
+        note: "Donate to Flocking Reeds Farm Subscription - Nov 4, 2026"
+      },
+      {
+        id: "tx-14",
+        name: "Homestead Supporter",
+        amount: 200.00,
+        date: "2026-03-24",
+        note: "Feed and flock winter bedding support"
+      },
+      {
+        id: "tx-13",
+        name: "Local NH Neighbor",
+        amount: 100.00,
+        date: "2026-03-20",
+        note: "For the hard-working laying hens"
+      },
+      {
+        id: "tx-12",
+        name: "YouTube Channel Fan",
+        amount: 100.00,
+        date: "2026-03-12",
+        note: "Love Sammie's videos, keep going!"
       }
     ]
   };
@@ -139,14 +153,13 @@ export const FundWidget: React.FC = () => {
           className="w-full flex flex-col items-center justify-center p-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 font-extrabold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-center cursor-pointer border-2 border-amber-500/80"
         >
           <div className="flex items-center justify-center gap-2 text-base sm:text-lg font-black">
-            <CreditCard className="w-5 h-5 flex-shrink-0" />
-            <span>Click Here to Donate Using Square</span>
+            <span>💳 Click Here to Donate Using Square (Credit, Debit &amp; Digital Wallets)</span>
           </div>
           <span className="text-xs sm:text-sm font-semibold text-stone-800 mt-0.5">
-            Supports Apple Pay, Google Pay, Cash App Pay & Afterpay
+            Accepts All Major Credit &amp; Debit Cards (Visa, Mastercard, Amex, Discover), Apple Pay, Google Pay, Cash App Pay &amp; Afterpay
           </span>
           <span className="text-[11px] text-stone-700 italic mt-0.5 font-normal">
-            (💡 Other payment options listed below)
+            (👇 Other payment options listed below)
           </span>
         </a>
 

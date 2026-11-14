@@ -66,7 +66,7 @@ export const Support: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 font-extrabold py-3.5 px-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-sm sm:text-base cursor-pointer border-2 border-amber-500/80"
               >
                 <CreditCard className="w-5 h-5 text-stone-900 flex-shrink-0" />
-                <span>Square (Card, Apple Pay, Google Pay & Afterpay)</span>
+                <span>Square (Credit &amp; Debit Cards, Apple Pay, Google Pay, Cash App Pay &amp; Afterpay)</span>
               </a>
 
               {/* Secondary Direct Donation Options */}

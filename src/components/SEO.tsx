@@ -37,7 +37,7 @@ export const SEO: React.FC<SEOProps> = ({
 
     // Standard Meta
     setMeta('name', 'description', description);
-    setMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    setMeta('name', 'robots', 'index, follow');
 
     // Canonical Link
     let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -88,6 +88,7 @@ export const SEO: React.FC<SEOProps> = ({
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="index, follow" />
       <link rel="canonical" href={resolvedUrl} />
       <meta property="og:type" content={ogType} />
       <meta property="og:locale" content="en_US" />

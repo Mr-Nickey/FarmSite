@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-14T12:40:39.775Z",
+  "lastUpdated": "2026-11-14T14:56:00.000Z",
   "storeUrl": "https://flockingreedsfarm.square.site",
   "donateUrl": "https://square.link/u/uIosE4M7",
   "inventory": [
@@ -136,11 +136,32 @@
   ],
   "donations": {
     "campaignName": "2026 Homestead Feed & Bedding Fund",
-    "totalRaised": 1133,
+    "totalRaised": 1383,
     "goal": 2500,
-    "transactionCount": 14,
+    "transactionCount": 17,
     "currency": "USD",
     "recentSupporters": [
+      {
+        "id": "tx-17",
+        "name": "Your farm friend from MA",
+        "amount": 100,
+        "date": "2026-11-14",
+        "note": "Feed the Flock & Homestead Tip Jar - Nov 14, 2026"
+      },
+      {
+        "id": "tx-16",
+        "name": "Community Backer",
+        "amount": 50,
+        "date": "2026-11-08",
+        "note": "eGift Card support - Nov 8, 2026"
+      },
+      {
+        "id": "tx-15",
+        "name": "Monthly Farm Subscriber",
+        "amount": 100,
+        "date": "2026-11-04",
+        "note": "Donate to Flocking Reeds Farm Subscription - Nov 4, 2026"
+      },
       {
         "id": "tx-14",
         "name": "Homestead Supporter",
@@ -161,13 +182,6 @@
         "amount": 100,
         "date": "2026-03-12",
         "note": "Love Sammie's videos, keep going!"
-      },
-      {
-        "id": "tx-11",
-        "name": "Stand Visitor",
-        "amount": 50,
-        "date": "2026-03-05",
-        "note": "Best fresh eggs in Grafton"
       }
     ]
   }
