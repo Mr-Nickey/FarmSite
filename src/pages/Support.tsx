@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation, CreditCard, ExternalLink } from 'lucide-react';
+import { CreditCard, ExternalLink, Gift } from 'lucide-react';
 import { YoutubeIcon } from '../components/YoutubeIcon';
 import { FundWidget } from '../components/FundWidget';
 import { SEO } from '../components/SEO';
@@ -134,7 +134,74 @@ export const Support: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Free Support on YouTube with Video Embed & Monetization Goal */}
+          {/* Card 2: Amazon Homestead Wish List */}
+          <div className="bg-white/95 dark:bg-[#132232]/95 p-6 sm:p-8 rounded-2xl border-2 border-amber-500/80 dark:border-amber-500/80 shadow-lg shadow-amber-500/5 space-y-5">
+            <div className="space-y-2">
+              <span className="bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-amber-300/50">
+                Send Supplies Directly to the Farm
+              </span>
+              <h3 className="font-handwritten text-3xl sm:text-4xl font-bold text-amber-900 dark:text-amber-200">
+                Shop Our Farm's Amazon Wish List
+              </h3>
+              <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
+                Prefer sending hands-on supplies straight to the homestead? Our Amazon Wish List is packed with real, everyday essentials — from <strong>under-$10 flock first-aid staples</strong> to winter gear and big coop upgrades — that go straight to work keeping our hens, quail, geese, and bunnies safe, warm, and thriving in New Hampshire's White Mountains.
+              </p>
+            </div>
+
+            {/* Highlighted Wish List Categories */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+              <div className="bg-stone-50 dark:bg-[#0b131e] p-3.5 rounded-xl border-2 border-amber-500/40 dark:border-amber-500/50 space-y-1">
+                <h4 className="font-bold text-xs sm:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
+                  <span>❄️</span> Winter Warmth &amp; Freeze-Free Water
+                </h4>
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 leading-snug">
+                  Heated poultry waterers, thermostat heater bases, freeze-proof heating cords for rabbits and birds, and safe radiant coop heat panels for bitter NH winters.
+                </p>
+              </div>
+
+              <div className="bg-stone-50 dark:bg-[#0b131e] p-3.5 rounded-xl border-2 border-emerald-500/40 dark:border-emerald-500/50 space-y-1">
+                <h4 className="font-bold text-xs sm:text-sm text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5">
+                  <span>🩺</span> Flock First Aid, Treats &amp; Nesting
+                </h4>
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 leading-snug">
+                  Hen Healer ointment, VetRX remedy, vitamins &amp; electrolytes, bandage wraps, hen saddles, nesting pads, probiotic grit, and protein-rich mealworm &amp; black soldier fly larvae treats.
+                </p>
+              </div>
+
+              <div className="bg-stone-50 dark:bg-[#0b131e] p-3.5 rounded-xl border-2 border-sky-500/40 dark:border-sky-500/50 space-y-1">
+                <h4 className="font-bold text-xs sm:text-sm text-sky-900 dark:text-sky-200 flex items-center gap-1.5">
+                  <span>🛡️</span> Predator-Proofing &amp; Coop Builds
+                </h4>
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 leading-snug">
+                  1/4-inch galvanized hardware cloth, portable electric poultry netting, predator-proof chicken tunnels, corrugated metal roofing panels, exterior deck screws, and walk-in greenhouses.
+                </p>
+              </div>
+
+              <div className="bg-stone-50 dark:bg-[#0b131e] p-3.5 rounded-xl border-2 border-amber-500/40 dark:border-amber-500/50 space-y-1">
+                <h4 className="font-bold text-xs sm:text-sm text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
+                  <span>🥚</span> Egg Stand &amp; Daily Care Gear
+                </h4>
+                <p className="text-[11px] sm:text-xs text-stone-600 dark:text-stone-300 leading-snug">
+                  Quail and goose egg cartons, GoodEgg silicone egg washers, automatic feeders &amp; waterer cups, colored leg bands, and beak-grinding enrichment toys.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-1">
+              <a
+                href="https://www.amazon.com/hz/wishlist/ls/1NRAP3LNJ3V91?ref_=wl_share"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-yellow-400 hover:to-amber-400 text-stone-900 font-extrabold py-3.5 px-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:scale-95 text-sm sm:text-base cursor-pointer border-2 border-amber-500/80"
+              >
+                <Gift className="w-5 h-5 flex-shrink-0" />
+                <span>Browse &amp; Shop Our Amazon Homestead Wish List</span>
+                <ExternalLink className="w-4 h-4 flex-shrink-0" />
+              </a>
+            </div>
+          </div>
+
+          {/* Card 3: Free Support on YouTube with Video Embed & Monetization Goal */}
           <div className="bg-white/95 dark:bg-[#132232]/95 p-6 sm:p-8 rounded-2xl border-2 border-sky-500/80 dark:border-sky-500/80 shadow-lg shadow-sky-500/5 space-y-6">
             <div className="space-y-2">
               <span className="bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-sky-300/50">

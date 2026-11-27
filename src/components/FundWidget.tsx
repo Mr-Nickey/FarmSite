@@ -8,11 +8,18 @@ export const FundWidget: React.FC = () => {
 
   const donations: SquareDonations = squareData?.donations || {
     campaignName: "2026 Homestead Feed & Bedding Fund",
-    totalRaised: 1383.00,
+    totalRaised: 1483.00,
     goal: 2500.00,
-    transactionCount: 17,
+    transactionCount: 18,
     currency: "USD",
     recentSupporters: [
+      {
+        id: "tx-18",
+        name: "Homestead Tip Jar Supporter",
+        amount: 100.00,
+        date: "2026-11-25",
+        note: "Feed the Flock & Homestead Tip Jar - Nov 25, 2026"
+      },
       {
         id: "tx-17",
         name: "Your farm friend from MA",
@@ -47,13 +54,6 @@ export const FundWidget: React.FC = () => {
         amount: 100.00,
         date: "2026-03-20",
         note: "For the hard-working laying hens"
-      },
-      {
-        id: "tx-12",
-        name: "YouTube Channel Fan",
-        amount: 100.00,
-        date: "2026-03-12",
-        note: "Love Sammie's videos, keep going!"
       }
     ]
   };

@@ -245,8 +245,8 @@ export const About: React.FC = () => {
         <h2 className="font-handwritten text-4xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300">
           Catch the Action on YouTube!
         </h2>
-        <p className="text-sm sm:text-base text-stone-700 dark:text-stone-300 max-w-xl mx-auto leading-relaxed">
-          Instead of keeping up with blog posts, we document all our farm antics, builds, and daily chores live on video. Subscribe to join our homestead family!
+        <p className="text-sm sm:text-base text-stone-700 dark:text-stone-300 max-w-2xl mx-auto leading-relaxed">
+          Tucked away in New England's White Mountains, we share <strong>Flock Life</strong>, <strong>Dirt &amp; Dreams</strong>, and <strong>Everyday Magic &amp; Chaos</strong> through weekly videos filled with heart, positivity, sunshine, practical tips, and maybe a good laugh. <em>Blessed Be...</em>
         </p>
         <a
           href="https://www.youtube.com/@sammiessimpleliving"

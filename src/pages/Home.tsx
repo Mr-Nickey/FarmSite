@@ -394,13 +394,13 @@ export const Home: React.FC = () => {
           {/* Header & Emotional Hook */}
           <div className="text-center max-w-3xl mx-auto space-y-1.5">
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-sky-800 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/80 px-3 py-0.5 rounded-full inline-block border border-sky-300/50">
-              Unfiltered Homestead Life • @sammiessimpleliving
+              What You'll Find Here • @sammiessimpleliving
             </span>
             <h2 className="font-handwritten text-3xl sm:text-5xl font-bold text-sky-800 dark:text-sky-300 leading-tight">
-              Watch the Real Ups & Downs on YouTube!
+              Watch Our Simple, Magical Life on YouTube!
             </h2>
             <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-snug sm:leading-relaxed max-w-2xl mx-auto">
-              From tough New Hampshire weather to newborn critters, coop builds, and hilarious goose antics — Sammie captures it all raw, real, and unscripted.
+              Tucked away in New England's White Mountains at <strong>Flocking Reeds Farm LLC</strong>, we're sharing the joy of a simpler, magical life — spreading positivity, sunshine, practical tips, and maybe a good laugh.
             </p>
           </div>
 
@@ -409,7 +409,7 @@ export const Home: React.FC = () => {
             <div className="bg-sky-50/50 dark:bg-[#0b131e]/80 p-2.5 sm:p-3 rounded-2xl border-2 border-sky-500/50 dark:border-sky-500/60 text-center shadow-xs">
               <span className="text-lg sm:text-xl block mb-0.5">❤️</span>
               <span className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base block leading-tight">
-                799 Subscribers
+                848 Subscribers
               </span>
               <span className="text-[10px] sm:text-[11px] text-stone-600 dark:text-stone-400">
                 Joined Jan 31, 2025
@@ -419,37 +419,37 @@ export const Home: React.FC = () => {
             <div className="bg-sky-50/50 dark:bg-[#0b131e]/80 p-2.5 sm:p-3 rounded-2xl border-2 border-sky-500/50 dark:border-sky-500/60 text-center shadow-xs">
               <span className="text-lg sm:text-xl block mb-0.5">🎬</span>
               <span className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base block leading-tight">
-                396 Videos
+                429 Videos
               </span>
               <span className="text-[10px] sm:text-[11px] text-stone-600 dark:text-stone-400">
-                Daily Vlogs & Builds
+                Weekly Videos & Builds
               </span>
             </div>
 
             <div className="bg-sky-50/50 dark:bg-[#0b131e]/80 p-2.5 sm:p-3 rounded-2xl border-2 border-sky-500/50 dark:border-sky-500/60 text-center shadow-xs">
               <span className="text-lg sm:text-xl block mb-0.5">👀</span>
               <span className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base block leading-tight">
-                333,628 Views
+                376,328 Views
               </span>
               <span className="text-[10px] sm:text-[11px] text-stone-600 dark:text-stone-400">
-                Unfiltered Farm Stories
+                Everyday Magic & Chaos
               </span>
             </div>
 
             <div className="bg-sky-50/50 dark:bg-[#0b131e]/80 p-2.5 sm:p-3 rounded-2xl border-2 border-sky-500/50 dark:border-sky-500/60 text-center shadow-xs">
-              <span className="text-lg sm:text-xl block mb-0.5">🌾</span>
+              <span className="text-lg sm:text-xl block mb-0.5">🏔️</span>
               <span className="font-bold text-stone-900 dark:text-stone-100 text-sm sm:text-base block leading-tight">
-                Grafton, NH (USA)
+                White Mountains, NH
               </span>
               <span className="text-[10px] sm:text-[11px] text-stone-600 dark:text-stone-400">
-                Views Buy Flock Feed
+                United States • Views Buy Feed
               </span>
             </div>
           </div>
 
           {/* Featured Video Embed & Channel Intro */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 items-center bg-stone-50 dark:bg-[#0b131e]/80 p-3.5 sm:p-5 rounded-2xl border-2 border-sky-500/50 dark:border-sky-500/60">
-            <div className="md:col-span-6 w-full aspect-video rounded-xl overflow-hidden shadow-md border border-sky-500/40 bg-black">
+            <div className="md:col-span-5 w-full aspect-video rounded-xl overflow-hidden shadow-md border border-sky-500/40 bg-black">
               <iframe
                 src="https://www.youtube.com/embed/uhc2ynIlb5k?autoplay=0&mute=1&loop=1&playlist=uhc2ynIlb5k&controls=1&rel=0&playsinline=1"
                 title="Sammies Simple Living - Life on the Homestead"
@@ -460,16 +460,24 @@ export const Home: React.FC = () => {
               />
             </div>
 
-            <div className="md:col-span-6 space-y-2 text-left">
+            <div className="md:col-span-7 space-y-2.5 text-left">
               <span className="text-[10px] font-bold text-sky-800 dark:text-sky-300 uppercase tracking-wider bg-sky-100 dark:bg-sky-950/80 px-2 py-0.5 rounded-md">
-                Featured Video
+                Featured Video • About the Channel
               </span>
-              <h4 className="font-handwritten text-2xl sm:text-3xl font-bold text-sky-900 dark:text-sky-200">
-                Follow Sammie's Daily Journey
+              <h4 className="font-handwritten text-2xl sm:text-3xl font-bold text-sky-900 dark:text-sky-200 leading-tight">
+                What You'll Find Here @Flocking Reeds Farm LLC
               </h4>
-              <p className="text-xs text-stone-700 dark:text-stone-300 leading-snug sm:leading-relaxed">
-                Whether showing off Nicky's latest upcycled coop expansion, tending our 60+ laying hens, or filming baby quail taking their first sand bath, there's always something new happening.
-              </p>
+              <ul className="space-y-1.5 text-xs text-stone-700 dark:text-stone-300 leading-snug">
+                <li>
+                  <strong>🐓 Flock Life:</strong> The daily adventures, quirks, and care of our beloved chickens and geese <span className="text-stone-500 dark:text-stone-400">(hoping to add goats &amp; sheep to the mix soon alongside our quail!)</span>.
+                </li>
+                <li>
+                  <strong>🌱 Dirt &amp; Dreams:</strong> Gardening, homesteading, and building up our farm — from the farm stand to the coops, you never know what I'll ask hubby to build next!
+                </li>
+                <li>
+                  <strong>✨ Everyday Magic &amp; Chaos:</strong> From funny real-life moments with one another and our loved ones to the pure chaos of having a farm, we share a little bit of it all! Join us for weekly videos filled with heart, positivity, sunshine, and uplifting energy. <em>Blessed Be...</em>
+                </li>
+              </ul>
               <div className="pt-1">
                 <a
                   href="https://www.youtube.com/@sammiessimpleliving"
